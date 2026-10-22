@@ -1,0 +1,52 @@
+/* ==========================================================================
+   MARKET DATA (INDIA RUNS ON COAL) MODULE STYLES (src/styles/market-data.css)
+   ========================================================================== */
+
+.market-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+@media (max-width: 900px) {
+  .market-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 500px) {
+  .market-stats-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.market-stat-card {
+  background-color: var(--navy-950);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1rem;
+  padding: 2rem 1.5rem;
+  text-align: center;
+}
+
+.market-stat-value {
+  font-size: clamp(2.5rem, 4vw, 3.5rem);
+  font-weight: 800;
+  font-family: var(--font-display);
+  color: #ffffff;
+  line-height: 1;
+  margin-bottom: 0.75rem;
+}
+
+.market-stat-label {
+  font-size: 0.85rem;
+  color: var(--navy-300);
+  line-height: 1.45;
+}
+
+.market-source-note {
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--navy-400);
+}

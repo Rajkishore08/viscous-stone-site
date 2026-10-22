@@ -10,10 +10,24 @@ import {
   Clock,
   Gauge
 } from 'lucide-react';
-import { PORTS_INFRASTRUCTURE } from '../data/materialsData';
+import { PORTS_INFRASTRUCTURE, PORTS_DATA } from '../data/materialsData';
+import '../styles/logistics-supply.css';
 
 export default function LogisticsSupply({ onOpenQuoteModal }) {
-  const [activePort, setActivePort] = useState(PORTS_INFRASTRUCTURE[0]);
+  const portsList = Array.isArray(PORTS_INFRASTRUCTURE) && PORTS_INFRASTRUCTURE.length > 0
+    ? PORTS_INFRASTRUCTURE
+    : [
+        ...(PORTS_DATA?.westCoast || []),
+        ...(PORTS_DATA?.eastCoast || [])
+      ];
+
+  const [activePort, setActivePort] = useState(portsList[0] || {
+    port: 'Mundra',
+    coast: 'West Coast',
+    cargo: 'Indonesian & South African Steam Coal, Petcoke, Limestone',
+    handling: 'Deep-draft Capesize berths, automated wagon loaders.',
+    reach: 'Direct railway links to North & West India'
+  });
 
   const modes = [
     {
@@ -39,7 +53,7 @@ export default function LogisticsSupply({ onOpenQuoteModal }) {
   ];
 
   return (
-    <section id="logistics" className="section bg-slate-50 border-b border-slate-200">
+    <section id="logistics" className="logistics-section">
       <div className="container">
         {/* Section Header */}
         <div className="section-header">
@@ -56,16 +70,28 @@ export default function LogisticsSupply({ onOpenQuoteModal }) {
         </div>
 
         {/* 4 Pillars Grid (matching reference image) */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+        <div className="logistics-modes-grid">
           {modes.map((mode, idx) => (
-            <div key={idx} className="card-clean p-6 bg-white border border-slate-200 hover:border-sky-400">
-              <div className="w-12 h-12 rounded-xl bg-sky-50 border border-sky-100 flex items-center justify-center mb-4">
+            <div key={idx} className="logistics-mode-card">
+              <div 
+                style={{
+                  width: '48px',
+                  height: '48px',
+                  borderRadius: '0.65rem',
+                  backgroundColor: 'var(--sky-50)',
+                  border: '1px solid var(--sky-200)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  marginBottom: '1rem'
+                }}
+              >
                 {mode.icon}
               </div>
-              <h3 className="text-lg font-bold text-slate-900 font-display mb-2">
+              <h3 style={{ fontSize: '1.15rem', fontWeight: 700, color: 'var(--navy-900)', fontFamily: 'var(--font-display)', marginBottom: '0.5rem' }}>
                 {mode.title}
               </h3>
-              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+              <p style={{ fontSize: '0.82rem', color: 'var(--navy-600)', lineHeight: 1.55 }}>
                 {mode.desc}
               </p>
             </div>
@@ -73,96 +99,113 @@ export default function LogisticsSupply({ onOpenQuoteModal }) {
         </div>
 
         {/* Main Port Visual & Interactive Terminal Explorer */}
-        <div className="card-clean border border-slate-200 bg-white overflow-hidden shadow-lg">
-          <div className="grid grid-cols-1 lg:grid-cols-12">
+        <div className="port-explorer-card">
+          <div className="port-terminal-grid">
             {/* Left: Port Image */}
-            <div className="lg:col-span-6 relative min-h-[300px] lg:min-h-full">
+            <div className="port-photo-wrap">
               <img
-                src="/assets/14_Bulk_carrier_at_a_port_with_cranes.jpg"
-                alt="Bulk carrier vessel at port terminal being loaded with mineral ore"
-                className="w-full h-full object-cover"
+                src="/assets/logistics_bulk_carrier.jpg"
+                alt="Bulk carrier vessel at port terminal being loaded with mineral cargo"
                 loading="lazy"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent opacity-80" />
+              <div 
+                style={{
+                  position: 'absolute',
+                  inset: 0,
+                  background: 'linear-gradient(180deg, transparent 40%, rgba(7, 14, 27, 0.95) 100%)'
+                }}
+              />
               
-              <div className="absolute bottom-6 left-6 right-6 text-white">
-                <span className="text-[11px] font-mono tracking-wider uppercase text-sky-300 font-bold block mb-1">
+              <div style={{ position: 'absolute', bottom: '1.5rem', left: '1.5rem', right: '1.5rem', color: '#ffffff' }}>
+                <span style={{ fontSize: '0.72rem', fontFamily: 'var(--font-mono)', letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--sky-300)', fontWeight: 700, display: 'block', marginBottom: '0.35rem' }}>
                   Active Evacuation Gateway
                 </span>
-                <h4 className="text-xl sm:text-2xl font-bold font-display">
+                <h4 style={{ fontSize: '1.45rem', fontWeight: 700, fontFamily: 'var(--font-display)', color: '#ffffff' }}>
                   East & West Coast Port Stockyards
                 </h4>
-                <p className="text-xs text-slate-300 mt-1">
+                <p style={{ fontSize: '0.78rem', color: 'var(--navy-300)', marginTop: '0.35rem', lineHeight: 1.5 }}>
                   Handling over 1,200,000 MT annually across India's deepest bulk draft berths.
                 </p>
               </div>
             </div>
 
             {/* Right: Interactive Port Selector & Details */}
-            <div className="lg:col-span-6 p-6 sm:p-8 flex flex-col justify-between">
+            <div className="port-details-pane">
               <div>
-                <div className="text-xs font-mono uppercase tracking-wider text-sky-600 font-bold mb-3">
+                <div style={{ fontSize: '0.75rem', fontFamily: 'var(--font-mono)', textTransform: 'uppercase', letterSpacing: '0.08em', color: 'var(--sky-600)', fontWeight: 700, marginBottom: '0.75rem' }}>
                   Select Port Terminal
                 </div>
 
                 {/* Port Buttons */}
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {PORTS_INFRASTRUCTURE.map((p) => (
-                    <button
-                      key={p.port}
-                      onClick={() => setActivePort(p)}
-                      className={`px-3 py-1.5 rounded-lg text-xs font-semibold font-display transition-all border ${
-                        activePort.port === p.port
-                          ? 'bg-sky-600 text-white border-sky-600 shadow-sm'
-                          : 'bg-slate-50 text-slate-700 border-slate-200 hover:bg-sky-50'
-                      }`}
-                    >
-                      {p.port}
-                    </button>
-                  ))}
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', marginBottom: '1.5rem' }}>
+                  {portsList.map((p, idx) => {
+                    const isSelected = (activePort?.port || '') === p.port;
+                    return (
+                      <button
+                        key={p.port || idx}
+                        onClick={() => setActivePort(p)}
+                        style={{
+                          padding: '0.45rem 0.9rem',
+                          borderRadius: '0.5rem',
+                          fontSize: '0.78rem',
+                          fontWeight: 600,
+                          fontFamily: 'var(--font-display)',
+                          cursor: 'pointer',
+                          transition: 'all 150ms ease',
+                          border: '1.5px solid',
+                          backgroundColor: isSelected ? 'var(--sky-600)' : '#ffffff',
+                          color: isSelected ? '#ffffff' : 'var(--navy-800)',
+                          borderColor: isSelected ? 'var(--sky-600)' : 'var(--border-color)',
+                          boxShadow: isSelected ? 'var(--shadow-sm)' : 'none'
+                        }}
+                      >
+                        {p.port}
+                      </button>
+                    );
+                  })}
                 </div>
 
                 {/* Active Port Info Box */}
-                <div className="p-5 rounded-xl bg-slate-50 border border-slate-200 mb-6">
-                  <div className="flex items-center justify-between pb-3 border-b border-slate-200">
+                <div style={{ padding: '1.25rem', borderRadius: '0.75rem', backgroundColor: 'var(--navy-100)', border: '1px solid var(--border-color)', marginBottom: '1.5rem' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', paddingBottom: '0.75rem', borderBottom: '1px solid var(--border-color)' }}>
                     <div>
-                      <h4 className="text-lg font-bold text-slate-900 font-display">
-                        {activePort.port}
+                      <h4 style={{ fontSize: '1.15rem', fontWeight: 700, color: 'var(--navy-900)', fontFamily: 'var(--font-display)' }}>
+                        {activePort?.port || 'Port Terminal'}
                       </h4>
-                      <span className="text-xs font-mono text-sky-600 font-semibold">
-                        {activePort.coast} Deep-Water Terminal
+                      <span style={{ fontSize: '0.75rem', fontFamily: 'var(--font-mono)', color: 'var(--sky-600)', fontWeight: 600 }}>
+                        {activePort?.coast || 'India'} Deep-Water Terminal
                       </span>
                     </div>
-                    <span className="px-2.5 py-1 rounded bg-sky-100 text-sky-800 text-[11px] font-mono font-bold">
+                    <span style={{ padding: '0.25rem 0.65rem', borderRadius: '0.35rem', backgroundColor: 'var(--sky-100)', color: 'var(--sky-800)', fontSize: '0.7rem', fontFamily: 'var(--font-mono)', fontWeight: 700 }}>
                       Active Berth
                     </span>
                   </div>
 
-                  <div className="mt-4 flex flex-col gap-3 text-xs sm:text-sm">
+                  <div style={{ marginTop: '0.85rem', display: 'flex', flexDirection: 'column', gap: '0.65rem', fontSize: '0.82rem' }}>
                     <div>
-                      <span className="font-semibold text-slate-500 text-xs block uppercase tracking-wider">
+                      <span style={{ fontWeight: 700, color: 'var(--navy-500)', fontSize: '0.72rem', display: 'block', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
                         Primary Mineral Cargoes:
                       </span>
-                      <span className="text-slate-800 font-medium">
-                        {activePort.cargo}
+                      <span style={{ color: 'var(--navy-900)', fontWeight: 600 }}>
+                        {activePort?.cargo || 'Thermal Coal, Coking Coal, Fluxes'}
                       </span>
                     </div>
 
                     <div>
-                      <span className="font-semibold text-slate-500 text-xs block uppercase tracking-wider">
+                      <span style={{ fontWeight: 700, color: 'var(--navy-500)', fontSize: '0.72rem', display: 'block', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
                         Terminal Capabilities & Discharge:
                       </span>
-                      <span className="text-slate-700">
-                        {activePort.handling}
+                      <span style={{ color: 'var(--navy-700)' }}>
+                        {activePort?.handling || 'Mechanized conveyor discharge and rake loading'}
                       </span>
                     </div>
 
                     <div>
-                      <span className="font-semibold text-slate-500 text-xs block uppercase tracking-wider">
+                      <span style={{ fontWeight: 700, color: 'var(--navy-500)', fontSize: '0.72rem', display: 'block', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
                         Industrial Corridor Delivery Reach:
                       </span>
-                      <span className="text-sky-700 font-medium">
-                        {activePort.reach}
+                      <span style={{ color: 'var(--sky-700)', fontWeight: 600 }}>
+                        {activePort?.reach || 'Direct connectivity to major national rail corridors'}
                       </span>
                     </div>
                   </div>
@@ -170,8 +213,8 @@ export default function LogisticsSupply({ onOpenQuoteModal }) {
               </div>
 
               {/* Bottom CTA */}
-              <div className="flex items-center justify-between pt-4 border-t border-slate-100">
-                <span className="text-xs text-slate-500">
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', paddingTop: '1rem', borderTop: '1px solid var(--border-color)', gap: '1rem', flexWrap: 'wrap' }}>
+                <span style={{ fontSize: '0.82rem', color: 'var(--navy-600)' }}>
                   Need freight estimation to your nearest siding?
                 </span>
                 <button

@@ -1,0 +1,57 @@
+/* ==========================================================================
+   FAQ MODULE STYLES (src/styles/faq.css)
+   ========================================================================== */
+
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  max-width: 840px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.faq-card {
+  background-color: #ffffff;
+  border: 1px solid var(--border-color);
+  border-radius: 0.75rem;
+  overflow: hidden;
+  transition: border-color 150ms ease, box-shadow 150ms ease;
+}
+
+.faq-card:hover {
+  border-color: var(--sky-300);
+  box-shadow: 0 4px 12px rgba(11, 25, 44, 0.04);
+}
+
+.faq-btn {
+  width: 100%;
+  padding: 1.25rem 1.5rem;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: color 150ms ease;
+}
+
+.faq-answer {
+  padding: 0 1.5rem 1.25rem;
+  border-top: 1px solid var(--navy-100);
+  padding-top: 0.85rem;
+}
+
+.faq-icon-pill {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: var(--navy-100);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--navy-600);
+  flex-shrink: 0;
+}

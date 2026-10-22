@@ -1,0 +1,182 @@
+/* ==========================================================================
+   COAL CATALOGUE MODULE STYLES (src/styles/coal-catalogue.css)
+   ========================================================================== */
+
+.coal-tab-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+  margin-bottom: 2.5rem;
+}
+
+.coal-tab-btn {
+  padding: 0.65rem 1.25rem;
+  border-radius: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+  border: 1px solid var(--border-color);
+  background-color: #ffffff;
+  color: var(--navy-700);
+  transition: all 150ms ease;
+}
+
+.coal-tab-btn:hover {
+  border-color: var(--sky-400);
+  color: var(--sky-700);
+}
+
+.coal-tab-btn.active {
+  background-color: var(--navy-900);
+  color: #ffffff;
+  border-color: var(--navy-900);
+}
+
+.coal-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+@media (max-width: 1024px) {
+  .coal-cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .coal-cards-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.coal-card {
+  background-color: #ffffff;
+  border: 1px solid var(--border-color);
+  border-radius: 1rem;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 1px 3px rgba(11, 25, 44, 0.05);
+  transition: transform 150ms ease, border-color 150ms ease, box-shadow 150ms ease;
+}
+
+.coal-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--sky-400);
+  box-shadow: 0 10px 25px -5px rgba(11, 25, 44, 0.1);
+}
+
+.coal-card-img-wrap {
+  position: relative;
+  height: 180px;
+  background-color: var(--navy-950);
+  overflow: hidden;
+}
+
+.coal-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.coal-card-badges {
+  position: absolute;
+  top: 0.75rem;
+  left: 0.75rem;
+  right: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.origin-badge {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  background-color: rgba(7, 14, 27, 0.85);
+  color: #ffffff;
+  padding: 0.2rem 0.55rem;
+  border-radius: 0.25rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.status-badge {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 800;
+  padding: 0.2rem 0.5rem;
+  border-radius: 0.25rem;
+  text-transform: uppercase;
+}
+
+.status-badge.core {
+  background-color: var(--sky-600);
+  color: #ffffff;
+}
+
+.status-badge.custom {
+  background-color: var(--navy-800);
+  color: #ffffff;
+}
+
+.coal-card-body {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.coal-card-title {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--navy-950);
+  margin-bottom: 0.4rem;
+}
+
+.coal-card-desc {
+  font-size: 0.84rem;
+  color: var(--navy-600);
+  line-height: 1.5;
+  margin-bottom: 1.25rem;
+}
+
+.coal-specs-table {
+  border: 1px solid var(--border-color);
+  border-radius: 0.5rem;
+  overflow: hidden;
+  margin-bottom: 1.25rem;
+}
+
+.coal-spec-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.45rem 0.75rem;
+  font-size: 0.78rem;
+  font-family: var(--font-mono);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.coal-spec-row:last-child {
+  border-bottom: none;
+}
+
+.coal-spec-key {
+  color: var(--navy-500);
+}
+
+.coal-spec-val {
+  font-weight: 700;
+  color: var(--navy-900);
+}
+
+.coal-card-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: auto;
+}

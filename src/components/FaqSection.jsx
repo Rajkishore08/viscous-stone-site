@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { HelpCircle, ChevronDown, ChevronUp } from 'lucide-react';
+import { ChevronDown, ChevronUp } from 'lucide-react';
 import { FAQ_ITEMS } from '../data/materialsData';
+import '../styles/faq.css';
 
 export default function FaqSection() {
   const [openIndex, setOpenIndex] = useState(0);
@@ -10,41 +11,43 @@ export default function FaqSection() {
   };
 
   return (
-    <section className="section bg-slate-50 border-b border-slate-200">
+    <section id="faq" className="section bg-slate-50 border-b border-slate-200">
       <div className="container max-w-4xl">
+        {/* Section Header matching exact prompt text */}
         <div className="section-header">
-          <div className="section-badge">
-            <HelpCircle size={13} className="text-sky-600" />
-            Industrial Buyer Guidance
-          </div>
-          <h2 className="section-title text-slate-900 text-3xl sm:text-4xl font-extrabold tracking-tight">
-            Frequently Asked Questions
+          <div className="section-overline">QUESTIONS BUYERS ASK</div>
+          <h2 className="section-title text-slate-900">
+            STRAIGHT ANSWERS
           </h2>
-          <p className="section-desc">
-            Essential commercial, compliance, and sampling details for plant procurement officers.
+          <p className="section-desc max-w-xl mx-auto">
+            The points purchase teams ask us most often. If yours is not here, send it with your enquiry.
           </p>
         </div>
 
-        <div className="flex flex-col gap-3">
+        {/* 11 FAQ Items List */}
+        <div className="faq-list">
           {FAQ_ITEMS.map((item, idx) => {
             const isOpen = openIndex === idx;
             return (
               <div
                 key={idx}
-                className="card-clean bg-white border border-slate-200 overflow-hidden transition-all duration-200"
+                className="faq-card"
               >
                 <button
                   onClick={() => toggle(idx)}
-                  className="w-full p-5 text-left flex items-center justify-between gap-4 font-display font-bold text-base sm:text-lg text-slate-900 hover:text-sky-600 transition-colors focus:outline-none"
+                  className="faq-btn"
+                  aria-expanded={isOpen}
                 >
-                  <span>{item.q}</span>
-                  <div className="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 shrink-0">
-                    {isOpen ? <ChevronUp size={18} /> : <ChevronDown size={18} />}
+                  <span className="text-left font-display text-slate-900 font-bold text-base sm:text-lg">
+                    {item.q}
+                  </span>
+                  <div className="faq-icon-pill">
+                    {isOpen ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
                   </div>
                 </button>
 
                 {isOpen && (
-                  <div className="px-5 pb-5 pt-1 text-slate-600 text-sm sm:text-base leading-relaxed border-t border-slate-100">
+                  <div className="faq-answer text-sm text-slate-700 leading-relaxed">
                     {item.a}
                   </div>
                 )}

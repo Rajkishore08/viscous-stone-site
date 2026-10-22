@@ -9,6 +9,7 @@ import {
   ArrowRight,
   ShieldCheck
 } from 'lucide-react';
+import '../styles/sourcing-procurement.css';
 
 export default function SourcingProcurement({ onOpenQuoteModal }) {
   const steps = [
@@ -35,31 +36,50 @@ export default function SourcingProcurement({ onOpenQuoteModal }) {
   ];
 
   return (
-    <section id="sourcing" className="section bg-slate-900 text-white border-b border-slate-800 relative overflow-hidden">
+    <section id="sourcing" className="procurement-section">
       {/* Background Accent Glow */}
       <div className="absolute top-0 right-1/4 w-96 h-96 bg-sky-500/10 rounded-full filter blur-3xl pointer-events-none" />
 
       <div className="container relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <div className="procurement-grid">
           {/* Left Column: Visual Image with Conveyors & Stockyard */}
-          <div className="lg:col-span-5 order-2 lg:order-1">
-            <div className="relative rounded-2xl overflow-hidden border-2 border-slate-700/80 shadow-2xl group">
+          <div>
+            <div className="procurement-visual-frame">
               <img
-                src="/assets/13_Coal_stockyard_with_stacker_conveyor.jpg"
-                alt="Coal stockyard with stacker conveyor and bulk storage"
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                src="/assets/procurement_stockyard.jpg"
+                alt="Coal stockyard with stacker conveyor and automated bulk storage"
                 loading="lazy"
               />
 
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-transparent to-transparent opacity-80" />
+              <div 
+                style={{
+                  position: 'absolute',
+                  inset: 0,
+                  background: 'linear-gradient(180deg, transparent 40%, rgba(7, 14, 27, 0.95) 100%)'
+                }}
+              />
 
               {/* Float Badge */}
-              <div className="absolute bottom-5 left-5 right-5 p-4 rounded-xl bg-slate-900/90 backdrop-blur-md border border-slate-700 text-xs">
-                <div className="flex items-center gap-2 text-sky-400 font-bold uppercase tracking-wider mb-1 font-mono">
+              <div 
+                style={{
+                  position: 'absolute',
+                  bottom: '1.25rem',
+                  left: '1.25rem',
+                  right: '1.25rem',
+                  padding: '1rem 1.25rem',
+                  borderRadius: '0.85rem',
+                  backgroundColor: 'rgba(7, 14, 27, 0.85)',
+                  backdropFilter: 'blur(8px)',
+                  WebkitBackdropFilter: 'blur(8px)',
+                  border: '1px solid rgba(56, 189, 248, 0.25)',
+                  fontSize: '0.8rem'
+                }}
+              >
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--sky-400)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '0.35rem', fontFamily: 'var(--font-mono)' }}>
                   <ShieldCheck size={16} />
                   Inspection Standard
                 </div>
-                <p className="text-slate-300">
+                <p style={{ color: 'var(--navy-300)', fontSize: '0.78rem', lineHeight: 1.5 }}>
                   Pre-dispatch automated sampling ensures zero moisture inflation and exact calorific compliance before gate dispatch.
                 </p>
               </div>
@@ -67,32 +87,32 @@ export default function SourcingProcurement({ onOpenQuoteModal }) {
           </div>
 
           {/* Right Column: Workflow Steps */}
-          <div className="lg:col-span-7 order-1 lg:order-2">
-            <div className="section-badge dark-mode mb-4">
-              <GitFork size={13} className="text-sky-400" />
+          <div>
+            <div className="section-badge dark-mode" style={{ marginBottom: '1rem' }}>
+              <GitFork size={13} style={{ color: 'var(--sky-400)' }} />
               End-To-End Execution
             </div>
 
-            <h2 className="text-white text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight mb-6 leading-tight">
+            <h2 style={{ color: '#ffffff', fontSize: 'clamp(1.8rem, 3.2vw, 2.75rem)', fontWeight: 800, letterSpacing: '-0.02em', marginBottom: '1rem', lineHeight: 1.2 }}>
               From requirement to delivery, we manage the entire procurement process.
             </h2>
 
-            <p className="text-slate-300 text-base sm:text-lg mb-8 leading-relaxed">
+            <p style={{ color: 'var(--navy-300)', fontSize: '1rem', lineHeight: 1.65, marginBottom: '2rem' }}>
               Industrial plants face three chronic supply chain headaches: fluctuating international indices, unpredictable railway freight allotments, and off-spec mineral shipments. Vicious Stone insulates your plant with rigorous process controls.
             </p>
 
             {/* Steps List */}
-            <div className="flex flex-col gap-5 mb-8">
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', marginBottom: '2rem' }}>
               {steps.map((step) => (
-                <div key={step.num} className="flex items-start gap-4 p-4 rounded-xl bg-slate-800/60 border border-slate-700/70 hover:border-sky-400/50 transition-colors">
-                  <span className="font-mono text-lg font-extrabold text-sky-400 bg-sky-950/80 px-2.5 py-1 rounded border border-sky-400/30 shrink-0">
+                <div key={step.num} className="procurement-step-card">
+                  <span className="procurement-step-num">
                     {step.num}
                   </span>
                   <div>
-                    <h4 className="text-base font-bold text-white font-display">
+                    <h4 style={{ fontSize: '1rem', fontWeight: 700, color: '#ffffff', fontFamily: 'var(--font-display)', marginBottom: '0.2rem' }}>
                       {step.title}
                     </h4>
-                    <p className="text-xs sm:text-sm text-slate-300 mt-1 leading-relaxed">
+                    <p style={{ fontSize: '0.84rem', color: 'var(--navy-300)', lineHeight: 1.55 }}>
                       {step.desc}
                     </p>
                   </div>
@@ -103,7 +123,7 @@ export default function SourcingProcurement({ onOpenQuoteModal }) {
             {/* CTA Button */}
             <button
               onClick={() => onOpenQuoteModal()}
-              className="btn btn-primary btn-lg flex items-center gap-2"
+              className="btn btn-primary btn-lg"
             >
               <span>Submit Your Requirement</span>
               <ArrowRight size={18} />

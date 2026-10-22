@@ -1,0 +1,109 @@
+/* ==========================================================================
+   MATERIALS CATALOG MODULE STYLES (src/styles/materials-catalog.css)
+   Detailed Product Specs & Technical Grades Filter
+   ========================================================================== */
+
+.materials-catalog-section {
+  background: linear-gradient(180deg, #edf7fe 0%, #e0f2fe 50%, #edf7fe 100%);
+  border-bottom: 1px solid rgba(56, 189, 248, 0.3);
+  padding: 5rem 0;
+}
+
+.tabs-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tab-pill {
+  padding: 0.6rem 1.25rem;
+  border-radius: 9999px;
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-weight: 600;
+  border: 1.5px solid rgba(56, 189, 248, 0.35);
+  background: #ffffff;
+  color: var(--navy-800);
+  cursor: pointer;
+  transition: all 150ms ease;
+}
+
+.tab-pill:hover {
+  border-color: var(--sky-500);
+  color: var(--sky-700);
+}
+
+.tab-pill.active {
+  background: linear-gradient(135deg, var(--sky-600) 0%, var(--sky-700) 100%);
+  color: #ffffff;
+  border-color: var(--sky-600);
+  box-shadow: 0 4px 14px rgba(2, 132, 199, 0.3);
+}
+
+.catalog-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+@media (max-width: 992px) {
+  .catalog-grid-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .catalog-grid-3 {
+    grid-template-columns: 1fr;
+  }
+}
+
+.catalog-card {
+  background: #ffffff;
+  border: 1.5px solid rgba(56, 189, 248, 0.3);
+  border-radius: 1rem;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 4px 18px rgba(2, 132, 199, 0.08);
+  transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+}
+
+.catalog-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--sky-500);
+  box-shadow: 0 12px 30px -5px rgba(2, 132, 199, 0.22);
+}
+
+.catalog-img-wrap {
+  position: relative;
+  height: 190px;
+  background-color: var(--navy-950);
+  overflow: hidden;
+}
+
+.catalog-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 300ms ease;
+  display: block;
+}
+
+.catalog-card:hover .catalog-img-wrap img {
+  transform: scale(1.05);
+}
+
+.catalog-body {
+  padding: 1.5rem;
+}
+
+.catalog-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 1rem 1.5rem 1.5rem;
+  border-top: 1px solid var(--border-color);
+  background-color: #fafcff;
+}

@@ -1,0 +1,379 @@
+/* ==========================================================================
+   HERO & FEATURE CARDS MODULE STYLES (src/styles/hero.css)
+   Immersive Mountain/Mining Backdrop with Sky-Blue Atmospheric Overlay
+   ========================================================================== */
+
+/* Hero Section */
+.hero-section {
+  position: relative;
+  min-height: 640px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: var(--navy-950);
+  overflow: hidden;
+  padding: 5.5rem 0 4rem;
+}
+
+@media (max-width: 768px) {
+  .hero-section {
+    min-height: 540px;
+    padding: 3.5rem 0 3rem;
+  }
+}
+
+.hero-bg-picture {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.hero-bg-picture img,
+.hero-bg-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 35%;
+  z-index: 1;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg, 
+    rgba(7, 14, 27, 0.82) 0%, 
+    rgba(12, 74, 110, 0.65) 50%, 
+    rgba(7, 14, 27, 0.88) 100%
+  );
+  z-index: 2;
+}
+
+@media (max-width: 768px) {
+  .hero-section {
+    min-height: auto;
+    padding: 3.5rem 0 2.5rem;
+  }
+
+  .hero-bg-picture img,
+  .hero-bg-img {
+    object-position: center 25%;
+  }
+
+  .hero-overlay {
+    background: linear-gradient(
+      180deg, 
+      rgba(7, 14, 27, 0.82) 0%, 
+      rgba(12, 74, 110, 0.55) 35%, 
+      rgba(7, 14, 27, 0.82) 75%,
+      rgba(7, 14, 27, 0.96) 100%
+    );
+  }
+
+  .hero-overline {
+    font-size: 0.68rem !important;
+    letter-spacing: 0.08em !important;
+    padding: 0.25rem 0.65rem !important;
+    line-height: 1.4 !important;
+    margin-bottom: 0.85rem !important;
+  }
+
+  .hero-title {
+    font-size: 2.25rem !important;
+    line-height: 1.16 !important;
+    margin-bottom: 0.95rem !important;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6) !important;
+  }
+
+  .hero-subtitle {
+    font-size: 0.95rem !important;
+    line-height: 1.55 !important;
+    margin-bottom: 1.75rem !important;
+    color: #e2e8f0 !important;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6) !important;
+  }
+
+  .hero-ctas {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 0.75rem !important;
+    margin-bottom: 1.75rem !important;
+  }
+
+  .hero-ctas .btn {
+    width: 100% !important;
+    justify-content: center !important;
+    padding: 0.85rem 1.25rem !important;
+  }
+
+  .hero-trust-foot {
+    font-size: 0.75rem !important;
+    gap: 0.4rem !important;
+  }
+
+  .hero-feature-cards-grid {
+    grid-template-columns: 1fr !important;
+    gap: 0.65rem !important;
+    margin-top: 2rem !important;
+  }
+
+  .hero-feature-card {
+    padding: 0.85rem 1rem !important;
+    gap: 0.75rem !important;
+  }
+
+  .hero-feature-icon {
+    width: 38px !important;
+    height: 38px !important;
+  }
+
+  .hero-feature-title {
+    font-size: 0.9rem !important;
+  }
+
+  .hero-feature-subtitle {
+    font-size: 0.74rem !important;
+  }
+}
+
+.hero-content {
+  max-width: 860px;
+}
+
+.hero-overline {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--sky-300);
+  background: rgba(56, 189, 248, 0.15);
+  border: 1px solid rgba(56, 189, 248, 0.35);
+  padding: 0.3rem 0.85rem;
+  border-radius: 9999px;
+  display: inline-block;
+  margin-bottom: 1.25rem;
+}
+
+.hero-title {
+  font-size: clamp(2.35rem, 4.8vw, 3.85rem);
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin-bottom: 1.25rem;
+}
+
+.hero-subtitle {
+  font-size: clamp(1.05rem, 2vw, 1.2rem);
+  color: var(--navy-100);
+  line-height: 1.6;
+  margin-bottom: 2.25rem;
+  max-width: 740px;
+}
+
+.hero-ctas {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.hero-btn-quote {
+  background: linear-gradient(135deg, var(--sky-500) 0%, var(--sky-600) 100%);
+  color: #ffffff !important;
+  box-shadow: 0 6px 20px rgba(2, 132, 199, 0.45);
+  border: none;
+  font-weight: 700;
+}
+
+.hero-btn-quote:hover {
+  background: linear-gradient(135deg, var(--sky-400) 0%, var(--sky-500) 100%);
+  box-shadow: 0 8px 25px rgba(2, 132, 199, 0.55);
+  transform: translateY(-2px);
+}
+
+.btn-glass-outline {
+  background: rgba(255, 255, 255, 0.12);
+  border: 1.5px solid rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: #ffffff !important;
+  border-radius: 0.5rem;
+  padding: 0.75rem 1.6rem;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 180ms ease;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+}
+
+.btn-glass-outline:hover {
+  background: rgba(255, 255, 255, 0.22);
+  border-color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 255, 255, 0.15);
+}
+
+.hero-trust-foot {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  font-size: 0.82rem;
+  color: var(--navy-300);
+  font-family: var(--font-mono);
+}
+
+.hero-trust-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.hero-sep {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+/* 4 Feature Cards along Bottom of Hero matching Image 1 */
+.hero-feature-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+  margin-top: 3.5rem;
+}
+
+@media (max-width: 992px) {
+  .hero-feature-cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-top: 2.5rem;
+  }
+}
+
+@media (max-width: 540px) {
+  .hero-feature-cards-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.hero-feature-card {
+  background: rgba(7, 14, 27, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  border-radius: 0.85rem;
+  padding: 1.25rem 1.15rem;
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  transition: transform 150ms ease, border-color 150ms ease, background-color 150ms ease;
+}
+
+.hero-feature-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--sky-400);
+  background: rgba(12, 74, 110, 0.65);
+}
+
+.hero-feature-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 0.5rem;
+  background: rgba(56, 189, 248, 0.15);
+  border: 1px solid rgba(56, 189, 248, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--sky-300);
+  flex-shrink: 0;
+}
+
+.hero-feature-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #ffffff;
+  font-family: var(--font-display);
+}
+
+.hero-feature-subtitle {
+  font-size: 0.76rem;
+  color: var(--navy-300);
+  margin-top: 0.15rem;
+  line-height: 1.35;
+}
+
+/* Continuous Market Ticker Strip */
+.ticker-strip {
+  background-color: var(--navy-950);
+  border-top: 1px solid rgba(56, 189, 248, 0.2);
+  border-bottom: 1px solid rgba(56, 189, 248, 0.2);
+  display: flex;
+  align-items: center;
+  height: 44px;
+  overflow: hidden;
+  position: relative;
+  z-index: 10;
+}
+
+.ticker-label {
+  background: linear-gradient(135deg, var(--sky-600) 0%, var(--sky-700) 100%);
+  color: #ffffff;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  padding: 0 1.25rem;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  flex-shrink: 0;
+  z-index: 2;
+}
+
+.ticker-marquee {
+  flex: 1;
+  overflow: hidden;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+}
+
+.ticker-track {
+  display: inline-flex;
+  align-items: center;
+  gap: 2.5rem;
+  animation: tickerSlide 40s linear infinite;
+  padding-left: 1.5rem;
+}
+
+@keyframes tickerSlide {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.ticker-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--navy-200);
+}
+
+.ticker-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--sky-400);
+}

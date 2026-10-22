@@ -5,9 +5,12 @@ import CoreMaterials from './components/CoreMaterials';
 import WhyChooseUs from './components/WhyChooseUs';
 import AboutUs from './components/AboutUs';
 import MaterialsCatalog from './components/MaterialsCatalog';
-import PlantAdvisor from './components/PlantAdvisor';
 import SourcingProcurement from './components/SourcingProcurement';
 import LogisticsSupply from './components/LogisticsSupply';
+import SourcingRoutes from './components/SourcingRoutes';
+import MetalsMinerals from './components/MetalsMinerals';
+import TradingProcess from './components/TradingProcess';
+import GstDocuments from './components/GstDocuments';
 import ContactSection from './components/ContactSection';
 import FaqSection from './components/FaqSection';
 import Footer from './components/Footer';
@@ -40,34 +43,38 @@ export default function App() {
     setActiveSpecProduct(null);
   };
 
+  const handleSelectCategoryFromCore = (categoryName) => {
+    setSelectedCategory(categoryName);
+  };
+
   const handleFloatingWhatsApp = () => {
     const url = `https://wa.me/${COMPANY_INFO.whatsappNumber}?text=${encodeURIComponent(COMPANY_INFO.defaultWhatsAppMessage)}`;
     window.open(url, '_blank', 'noopener,noreferrer');
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-slate-50 text-slate-800 antialiased selection:bg-sky-500 selection:text-white">
-      {/* Navigation Bar */}
+    <div className="min-h-screen flex flex-col text-slate-800 antialiased selection:bg-sky-600 selection:text-white">
+      {/* 1. Header with Clean 7-Link Navigation matching Image 2 */}
       <Navbar onOpenQuoteModal={handleOpenQuoteModal} />
 
       {/* Main Content Area */}
       <main className="flex-1">
-        {/* Hero Section with Mountain & Mining Machinery */}
+        {/* 2. Hero: Powering Industries with Reliable Raw Materials, Dual CTAs & 4 Feature Cards */}
         <Hero onOpenQuoteModal={handleOpenQuoteModal} />
 
-        {/* Core Materials Showcase (4 Primary Pillars) */}
+        {/* 3. Our Core Materials: 4 Photo Cards (Coal, Coke, Iron Ore, Other Minerals) */}
         <CoreMaterials 
-          onSelectCategory={(cat) => setSelectedCategory(cat)} 
-          onOpenQuoteModal={handleOpenQuoteModal} 
+          onSelectCategory={handleSelectCategoryFromCore}
+          onOpenQuoteModal={handleOpenQuoteModal}
         />
 
-        {/* Why Choose Us with Panoramic Mountain Mine Background */}
+        {/* 4. Why Choose Us: Immersive Mountain Panorama & 4 Frosted Cards */}
         <WhyChooseUs onOpenQuoteModal={handleOpenQuoteModal} />
 
-        {/* Corporate Profile / About Us */}
+        {/* 5. About Us: Narrative, Excavator Photo, 4 Key Metrics (10+, 500+, 1M+, 100+) & Our Story */}
         <AboutUs onOpenQuoteModal={handleOpenQuoteModal} />
 
-        {/* Interactive Materials Portfolio & Spec Viewer */}
+        {/* 6. Our Materials: Interactive Catalog with Tabs, Live Search & Certified Chemical Specs */}
         <MaterialsCatalog 
           selectedCategory={selectedCategory}
           onSelectCategory={setSelectedCategory}
@@ -75,26 +82,38 @@ export default function App() {
           onOpenQuoteModal={handleOpenQuoteModal}
         />
 
-        {/* Plant Fuel Advisor & Railway Rake Estimator */}
-        <PlantAdvisor onOpenQuoteModal={handleOpenQuoteModal} />
-
-        {/* Sourcing & Procurement Workflow */}
+        {/* 7. Sourcing & Procurement: 4 Process Steps, Stockyard Photo & Submit Requirement */}
         <SourcingProcurement onOpenQuoteModal={handleOpenQuoteModal} />
 
-        {/* Logistics & Multi-Port Supply Chain */}
+        {/* 8. Logistics & Supply Chain: 4 Modes, Bulk Carrier Photo & 14-Port Interactive Explorer */}
         <LogisticsSupply onOpenQuoteModal={handleOpenQuoteModal} />
 
-        {/* Contact Us & Interactive RFQ Form */}
+        {/* 9. Suppliers: Three Sourcing Routes (Vessel, Port Stockyard, Domestic Mine) */}
+        <SourcingRoutes onOpenQuoteModal={handleOpenQuoteModal} />
+
+        {/* 10. Indian Mining Belts: Ballari, Barbil, Bailadila, Goa */}
+        <MetalsMinerals 
+          onOpenQuoteModal={handleOpenQuoteModal}
+          onOpenSpecModal={handleOpenSpecModal}
+        />
+
+        {/* 11. Trading Process: Six Steps & 4 Guarantees */}
+        <TradingProcess onOpenQuoteModal={handleOpenQuoteModal} />
+
+        {/* 12. Corporate Documents: Form GST REG-06, Paperwork, 18 HSN Codes */}
+        <GstDocuments />
+
+        {/* 13. Contact Us: 33-Product RFQ Desk, Direct Phone, WhatsApp & Office Details */}
         <ContactSection preselectedMaterial={quoteModalData?.name} />
 
-        {/* Frequently Asked Questions */}
+        {/* 14. Questions Buyers Ask: Direct Industry Answers */}
         <FaqSection />
       </main>
 
-      {/* Footer */}
+      {/* 15. Structured Industrial Footer */}
       <Footer onOpenQuoteModal={handleOpenQuoteModal} />
 
-      {/* Floating Instant WhatsApp Action Button */}
+      {/* Floating Direct WhatsApp Button */}
       <button
         onClick={handleFloatingWhatsApp}
         className="float-whatsapp"
@@ -102,10 +121,10 @@ export default function App() {
         aria-label="Direct WhatsApp Chat"
       >
         <MessageSquare size={20} />
-        <span className="font-display">WhatsApp Desk</span>
+        <span className="font-display font-semibold">WhatsApp Desk</span>
       </button>
 
-      {/* Modals */}
+      {/* Interactive Modals */}
       <QuoteModal
         isOpen={quoteModalOpen}
         onClose={handleCloseQuoteModal}

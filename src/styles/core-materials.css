@@ -1,0 +1,145 @@
+/* ==========================================================================
+   OUR CORE MATERIALS MODULE STYLES (src/styles/core-materials.css)
+   Vibrant Sky-Blue Base & Frosted Elevation
+   ========================================================================== */
+
+.core-materials-section {
+  background: linear-gradient(180deg, #edf7fe 0%, #e2effc 50%, #edf7fe 100%);
+  border-bottom: 1px solid rgba(56, 189, 248, 0.3);
+  padding: 5rem 0;
+  position: relative;
+}
+
+.core-materials-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 3rem;
+  gap: 1.5rem;
+}
+
+.cards-grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+
+@media (max-width: 1040px) {
+  .cards-grid-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 560px) {
+  .cards-grid-4 {
+    grid-template-columns: 1fr;
+  }
+}
+
+.material-card {
+  background: rgba(255, 255, 255, 0.95);
+  border: 1.5px solid rgba(56, 189, 248, 0.35);
+  border-radius: 1rem;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 18px rgba(2, 132, 199, 0.08);
+  transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+  cursor: pointer;
+}
+
+.material-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--sky-500);
+  box-shadow: 0 12px 30px -5px rgba(2, 132, 199, 0.22);
+}
+
+.material-card-img-wrap {
+  position: relative;
+  height: 200px;
+  background-color: var(--navy-950);
+  overflow: hidden;
+}
+
+.material-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 300ms ease;
+  display: block;
+}
+
+.material-card:hover .material-card-img {
+  transform: scale(1.05);
+}
+
+.material-card-arrow {
+  position: absolute;
+  bottom: 0.85rem;
+  right: 0.85rem;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(7, 14, 27, 0.8);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(56, 189, 248, 0.35);
+  transition: background-color 150ms ease, transform 150ms ease;
+}
+
+.material-card:hover .material-card-arrow {
+  background-color: var(--sky-600);
+  transform: scale(1.08);
+}
+
+.material-card-body {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 1;
+}
+
+.material-card-title {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--navy-950);
+  margin-bottom: 0.35rem;
+  font-family: var(--font-display);
+}
+
+.material-card-tagline {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--sky-700);
+  margin-bottom: 0.6rem;
+  font-family: var(--font-mono);
+}
+
+.material-card-desc {
+  font-size: 0.85rem;
+  color: var(--navy-600);
+  line-height: 1.5;
+  margin-bottom: 1.25rem;
+}
+
+.material-card-specs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-top: auto;
+}
+
+.spec-chip {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 600;
+  background-color: var(--sky-50);
+  color: var(--sky-800);
+  border: 1px solid rgba(2, 132, 199, 0.2);
+  padding: 0.2rem 0.55rem;
+  border-radius: 0.3rem;
+}

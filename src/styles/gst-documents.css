@@ -1,0 +1,238 @@
+/* ==========================================================================
+   GST & DOCUMENTS MODULE STYLES (src/styles/gst-documents.css)
+   Clean, Official, Immersive Sky-Blue Layout with Perfect Alignments
+   ========================================================================== */
+
+.gst-section {
+  background: linear-gradient(180deg, #f0f8ff 0%, #e8f4fc 50%, #f0f8ff 100%);
+  border-bottom: 1.5px solid rgba(56, 189, 248, 0.25);
+  padding: 5.5rem 0;
+  position: relative;
+}
+
+/* Official GST Registration Certificate Card */
+.gst-cert-card {
+  background: #ffffff;
+  border: 2px solid var(--sky-500);
+  border-radius: 1.15rem;
+  padding: 2.25rem;
+  box-shadow: 0 8px 30px rgba(2, 132, 199, 0.12);
+  margin-bottom: 3rem;
+  position: relative;
+  overflow: hidden;
+}
+
+@media (max-width: 640px) {
+  .gst-cert-card {
+    padding: 1.5rem 1.25rem;
+    margin-bottom: 2rem;
+  }
+}
+
+.gst-cert-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1.5rem;
+  margin-bottom: 1.75rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1.5px solid rgba(56, 189, 248, 0.25);
+  flex-wrap: wrap;
+}
+
+.gst-cert-form {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--sky-700);
+  display: block;
+  margin-bottom: 0.35rem;
+}
+
+.gst-cert-title {
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: var(--navy-950);
+  font-family: var(--font-display);
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+}
+
+.gst-cert-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem 2.5rem;
+}
+
+@media (max-width: 720px) {
+  .gst-cert-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+
+.gst-cert-field {
+  display: flex;
+  flex-direction: column;
+}
+
+.gst-cert-label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--navy-500);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 0.25rem;
+}
+
+.gst-cert-val {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--navy-950);
+  line-height: 1.4;
+}
+
+/* Two-Column Documents & HSN Grid */
+.gst-details-columns {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
+@media (max-width: 980px) {
+  .gst-details-columns {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
+.gst-doc-card {
+  background: #ffffff;
+  border: 1.5px solid rgba(56, 189, 248, 0.35);
+  border-radius: 1rem;
+  padding: 1.85rem;
+  box-shadow: 0 4px 18px rgba(2, 132, 199, 0.08);
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 640px) {
+  .gst-doc-card {
+    padding: 1.4rem;
+  }
+}
+
+.gst-card-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.85rem;
+  border-bottom: 1px solid rgba(56, 189, 248, 0.2);
+}
+
+.gst-card-header-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 0.5rem;
+  background-color: var(--sky-50);
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.gst-card-header-title {
+  font-size: 1.12rem;
+  font-weight: 800;
+  color: var(--navy-950);
+  font-family: var(--font-display);
+  letter-spacing: -0.01em;
+}
+
+/* Paperwork List */
+.paperwork-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.paperwork-item {
+  padding-bottom: 0.85rem;
+  border-bottom: 1px solid rgba(56, 189, 248, 0.15);
+}
+
+.paperwork-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.paperwork-item-head {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--navy-950);
+}
+
+.paperwork-item-desc {
+  font-size: 0.8rem;
+  color: var(--navy-600);
+  line-height: 1.5;
+  margin-top: 0.3rem;
+  padding-left: 1.5rem;
+}
+
+/* HSN Codes Grid */
+.hsn-grid-wrap {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem;
+  max-height: 340px;
+  overflow-y: auto;
+  padding-right: 0.4rem;
+}
+
+@media (max-width: 600px) {
+  .hsn-grid-wrap {
+    grid-template-columns: 1fr;
+  }
+}
+
+.hsn-pill {
+  padding: 0.6rem 0.75rem;
+  border-radius: 0.5rem;
+  background-color: #f8fbfe;
+  border: 1px solid rgba(56, 189, 248, 0.25);
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  font-size: 0.76rem;
+  font-family: var(--font-mono);
+}
+
+.hsn-code {
+  font-weight: 800;
+  color: var(--sky-700);
+  flex-shrink: 0;
+}
+
+.hsn-desc {
+  color: var(--navy-800);
+  line-height: 1.35;
+}
+
+.hsn-disclaimer {
+  margin-top: 1.25rem;
+  padding-top: 0.85rem;
+  border-top: 1px solid rgba(56, 189, 248, 0.2);
+  font-size: 0.75rem;
+  color: var(--navy-500);
+  font-style: italic;
+  line-height: 1.45;
+}

@@ -1,0 +1,326 @@
+/* ==========================================================================
+   METALS, MINERALS & MINING BELTS MODULE STYLES (src/styles/metals-minerals.css)
+   Clean, Immersive Sky-Blue Architecture with Perfect Responsive Alignment
+   ========================================================================== */
+
+.metals-section {
+  background: linear-gradient(180deg, #f0f8ff 0%, #e8f4fc 50%, #f0f8ff 100%);
+  border-bottom: 1.5px solid rgba(56, 189, 248, 0.25);
+  padding: 5.5rem 0;
+  position: relative;
+}
+
+/* Category Tabs */
+.metals-tab-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  justify-content: center;
+  margin-bottom: 2.75rem;
+}
+
+.metals-tab-btn {
+  padding: 0.7rem 1.4rem;
+  border-radius: 0.6rem;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+  border: 1.5px solid rgba(56, 189, 248, 0.3);
+  background-color: rgba(255, 255, 255, 0.85);
+  color: var(--navy-800);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: all 180ms ease;
+  box-shadow: 0 2px 6px rgba(2, 132, 199, 0.05);
+}
+
+.metals-tab-btn:hover {
+  border-color: var(--sky-500);
+  color: var(--sky-700);
+  background-color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.metals-tab-btn.active {
+  background: linear-gradient(135deg, var(--navy-900) 0%, var(--navy-950) 100%);
+  color: #ffffff;
+  border-color: var(--navy-900);
+  box-shadow: 0 4px 14px rgba(7, 14, 27, 0.25);
+}
+
+/* Product Cards Grid */
+.metals-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.75rem;
+}
+
+@media (max-width: 1080px) {
+  .metals-cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .metals-cards-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+}
+
+/* Single Product Card */
+.metals-card {
+  background: #ffffff;
+  border: 1.5px solid rgba(56, 189, 248, 0.3);
+  border-radius: 1rem;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 18px rgba(2, 132, 199, 0.08);
+  transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+}
+
+.metals-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--sky-500);
+  box-shadow: 0 12px 30px -5px rgba(2, 132, 199, 0.22);
+}
+
+.metals-card-img-wrap {
+  position: relative;
+  height: 190px;
+  background-color: var(--navy-950);
+  overflow: hidden;
+}
+
+.metals-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 300ms ease;
+}
+
+.metals-card:hover .metals-card-img {
+  transform: scale(1.04);
+}
+
+.metals-card-badges {
+  position: absolute;
+  top: 0.75rem;
+  left: 0.75rem;
+  right: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.metals-origin-badge {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 700;
+  background-color: rgba(7, 14, 27, 0.88);
+  color: #ffffff;
+  padding: 0.25rem 0.6rem;
+  border-radius: 0.35rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(4px);
+}
+
+.metals-status-badge {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 800;
+  padding: 0.25rem 0.6rem;
+  border-radius: 0.35rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.metals-status-badge.core {
+  background: linear-gradient(135deg, var(--sky-600) 0%, var(--sky-700) 100%);
+  color: #ffffff;
+}
+
+.metals-status-badge.custom {
+  background: linear-gradient(135deg, var(--navy-800) 0%, var(--navy-900) 100%);
+  color: #ffffff;
+}
+
+.metals-card-body {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.metals-card-title {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--navy-950);
+  font-family: var(--font-display);
+  margin-bottom: 0.45rem;
+  line-height: 1.25;
+}
+
+.metals-card-desc {
+  font-size: 0.85rem;
+  color: var(--navy-600);
+  line-height: 1.55;
+  margin-bottom: 1.35rem;
+  min-height: 2.6rem;
+}
+
+/* Specs Table with Key on Left, Value on Right */
+.metals-specs-table {
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  border-radius: 0.65rem;
+  overflow: hidden;
+  margin-bottom: 1.35rem;
+  background-color: #fafdff;
+}
+
+.metals-spec-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0.85rem;
+  font-size: 0.8rem;
+  font-family: var(--font-mono);
+  border-bottom: 1px solid rgba(56, 189, 248, 0.2);
+}
+
+.metals-spec-row:last-child {
+  border-bottom: none;
+}
+
+.metals-spec-key {
+  color: var(--navy-600);
+  font-weight: 500;
+}
+
+.metals-spec-val {
+  font-weight: 700;
+  color: var(--navy-950);
+  text-align: right;
+}
+
+/* Actions */
+.metals-card-actions {
+  display: flex;
+  gap: 0.65rem;
+  margin-top: auto;
+}
+
+.metals-card-actions .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+}
+
+/* MINING BELTS INDIA Section */
+.mining-belts-container {
+  margin-top: 4.5rem;
+  padding-top: 3.5rem;
+  border-top: 1.5px solid rgba(56, 189, 248, 0.3);
+}
+
+.mining-belts-header {
+  text-align: center;
+  max-width: 650px;
+  margin: 0 auto 2.5rem;
+}
+
+.mining-belts-overline {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--sky-700);
+  display: block;
+  margin-bottom: 0.35rem;
+}
+
+.mining-belts-title {
+  font-size: 1.85rem;
+  font-weight: 800;
+  color: var(--navy-950);
+  font-family: var(--font-display);
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+.mining-belts-subtitle {
+  font-size: 0.9rem;
+  color: var(--navy-600);
+  margin-top: 0.5rem;
+  line-height: 1.5;
+}
+
+.mining-belts-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.35rem;
+}
+
+@media (max-width: 1024px) {
+  .mining-belts-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 580px) {
+  .mining-belts-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.mining-belt-card {
+  background: #ffffff;
+  border: 1.5px solid rgba(56, 189, 248, 0.35);
+  border-radius: 0.85rem;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 14px rgba(2, 132, 199, 0.06);
+  transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+}
+
+.mining-belt-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--sky-500);
+  box-shadow: 0 10px 24px -4px rgba(2, 132, 199, 0.18);
+}
+
+.mining-belt-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.mining-belt-name {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--navy-950);
+  font-family: var(--font-display);
+}
+
+.mining-belt-locations {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--sky-700);
+  font-family: var(--font-display);
+  margin-bottom: 0.45rem;
+}
+
+.mining-belt-desc {
+  font-size: 0.82rem;
+  color: var(--navy-600);
+  line-height: 1.55;
+}

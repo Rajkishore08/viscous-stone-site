@@ -1,0 +1,118 @@
+/* ==========================================================================
+   DELIVERY PORTS MODULE STYLES (src/styles/ports.css)
+   ========================================================================== */
+
+.port-coast-card {
+  background-color: #ffffff;
+  border: 1px solid var(--border-color);
+  border-radius: 1rem;
+  padding: 1.75rem;
+  box-shadow: 0 1px 3px rgba(11, 25, 44, 0.05);
+}
+
+.port-coast-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--navy-100);
+}
+
+.port-coast-tag {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  color: var(--sky-700);
+}
+
+.port-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.port-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.port-row-info {
+  display: flex;
+  flex-direction: column;
+  width: 140px;
+  flex-shrink: 0;
+}
+
+.port-name {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--navy-900);
+}
+
+.port-state {
+  font-size: 0.75rem;
+  color: var(--navy-500);
+}
+
+.port-bar-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex: 1;
+}
+
+.port-bar-track {
+  flex: 1;
+  height: 8px;
+  background-color: var(--navy-100);
+  border-radius: 9999px;
+  overflow: hidden;
+}
+
+.port-bar-fill {
+  height: 100%;
+  background-color: var(--sky-600);
+  border-radius: 9999px;
+}
+
+.port-volume {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--navy-800);
+  width: 55px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.port-terms-strip {
+  background-color: #ffffff;
+  border: 1px solid var(--border-color);
+  border-radius: 0.75rem;
+  padding: 1rem 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+  box-shadow: 0 1px 3px rgba(11, 25, 44, 0.05);
+}
+
+.port-terms-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.term-chip {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  background-color: var(--navy-100);
+  color: var(--navy-800);
+  padding: 0.25rem 0.6rem;
+  border-radius: 0.25rem;
+}

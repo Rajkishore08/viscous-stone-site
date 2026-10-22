@@ -2,11 +2,7 @@ import React from 'react';
 
 /**
  * Logo component for Vicious Stone Private Limited
- * Supports:
- * - type="rect": Horizontal banner logo (Image 2) designed for Navbar and Footer
- * - type="square": 3D faceted square emblem (Image 1)
- * - variant="light": optimized for white/light backgrounds (Navbar)
- * - variant="dark": optimized for dark backgrounds (Footer)
+ * Pure CSS with explicit pixel dimensions so it never bursts or overflows
  */
 export default function Logo({ 
   type = 'rect', 
@@ -17,42 +13,69 @@ export default function Logo({
 }) {
   const isDark = variant === 'dark';
 
-  // Height configurations
-  const heights = {
-    sm: 'h-8 sm:h-9',
-    md: 'h-10 sm:h-12',
-    lg: 'h-14 sm:h-16',
-    xl: 'h-20 sm:h-24'
-  }[size] || 'h-10 sm:h-12';
+  // Pixel heights for rectangle logo
+  const rectHeight = {
+    sm: 36,
+    md: 54,
+    lg: 64,
+    xl: 78
+  }[size] || 54;
 
-  // Square size configurations
-  const squareSizes = {
-    sm: 'w-9 h-9',
-    md: 'w-12 h-12',
-    lg: 'w-16 h-16',
-    xl: 'w-24 h-24'
-  }[size] || 'w-12 h-12';
+  // Pixel dimensions for square logo emblem
+  const squareDim = {
+    sm: 36,
+    md: 48,
+    lg: 64,
+    xl: 84
+  }[size] || 48;
 
-  // If Square Logo requested
+  // If Square Emblem requested
   if (type === 'square') {
     return (
-      <div className={`flex items-center gap-3 select-none ${className}`}>
-        <div className={`relative rounded-xl overflow-hidden shadow-lg border border-sky-400/30 group shrink-0 ${squareSizes}`}>
+      <div 
+        className={`logo-square-container ${className}`}
+        style={{ display: 'inline-flex', alignItems: 'center', gap: '0.75rem', flexShrink: 0 }}
+      >
+        <div 
+          style={{
+            width: `${squareDim}px`,
+            height: `${squareDim}px`,
+            borderRadius: '0.5rem',
+            overflow: 'hidden',
+            border: '1px solid rgba(56, 189, 248, 0.4)',
+            boxShadow: '0 2px 8px rgba(11, 25, 44, 0.15)',
+            flexShrink: 0,
+            backgroundColor: '#070e1b'
+          }}
+        >
           <img
             src="/assets/logo-square.jpg"
-            alt="Vicious Stone Private Limited Square Logo"
-            className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+            alt="Vicious Stone Emblem"
+            style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
             loading="eager"
           />
         </div>
 
         {showLabel && (
-          <div className="flex flex-col leading-none">
-            <div className="flex items-center gap-1.5 font-display font-extrabold text-lg tracking-tight">
-              <span className={isDark ? 'text-white' : 'text-slate-900'}>VICIOUS</span>
-              <span className="text-sky-500">STONE</span>
+          <div style={{ display: 'flex', flexDirection: 'column', lineHeight: 1.1 }}>
+            <div style={{ 
+              fontFamily: 'var(--font-display)', 
+              fontWeight: 800, 
+              fontSize: '1.05rem', 
+              letterSpacing: '-0.02em',
+              color: isDark ? '#ffffff' : 'var(--navy-950)'
+            }}>
+              <span>VICIOUS </span>
+              <span style={{ color: 'var(--sky-500)' }}>STONE</span>
             </div>
-            <span className={`text-[10px] font-mono tracking-widest uppercase mt-0.5 ${isDark ? 'text-sky-300' : 'text-sky-700'}`}>
+            <span style={{ 
+              fontSize: '0.62rem', 
+              fontFamily: 'var(--font-mono)', 
+              letterSpacing: '0.12em', 
+              textTransform: 'uppercase',
+              color: isDark ? 'var(--sky-300)' : 'var(--sky-700)',
+              marginTop: '2px'
+            }}>
               PRIVATE LIMITED
             </span>
           </div>
@@ -65,11 +88,21 @@ export default function Logo({
   const rectSrc = isDark ? '/assets/logo-rect-dark.png' : '/assets/logo-rect.png';
 
   return (
-    <div className={`flex items-center select-none ${className}`}>
+    <div 
+      className={`logo-rect-container ${className}`}
+      style={{ display: 'inline-flex', alignItems: 'center', flexShrink: 0 }}
+    >
       <img
         src={rectSrc}
         alt="Vicious Stone Private Limited"
-        className={`${heights} w-auto object-contain transition-transform duration-200 hover:scale-[1.02] drop-shadow-sm`}
+        className="logo-rect-img"
+        style={{ 
+          height: `${rectHeight}px`, 
+          width: 'auto', 
+          maxHeight: `${rectHeight}px`,
+          objectFit: 'contain',
+          display: 'block'
+        }}
         loading="eager"
       />
     </div>

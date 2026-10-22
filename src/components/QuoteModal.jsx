@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { X, Send, MessageSquare, CheckCircle2, ShieldCheck } from 'lucide-react';
-import { COMPANY_INFO } from '../data/materialsData';
+import { X, MessageSquare, CheckCircle2, ShieldCheck, ArrowRight } from 'lucide-react';
+import { COMPANY_INFO, RFQ_PRODUCTS_LIST } from '../data/materialsData';
 import Logo from './Logo';
+import '../styles/modals.css';
 
 export default function QuoteModal({ isOpen, onClose, initialData }) {
   const [formData, setFormData] = useState({
@@ -9,7 +10,7 @@ export default function QuoteModal({ isOpen, onClose, initialData }) {
     email: '',
     phone: '',
     company: '',
-    material: initialData?.name || 'Indonesian Steam Coal (3400 - 5800 GAR)',
+    material: initialData?.name || 'Indonesian Steam Coal',
     tonnage: '3,800 - 4,000 MT (1 Full BOXN Rake)',
     destination: initialData?.location || '',
     notes: ''
@@ -40,57 +41,58 @@ export default function QuoteModal({ isOpen, onClose, initialData }) {
     setTimeout(() => {
       setLoading(false);
       setSubmitted(true);
-    }, 600);
+    }, 400);
   };
 
   const handleWhatsApp = () => {
-    const text = `*Immediate RFQ Quote Request - Vicious Stone*%0A%0A*Name:* ${formData.name || 'Industrial Buyer'}%0A*Company:* ${formData.company || 'Plant'}%0A*Phone:* ${formData.phone || 'N/A'}%0A*Material:* ${formData.material}%0A*Volume:* ${formData.tonnage}%0A*Delivery Siding:* ${formData.destination || 'India'}`;
+    const text = `*Immediate RFQ Quote Request - Vicious Stone*%0A%0A*Name:* ${formData.name || 'Industrial Buyer'}%0A*Company:* ${formData.company || 'Plant'}%0A*Phone:* ${formData.phone || 'N/A'}%0A*Material:* ${formData.material}%0A*Volume:* ${formData.tonnage}%0A*Delivery Destination:* ${formData.destination || 'India'}`;
     window.open(`https://wa.me/${COMPANY_INFO.whatsappNumber}?text=${text}`, '_blank', 'noopener,noreferrer');
   };
 
   return (
     <div className="modal-overlay" onClick={onClose}>
-      <div className="modal-card" onClick={(e) => e.stopPropagation()}>
-        {/* Header */}
-        <div className="p-6 bg-gradient-to-r from-slate-900 to-sky-950 text-white relative">
-          <button
-            onClick={onClose}
-            className="absolute top-5 right-5 p-2 rounded-full bg-slate-800/80 text-slate-300 hover:text-white transition-colors"
-            aria-label="Close modal"
-          >
-            <X size={20} />
-          </button>
-          
-          <div className="flex items-center gap-3.5">
-            <Logo type="square" size="md" />
+      <div className="modal-dialog" onClick={(e) => e.stopPropagation()}>
+        {/* Modal Header */}
+        <div className="modal-header-bar">
+          <div className="modal-header-content">
+            <Logo type="square" size="sm" />
             <div>
-              <div className="text-xs font-mono uppercase tracking-wider text-sky-400 font-semibold mb-1 flex items-center gap-1.5">
-                <ShieldCheck size={14} /> Official RFQ Portal
+              <div className="modal-header-badge">
+                <ShieldCheck size={13} />
+                <span>OFFICIAL RFQ DESK</span>
               </div>
-              <h3 className="text-xl sm:text-2xl font-bold font-display text-white">
+              <h3 className="modal-header-title">
                 Request a Plant Supply Quotation
               </h3>
-              <p className="text-xs text-slate-300 mt-0.5">
+              <p className="modal-header-desc">
                 Receive landed price and delivery rake schedules within 2 hours.
               </p>
             </div>
           </div>
+
+          <button
+            onClick={onClose}
+            className="modal-close-btn"
+            aria-label="Close modal"
+          >
+            <X size={18} />
+          </button>
         </div>
 
-        {/* Content */}
-        <div className="p-6">
+        {/* Modal Body */}
+        <div className="modal-body-content">
           {submitted ? (
-            <div className="text-center py-8">
-              <div className="w-14 h-14 rounded-full bg-emerald-100 text-emerald-600 mx-auto flex items-center justify-center mb-4">
-                <CheckCircle2 size={32} />
+            <div className="modal-success-box">
+              <div className="modal-success-icon">
+                <CheckCircle2 size={36} />
               </div>
-              <h4 className="text-xl font-bold text-slate-900 font-display mb-2">
+              <h4 className="modal-success-title">
                 Quotation Request Received
               </h4>
-              <p className="text-xs sm:text-sm text-slate-600 mb-6">
+              <p className="modal-success-desc">
                 Our Bengaluru commercial desk is calculating current landed logistics for <strong>{formData.material}</strong> to <strong>{formData.destination || 'your destination'}</strong>.
               </p>
-              <div className="flex flex-wrap justify-center gap-3">
+              <div className="modal-success-actions">
                 <button
                   onClick={handleWhatsApp}
                   className="btn btn-whatsapp"
@@ -107,10 +109,10 @@ export default function QuoteModal({ isOpen, onClose, initialData }) {
               </div>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div>
-                  <label className="form-label">Full Name *</label>
+            <form onSubmit={handleSubmit} className="modal-form">
+              <div className="modal-form-row">
+                <div className="modal-form-group">
+                  <label className="modal-label">Full Name *</label>
                   <input
                     type="text"
                     required
@@ -118,11 +120,11 @@ export default function QuoteModal({ isOpen, onClose, initialData }) {
                     value={formData.name}
                     onChange={handleChange}
                     placeholder="e.g. Ramesh Kumar"
-                    className="form-control"
+                    className="modal-input"
                   />
                 </div>
-                <div>
-                  <label className="form-label">Company / Plant Name *</label>
+                <div className="modal-form-group">
+                  <label className="modal-label">Company / Plant Name *</label>
                   <input
                     type="text"
                     required
@@ -130,14 +132,14 @@ export default function QuoteModal({ isOpen, onClose, initialData }) {
                     value={formData.company}
                     onChange={handleChange}
                     placeholder="e.g. Southern Cements Ltd"
-                    className="form-control"
+                    className="modal-input"
                   />
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div>
-                  <label className="form-label">Phone / WhatsApp *</label>
+              <div className="modal-form-row">
+                <div className="modal-form-group">
+                  <label className="modal-label">Phone / WhatsApp *</label>
                   <input
                     type="tel"
                     required
@@ -145,11 +147,11 @@ export default function QuoteModal({ isOpen, onClose, initialData }) {
                     value={formData.phone}
                     onChange={handleChange}
                     placeholder="+91 98765 43210"
-                    className="form-control"
+                    className="modal-input"
                   />
                 </div>
-                <div>
-                  <label className="form-label">Business Email *</label>
+                <div className="modal-form-group">
+                  <label className="modal-label">Business Email *</label>
                   <input
                     type="email"
                     required
@@ -157,30 +159,34 @@ export default function QuoteModal({ isOpen, onClose, initialData }) {
                     value={formData.email}
                     onChange={handleChange}
                     placeholder="e.g. procurement@plant.com"
-                    className="form-control"
+                    className="modal-input"
                   />
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div>
-                  <label className="form-label">Selected Material *</label>
-                  <input
-                    type="text"
-                    required
+              <div className="modal-form-row">
+                <div className="modal-form-group">
+                  <label className="modal-label">Selected Material *</label>
+                  <select
                     name="material"
                     value={formData.material}
                     onChange={handleChange}
-                    className="form-control"
-                  />
+                    className="modal-select"
+                  >
+                    {RFQ_PRODUCTS_LIST.map((prod) => (
+                      <option key={prod} value={prod}>
+                        {prod}
+                      </option>
+                    ))}
+                  </select>
                 </div>
-                <div>
-                  <label className="form-label">Estimated Volume *</label>
+                <div className="modal-form-group">
+                  <label className="modal-label">Estimated Volume *</label>
                   <select
                     name="tonnage"
                     value={formData.tonnage}
                     onChange={handleChange}
-                    className="form-control"
+                    className="modal-select"
                   >
                     <option value="50 - 500 MT (Road Tippers)">50 - 500 MT (Road Tippers)</option>
                     <option value="1,000 - 3,500 MT (Trial / Spot)">1,000 - 3,500 MT (Trial / Spot)</option>
@@ -191,8 +197,8 @@ export default function QuoteModal({ isOpen, onClose, initialData }) {
                 </div>
               </div>
 
-              <div>
-                <label className="form-label">Delivery Destination (Railway Siding / Plant Location) *</label>
+              <div className="modal-form-group">
+                <label className="modal-label">Delivery Destination (Railway Siding / Plant Location) *</label>
                 <input
                   type="text"
                   required
@@ -200,29 +206,29 @@ export default function QuoteModal({ isOpen, onClose, initialData }) {
                   value={formData.destination}
                   onChange={handleChange}
                   placeholder="e.g. Raichur Thermal Siding, Karnataka"
-                  className="form-control"
+                  className="modal-input"
                 />
               </div>
 
-              <div>
-                <label className="form-label">Additional Technical Requirements (Optional)</label>
+              <div className="modal-form-group">
+                <label className="modal-label">Additional Technical Requirements (Optional)</label>
                 <textarea
                   name="notes"
                   rows="2"
                   value={formData.notes}
                   onChange={handleChange}
                   placeholder="Mention required GCV, ash tolerance, or discharge port preference..."
-                  className="form-control"
+                  className="modal-textarea"
                 />
               </div>
 
-              <div className="pt-2 flex items-center justify-between gap-3">
+              <div className="modal-footer-actions">
                 <button
                   type="button"
                   onClick={handleWhatsApp}
-                  className="btn btn-whatsapp text-xs sm:text-sm px-4"
+                  className="btn btn-whatsapp btn-sm"
                 >
-                  <MessageSquare size={16} />
+                  <MessageSquare size={14} />
                   <span>WhatsApp Quote</span>
                 </button>
 
@@ -230,14 +236,14 @@ export default function QuoteModal({ isOpen, onClose, initialData }) {
                   <button
                     type="button"
                     onClick={onClose}
-                    className="btn btn-secondary text-xs sm:text-sm"
+                    className="btn btn-secondary btn-sm"
                   >
                     Cancel
                   </button>
                   <button
                     type="submit"
                     disabled={loading}
-                    className="btn btn-primary text-xs sm:text-sm"
+                    className="btn btn-primary btn-sm"
                   >
                     {loading ? 'Submitting...' : 'Submit Request'}
                   </button>

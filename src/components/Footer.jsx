@@ -1,173 +1,192 @@
 import React from 'react';
-import Logo from './Logo';
 import { COMPANY_INFO } from '../data/materialsData';
-import { 
-  Phone, 
-  Mail, 
-  MapPin, 
-  ShieldCheck, 
-  ArrowUp,
-  MessageSquare
-} from 'lucide-react';
+import { MessageSquare, ArrowUp } from 'lucide-react';
+import '../styles/footer.css';
+import Logo from './Logo';
 
 export default function Footer({ onOpenQuoteModal }) {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const materials = [
-    'Indonesian Steam Coal (3400–5800 GAR)',
-    'South African RB1 / RB2 / RB3 Coal',
-    'Low Ash Metallurgical Coke',
-    'Iron Ore Fines (58% – 64.5% Fe)',
-    'Calibrated Lump Ore (CLO)',
-    'Iron Ore Pellets (DRI & BF Grade)',
-    'Metallurgical Bauxite & Calcined Bauxite',
-    'SMS & BF Grade High Purity Limestone'
-  ];
+  const handleNavClick = (e, href) => {
+    e.preventDefault();
+    const target = document.querySelector(href);
+    if (target) {
+      const headerOffset = 78;
+      const elementPosition = target.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+  };
 
   return (
-    <footer className="bg-slate-950 text-slate-300 border-t border-slate-800">
-      {/* Upper Footer CTA Strip */}
-      <div className="bg-gradient-to-r from-sky-950 via-slate-900 to-sky-950 py-10 border-b border-slate-800">
-        <div className="container flex flex-col md:flex-row items-center justify-between gap-6">
+    <footer className="footer-main">
+      {/* Upper Direct Callout */}
+      <div className="footer-upper-bar">
+        <div className="container flex flex-col md:flex-row items-center justify-between gap-4">
           <div>
-            <h3 className="text-2xl font-bold font-display text-white">
-              Ready to Secure Your Plant's Fuel & Mineral Supply?
-            </h3>
-            <p className="text-sm text-sky-200 mt-1">
-              Speak directly with our Bengaluru trading desk for landed freight quotes and port stock availability.
+            <div className="text-xl sm:text-2xl font-bold font-display text-white">
+              Vicious Stone Private Limited
+            </div>
+            <p className="text-xs sm:text-sm text-slate-300 mt-1">
+              Sourcing, trading and bulk supply of coal, coke, iron ore and industrial minerals. Powering industrial growth.
             </p>
           </div>
 
           <div className="flex items-center gap-3">
             <button
               onClick={() => onOpenQuoteModal()}
-              className="btn btn-primary whitespace-nowrap"
+              className="btn btn-primary btn-sm"
             >
-              Request Landed Quote
+              REQUEST A QUOTE
             </button>
             <a
               href={`https://wa.me/${COMPANY_INFO.whatsappNumber}?text=${encodeURIComponent(COMPANY_INFO.defaultWhatsAppMessage)}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn btn-whatsapp whitespace-nowrap"
+              className="btn btn-whatsapp btn-sm"
             >
-              <MessageSquare size={16} />
-              <span>WhatsApp Us</span>
+              <MessageSquare size={14} />
+              <span>WHATSAPP DESK</span>
             </a>
           </div>
         </div>
       </div>
 
-      {/* Main Footer Links */}
-      <div className="container py-14">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10">
-          {/* Brand & Corporate Overview */}
-          <div className="lg:col-span-4">
-            <Logo size="md" variant="dark" className="mb-4" />
-            <p className="text-xs sm:text-sm text-slate-400 leading-relaxed mb-6">
-              <strong>Vicious Stone Private Limited</strong> is India's leading industrial mineral sourcing, coal trading, and multi-modal logistics partner, serving thermal power plants, sponge iron kilns, cement producers, and steel mills.
+      {/* Main 4-Column Footer */}
+      <div className="container">
+        <div className="footer-grid-4">
+          {/* Column 1: Brand & Tagline */}
+          <div>
+            <div className="mb-4">
+              <Logo type="rect" variant="dark" size="md" />
+            </div>
+            <p className="text-xs text-slate-400 leading-relaxed mb-4">
+              Headquartered in Bengaluru. Sourcing, trading and supply of coal, coke, iron ore, aluminium and industrial minerals to heavy manufacturing units across India.
             </p>
-
-            <div className="p-4 rounded-xl bg-slate-900 border border-slate-800 text-xs flex flex-col gap-2">
-              <div className="flex items-center gap-2 text-sky-400 font-mono font-semibold">
-                <ShieldCheck size={16} />
-                <span>GSTIN: <strong className="text-white">{COMPANY_INFO.gstin}</strong></span>
-              </div>
-              <div className="text-slate-400">
-                Registered Regular Taxpayer under GST Acts.
-              </div>
+            <div className="text-xs font-mono text-sky-400">
+              GSTIN: {COMPANY_INFO.gstin}
+            </div>
+            <div className="text-xs font-mono text-slate-400 mt-1">
+              CIN: {COMPANY_INFO.cin}
             </div>
           </div>
 
-          {/* Quick Nav Links */}
-          <div className="lg:col-span-2">
-            <h4 className="font-display font-bold text-white text-sm uppercase tracking-wider mb-4">
-              Navigation
+          {/* Column 2: MATERIALS */}
+          <div>
+            <h4 className="footer-col-title">
+              OUR MATERIALS
             </h4>
-            <ul className="space-y-2.5 text-xs sm:text-sm text-slate-400">
-              <li><a href="#home" className="hover:text-sky-400 transition-colors">Home</a></li>
-              <li><a href="#core-materials" className="hover:text-sky-400 transition-colors">Core Materials</a></li>
-              <li><a href="#materials" className="hover:text-sky-400 transition-colors">Complete Catalogue</a></li>
-              <li><a href="#why-us" className="hover:text-sky-400 transition-colors">Why Choose Us</a></li>
-              <li><a href="#advisor" className="hover:text-sky-400 transition-colors">Plant Fuel Advisor</a></li>
-              <li><a href="#sourcing" className="hover:text-sky-400 transition-colors">Sourcing & Testing</a></li>
-              <li><a href="#logistics" className="hover:text-sky-400 transition-colors">Logistics & Ports</a></li>
-              <li><a href="#about" className="hover:text-sky-400 transition-colors">Corporate Profile</a></li>
-              <li><a href="#contact" className="hover:text-sky-400 transition-colors">Contact & RFQ</a></li>
+            <ul className="footer-links-list">
+              <li>
+                <a href="#materials" onClick={(e) => handleNavClick(e, '#materials')}>
+                  All Materials Catalog
+                </a>
+              </li>
+              <li>
+                <a href="#core-materials" onClick={(e) => handleNavClick(e, '#core-materials')}>
+                  Core Materials Portfolio
+                </a>
+              </li>
+              <li>
+                <a href="#materials" onClick={(e) => handleNavClick(e, '#materials')}>
+                  Thermal & Steam Coal
+                </a>
+              </li>
+              <li>
+                <a href="#materials" onClick={(e) => handleNavClick(e, '#materials')}>
+                  Metallurgical Coke & PCI
+                </a>
+              </li>
+              <li>
+                <a href="#materials" onClick={(e) => handleNavClick(e, '#materials')}>
+                  Iron Ore & Minerals
+                </a>
+              </li>
             </ul>
           </div>
 
-          {/* Materials Portfolio Links */}
-          <div className="lg:col-span-3">
-            <h4 className="font-display font-bold text-white text-sm uppercase tracking-wider mb-4">
-              Materials Handled
+          {/* Column 3: SOURCING & LOGISTICS */}
+          <div>
+            <h4 className="footer-col-title">
+              SOURCING & LOGISTICS
             </h4>
-            <ul className="space-y-2.5 text-xs text-slate-400">
-              {materials.map((m, idx) => (
-                <li key={idx}>
-                  <a href="#materials" className="hover:text-sky-400 transition-colors">
-                    {m}
-                  </a>
-                </li>
-              ))}
+            <ul className="footer-links-list">
+              <li>
+                <a href="#sourcing" onClick={(e) => handleNavClick(e, '#sourcing')}>
+                  Sourcing & Procurement
+                </a>
+              </li>
+              <li>
+                <a href="#suppliers" onClick={(e) => handleNavClick(e, '#suppliers')}>
+                  Global Suppliers & Routes
+                </a>
+              </li>
+              <li>
+                <a href="#logistics" onClick={(e) => handleNavClick(e, '#logistics')}>
+                  Logistics & Port Terminals
+                </a>
+              </li>
+              <li>
+                <a href="#why-us" onClick={(e) => handleNavClick(e, '#why-us')}>
+                  Why Choose Us
+                </a>
+              </li>
             </ul>
           </div>
 
-          {/* Contact Details */}
-          <div className="lg:col-span-3">
-            <h4 className="font-display font-bold text-white text-sm uppercase tracking-wider mb-4">
-              Registered Office
+          {/* Column 4: CONTACT & CORPORATE */}
+          <div>
+            <h4 className="footer-col-title">
+              CONTACT & CORPORATE
             </h4>
-            <div className="flex flex-col gap-3.5 text-xs text-slate-400">
-              <div className="flex items-start gap-2.5">
-                <MapPin size={16} className="text-sky-400 shrink-0 mt-0.5" />
-                <span>{COMPANY_INFO.address}</span>
-              </div>
-              <div className="flex items-center gap-2.5">
-                <Phone size={16} className="text-sky-400 shrink-0" />
-                <a href={`tel:${COMPANY_INFO.phone}`} className="text-slate-200 hover:text-sky-400">
-                  {COMPANY_INFO.phone}
+            <ul className="footer-links-list">
+              <li>
+                <a href="#about" onClick={(e) => handleNavClick(e, '#about')}>
+                  About Us / Corporate Profile
                 </a>
-              </div>
-              <div className="flex items-center gap-2.5">
-                <Mail size={16} className="text-sky-400 shrink-0" />
-                <a href={`mailto:${COMPANY_INFO.email}`} className="text-slate-200 hover:text-sky-400">
-                  {COMPANY_INFO.email}
+              </li>
+              <li>
+                <a href="#contact" onClick={(e) => handleNavClick(e, '#contact')}>
+                  RFQ Enquiry Desk
                 </a>
-              </div>
-            </div>
-
-            <div className="mt-6 pt-4 border-t border-slate-800">
-              <span className="text-[11px] font-mono uppercase text-sky-400 font-bold block mb-1">
-                Port Evacuation Hubs
-              </span>
-              <p className="text-[11px] text-slate-400">
-                Visakhapatnam · Krishnapatnam · Ennore · New Mangalore · Kandla · Paradip
-              </p>
+              </li>
+              <li>
+                <a href="#documents" onClick={(e) => handleNavClick(e, '#documents')}>
+                  Registration Documents
+                </a>
+              </li>
+              <li>
+                <a href="#faq" onClick={(e) => handleNavClick(e, '#faq')}>
+                  Commercial FAQ
+                </a>
+              </li>
+            </ul>
+            <div className="mt-4 pt-3 border-t border-slate-800 text-xs text-slate-400">
+              <div>Koramangala, Bengaluru 560034</div>
+              <div className="text-sky-400 font-mono mt-1">{COMPANY_INFO.phone}</div>
             </div>
           </div>
         </div>
       </div>
 
       {/* Bottom Legal & Copyright Bar */}
-      <div className="bg-slate-900/80 border-t border-slate-800 py-6 text-xs text-slate-400">
+      <div className="footer-bottom-bar">
         <div className="container flex flex-col sm:flex-row items-center justify-between gap-4">
           <div>
-            © {new Date().getFullYear()} <strong>Vicious Stone Private Limited</strong>. All rights reserved. Sourcing · Trading · Supply.
+            Vicious Stone Private Limited · GSTIN 29AAKCV5319E1Z3 · CIN U14299KA2023PTC176548 · © 2026 All Rights Reserved
           </div>
-
-          <div className="flex items-center gap-4">
-            <span className="text-slate-500">Koramangala, Bengaluru, Karnataka, India</span>
-            <button
-              onClick={scrollToTop}
-              className="w-8 h-8 rounded-full bg-slate-800 hover:bg-sky-600 text-slate-300 hover:text-white flex items-center justify-center transition-colors"
-              aria-label="Back to top"
-            >
-              <ArrowUp size={16} />
-            </button>
-          </div>
+          <button
+            onClick={scrollToTop}
+            className="w-8 h-8 rounded-full bg-slate-800 hover:bg-sky-600 text-slate-300 hover:text-white flex items-center justify-center transition-colors"
+            aria-label="Back to top"
+          >
+            <ArrowUp size={14} />
+          </button>
         </div>
       </div>
     </footer>

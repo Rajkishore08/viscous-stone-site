@@ -1,0 +1,194 @@
+/* ==========================================================================
+   CONTACT & RFQ DESK MODULE STYLES (src/styles/contact.css)
+   Immersive Sky-Blue Gradient & Elevation
+   ========================================================================== */
+
+.contact-section {
+  background: linear-gradient(180deg, #edf7fe 0%, #e2effc 50%, #edf7fe 100%);
+  border-bottom: 1px solid rgba(56, 189, 248, 0.3);
+  padding: 5.5rem 0;
+  position: relative;
+}
+
+.contact-layout-grid {
+  display: grid;
+  grid-template-columns: 5fr 7fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+@media (max-width: 992px) {
+  .contact-layout-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+}
+
+.contact-channels-card {
+  background-color: #ffffff;
+  border: 1.5px solid rgba(56, 189, 248, 0.35);
+  border-radius: 1.25rem;
+  padding: 2.25rem;
+  box-shadow: 0 8px 25px rgba(2, 132, 199, 0.1);
+}
+
+.contact-channel-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.35rem;
+}
+
+.contact-channel-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.contact-channel-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 0.65rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.contact-channel-icon.whatsapp {
+  background-color: #e6f9ed;
+  color: #128c7e;
+  border: 1px solid rgba(18, 140, 126, 0.25);
+}
+
+.contact-channel-icon.email {
+  background-color: var(--sky-50);
+  color: var(--sky-600);
+  border: 1px solid rgba(2, 132, 199, 0.25);
+}
+
+.contact-channel-icon.location {
+  background-color: var(--navy-100);
+  color: var(--navy-700);
+  border: 1px solid var(--border-color);
+}
+
+.contact-channel-label {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--navy-400);
+  text-transform: uppercase;
+  margin-bottom: 0.2rem;
+}
+
+.contact-channel-val {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--navy-900);
+  font-family: var(--font-mono);
+  text-decoration: none;
+}
+
+.contact-info-callout {
+  background: linear-gradient(145deg, #070e1b 0%, #0c4a6e 65%, #0284c7 100%);
+  color: #ffffff;
+  border: 1.5px solid rgba(56, 189, 248, 0.35);
+  border-radius: 1.25rem;
+  padding: 2rem;
+  margin-top: 1.5rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.contact-info-callout-title {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  color: var(--sky-300);
+  text-transform: uppercase;
+  margin-bottom: 0.85rem;
+}
+
+.contact-info-callout-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  font-size: 0.82rem;
+  color: var(--navy-100);
+  line-height: 1.55;
+}
+
+.contact-form-card {
+  background-color: #ffffff;
+  border: 1.5px solid rgba(56, 189, 248, 0.35);
+  border-radius: 1.25rem;
+  padding: 2.5rem;
+  box-shadow: 0 10px 35px -5px rgba(2, 132, 199, 0.12);
+}
+
+@media (max-width: 600px) {
+  .contact-form-card {
+    padding: 1.5rem;
+  }
+}
+
+.contact-form-row-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+}
+
+@media (max-width: 600px) {
+  .contact-form-row-2 {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+
+.contact-field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-bottom: 1.15rem;
+}
+
+.contact-field-label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--navy-700);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.contact-input, .contact-select {
+  width: 100%;
+  height: 44px;
+  padding: 0.5rem 0.95rem;
+  border: 1.5px solid var(--border-color);
+  border-radius: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--navy-900);
+  background-color: #ffffff;
+  transition: border-color 150ms ease, box-shadow 150ms ease;
+}
+
+.contact-input:focus, .contact-select:focus, .contact-textarea:focus {
+  outline: none;
+  border-color: var(--sky-500);
+  box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.18);
+}
+
+.contact-textarea {
+  width: 100%;
+  padding: 0.75rem 0.95rem;
+  border: 1.5px solid var(--border-color);
+  border-radius: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--navy-900);
+  background-color: #ffffff;
+  resize: vertical;
+  min-height: 90px;
+}

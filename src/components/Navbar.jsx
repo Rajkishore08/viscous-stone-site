@@ -1,205 +1,210 @@
 import React, { useState, useEffect } from 'react';
-import Logo from './Logo';
 import { COMPANY_INFO } from '../data/materialsData';
+import '../styles/navbar.css';
 import { 
   Phone, 
   Mail, 
   MapPin, 
   Menu, 
   X, 
-  FileText, 
-  MessageSquare,
-  ShieldCheck,
-  ChevronRight
+  ShieldCheck, 
+  ArrowRight,
+  MessageSquare 
 } from 'lucide-react';
+import Logo from './Logo';
 
 export default function Navbar({ onOpenQuoteModal }) {
-  const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState('home');
 
+  const navItems = [
+    { label: 'Home', href: '#home', id: 'home' },
+    { label: 'Our Materials', href: '#materials', id: 'materials' },
+    { label: 'Sourcing & Procurement', href: '#sourcing', id: 'sourcing' },
+    { label: 'Suppliers', href: '#suppliers', id: 'suppliers' },
+    { label: 'Logistics', href: '#logistics', id: 'logistics' },
+    { label: 'About Us', href: '#about', id: 'about' },
+    { label: 'Contact', href: '#contact', id: 'contact' },
+  ];
+
+  // Observe active section on scroll
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+      const scrollPos = window.scrollY + 120;
+      for (let i = navItems.length - 1; i >= 0; i--) {
+        const item = navItems[i];
+        const el = document.getElementById(item.id);
+        if (el && el.offsetTop <= scrollPos) {
+          setActiveSection(item.id);
+          break;
+        }
+      }
     };
-    window.addEventListener('scroll', handleScroll);
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const navLinks = [
-    { label: 'Home', href: '#home' },
-    { label: 'Our Materials', href: '#materials' },
-    { label: 'Why Choose Us', href: '#why-us' },
-    { label: 'Plant Fuel Advisor', href: '#advisor' },
-    { label: 'Sourcing & Quality', href: '#sourcing' },
-    { label: 'Logistics', href: '#logistics' },
-    { label: 'About Us', href: '#about' },
-    { label: 'Contact', href: '#contact' },
-  ];
-
-  const handleNavClick = (e, href) => {
+  const handleNavClick = (e, href, id) => {
     e.preventDefault();
+    setActiveSection(id);
     setMobileMenuOpen(false);
+
+    if (id === 'home') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
+    }
+
     const target = document.querySelector(href);
     if (target) {
-      const offsetTop = target.getBoundingClientRect().top + window.pageYOffset - 80;
+      const headerOffset = 78;
+      const elementPosition = target.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
       window.scrollTo({
-        top: offsetTop,
+        top: offsetPosition,
         behavior: 'smooth'
       });
     }
   };
 
-  const handleWhatsApp = () => {
-    const url = `https://wa.me/${COMPANY_INFO.whatsappNumber}?text=${encodeURIComponent(COMPANY_INFO.defaultWhatsAppMessage)}`;
-    window.open(url, '_blank', 'noopener,noreferrer');
-  };
-
   return (
     <>
-      {/* Top Corporate Trust Strip */}
-      <div className="bg-slate-900 text-slate-300 text-xs border-b border-slate-800 hidden md:block">
-        <div className="container flex items-center justify-between py-2">
-          <div className="flex items-center gap-6">
-            <span className="flex items-center gap-1.5 text-sky-400 font-medium">
-              <ShieldCheck size={14} className="text-sky-400" />
-              GSTIN: <strong className="text-white font-mono">{COMPANY_INFO.gstin}</strong>
-            </span>
-            <span className="text-slate-400">·</span>
-            <span className="flex items-center gap-1.5 text-slate-300">
-              <MapPin size={13} className="text-sky-400" />
-              Koramangala, Bengaluru, Karnataka
-            </span>
-            <span className="text-slate-400">·</span>
-            <span className="text-slate-300">
-              Bulk Supply from Global Mines & Indian Ports
-            </span>
-          </div>
+      {/* Top Corporate Announcement Bar */}
+      <div className="top-bar">
+        <div className="container">
+          <div className="top-bar-inner">
+            <div className="top-bar-left">
+              <span className="top-bar-item">
+                <ShieldCheck size={14} style={{ color: 'var(--sky-400)' }} />
+                <span>GSTIN: <strong>{COMPANY_INFO.gstin}</strong></span>
+              </span>
+              <span className="top-bar-sep">·</span>
+              <span className="top-bar-item">
+                <MapPin size={13} style={{ color: 'var(--sky-400)' }} />
+                <span>Koramangala, Bengaluru · Karnataka</span>
+              </span>
+              <span className="top-bar-sep">·</span>
+              <span className="top-bar-item">
+                <span>Global Pithead Linkages & Port Discharge</span>
+              </span>
+            </div>
 
-          <div className="flex items-center gap-5">
-            <a 
-              href={`tel:${COMPANY_INFO.phone}`} 
-              className="flex items-center gap-1.5 text-slate-200 hover:text-sky-400 transition-colors"
-            >
-              <Phone size={13} className="text-sky-400" />
-              <span>{COMPANY_INFO.phone}</span>
-            </a>
-            <span className="text-slate-600">|</span>
-            <a 
-              href={`mailto:${COMPANY_INFO.email}`} 
-              className="flex items-center gap-1.5 text-slate-200 hover:text-sky-400 transition-colors"
-            >
-              <Mail size={13} className="text-sky-400" />
-              <span>{COMPANY_INFO.email}</span>
-            </a>
+            <div className="top-bar-right">
+              <a 
+                href={`tel:${COMPANY_INFO.phone}`} 
+                className="top-bar-item"
+                style={{ color: '#ffffff' }}
+              >
+                <Phone size={13} style={{ color: 'var(--sky-400)' }} />
+                <span>{COMPANY_INFO.phone}</span>
+              </a>
+              <span className="top-bar-sep">|</span>
+              <a 
+                href={`mailto:${COMPANY_INFO.email}`} 
+                className="top-bar-item"
+                style={{ color: '#ffffff' }}
+              >
+                <Mail size={13} style={{ color: 'var(--sky-400)' }} />
+                <span>{COMPANY_INFO.email}</span>
+              </a>
+            </div>
           </div>
         </div>
       </div>
 
       {/* Main Sticky Header */}
-      <header className={`site-header ${isScrolled ? 'shadow-md py-3' : 'py-4'}`}>
-        <div className="container flex items-center justify-between">
-          {/* Brand Logo */}
-          <a 
-            href="#home" 
-            onClick={(e) => handleNavClick(e, '#home')}
-            className="flex items-center focus:outline-none"
-          >
-            <Logo size="md" variant="light" />
-          </a>
+      <header className="site-header">
+        <div className="container">
+          <div className="nav-container">
+            {/* Logo */}
+            <a 
+              href="#home" 
+              onClick={(e) => handleNavClick(e, '#home', 'home')}
+              className="nav-logo-link"
+              aria-label="Vicious Stone Home"
+            >
+              <Logo type="rect" size="md" />
+            </a>
 
-          {/* Desktop Navigation Links */}
-          <nav className="hidden lg:flex items-center gap-7">
-            {navLinks.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                onClick={(e) => handleNavClick(e, link.href)}
-                className="nav-link font-medium text-slate-700 hover:text-sky-600"
+            {/* Desktop Navigation Links matching Image 2 */}
+            <nav className="nav-links-desktop">
+              {navItems.map((item) => {
+                const isActive = activeSection === item.id;
+                return (
+                  <a
+                    key={item.id}
+                    href={item.href}
+                    onClick={(e) => handleNavClick(e, item.href, item.id)}
+                    className={`nav-link-item ${isActive ? 'active' : ''}`}
+                  >
+                    <span>{item.label}</span>
+                    {isActive && <span className="nav-active-indicator" />}
+                  </a>
+                );
+              })}
+            </nav>
+
+            {/* Right Action: Request a Quote (pill blue button) */}
+            <div className="nav-actions-desktop">
+              <button
+                onClick={() => onOpenQuoteModal()}
+                className="btn btn-primary nav-quote-btn"
+                aria-label="Request a Quote"
               >
-                {link.label}
-              </a>
-            ))}
-          </nav>
+                <span>Request a Quote</span>
+              </button>
+            </div>
 
-          {/* Header Action Buttons */}
-          <div className="hidden sm:flex items-center gap-3">
-            <button
-              onClick={handleWhatsApp}
-              className="btn btn-whatsapp btn-sm flex items-center gap-2"
-              title="Chat on WhatsApp"
-            >
-              <MessageSquare size={16} />
-              <span>WhatsApp</span>
-            </button>
-
-            <button
-              onClick={() => onOpenQuoteModal()}
-              className="btn btn-primary btn-sm flex items-center gap-2"
-            >
-              <FileText size={16} />
-              <span>Request a Quote</span>
-            </button>
-          </div>
-
-          {/* Mobile Menu Trigger */}
-          <div className="flex items-center gap-2 lg:hidden">
-            <button
-              onClick={() => onOpenQuoteModal()}
-              className="btn btn-primary btn-sm sm:hidden text-xs px-3 py-1.5"
-            >
-              Quote
-            </button>
+            {/* Mobile Hamburger Toggle Button */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 text-slate-700 hover:text-sky-600 rounded-lg hover:bg-sky-50 transition-colors"
-              aria-label="Toggle Navigation Menu"
+              className="mobile-menu-btn"
+              aria-label="Toggle navigation menu"
+              aria-expanded={mobileMenuOpen}
             >
-              {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+              {mobileMenuOpen ? <X size={26} /> : <Menu size={26} />}
             </button>
           </div>
         </div>
 
-        {/* Mobile Dropdown Menu */}
+        {/* Mobile Navigation Drawer */}
         {mobileMenuOpen && (
-          <div className="lg:hidden bg-white border-t border-slate-200 shadow-xl px-6 py-6 animate-fadeIn">
-            <div className="flex flex-col gap-3">
-              {navLinks.map((link) => (
+          <div className="mobile-drawer">
+            <div className="mobile-drawer-body">
+              {navItems.map((item) => (
                 <a
-                  key={link.label}
-                  href={link.href}
-                  onClick={(e) => handleNavClick(e, link.href)}
-                  className="flex items-center justify-between py-2 text-slate-800 hover:text-sky-600 font-semibold text-base border-b border-slate-100"
+                  key={item.id}
+                  href={item.href}
+                  onClick={(e) => handleNavClick(e, item.href, item.id)}
+                  className={`mobile-nav-link ${activeSection === item.id ? 'active' : ''}`}
                 >
-                  <span>{link.label}</span>
-                  <ChevronRight size={16} className="text-slate-400" />
+                  <span>{item.label}</span>
+                  <ArrowRight size={16} />
                 </a>
               ))}
 
-              <div className="pt-4 flex flex-col gap-3">
+              <div className="mobile-drawer-footer">
                 <button
                   onClick={() => {
                     setMobileMenuOpen(false);
                     onOpenQuoteModal();
                   }}
-                  className="btn btn-primary w-full py-3"
+                  className="btn btn-primary w-full"
                 >
-                  Request a Formal Quote
+                  <span>Request a Quote</span>
+                  <ArrowRight size={16} />
                 </button>
-                <button
-                  onClick={() => {
-                    setMobileMenuOpen(false);
-                    handleWhatsApp();
-                  }}
-                  className="btn btn-whatsapp w-full py-3"
-                >
-                  Chat with Sourcing Desk on WhatsApp
-                </button>
-              </div>
 
-              <div className="pt-4 text-xs text-slate-500 border-t border-slate-100 flex flex-col gap-1">
-                <span><strong>GSTIN:</strong> {COMPANY_INFO.gstin}</span>
-                <span><strong>Office:</strong> {COMPANY_INFO.address}</span>
-                <span><strong>Direct Line:</strong> {COMPANY_INFO.phone}</span>
+                <a 
+                  href={`https://wa.me/${COMPANY_INFO.whatsappNumber}`} 
+                  target="_blank" 
+                  rel="noreferrer"
+                  className="btn btn-whatsapp w-full"
+                  style={{ marginTop: '0.75rem' }}
+                >
+                  <MessageSquare size={16} />
+                  <span>WhatsApp Sourcing Desk</span>
+                </a>
               </div>
             </div>
           </div>

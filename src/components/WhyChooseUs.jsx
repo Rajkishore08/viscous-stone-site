@@ -4,37 +4,37 @@ import {
   FlaskConical, 
   Boxes, 
   Factory, 
-  CheckCircle,
-  FileCheck2,
-  ShieldAlert,
-  ArrowRight
+  CheckCircle, 
+  FileCheck2, 
+  ArrowRight 
 } from 'lucide-react';
+import '../styles/why-choose-us.css';
 
 export default function WhyChooseUs({ onOpenQuoteModal }) {
   const pillars = [
     {
-      icon: <Globe2 className="text-sky-500" size={32} />,
+      icon: <Globe2 size={28} />,
       title: 'Global Network',
       subtitle: 'Direct Mine Access',
       desc: 'Direct pithead agreements with major mines across Indonesia, South Africa, Australia, and regular linkages with Coal India auctions.',
       points: ['No broker markups', 'Long-term pithead linkages', 'Direct port discharge allocation']
     },
     {
-      icon: <FlaskConical className="text-sky-500" size={32} />,
+      icon: <FlaskConical size={28} />,
       title: 'Quality Focus',
       subtitle: 'Pre-Dispatch Testing & COA',
       desc: 'Rigorous third-party testing (SGS / Inspectorate / NABL) for every rake and consignment. Parameter guarantees for GCV, Ash, Fe, and Moisture.',
       points: ['Pre-loading draft surveys', 'Automatic mechanical sampling', 'Certified lab test reports (COA)']
     },
     {
-      icon: <Boxes className="text-sky-500" size={32} />,
+      icon: <Boxes size={28} />,
       title: 'Reliable Supply',
       subtitle: 'Consistent Bulk Availability',
       desc: 'Multi-thousand metric ton buffer stockpiles at strategic East & West coast ports, ensuring uninterrupted monthly standing supply for your plant.',
       points: ['Dedicated railway rakes (BOXN)', 'Port yard stockpiling buffers', 'Emergency spot dispatch within 48h']
     },
     {
-      icon: <Factory className="text-sky-500" size={32} />,
+      icon: <Factory size={28} />,
       title: 'Industry Expertise',
       subtitle: 'Technical Fuel & Mineral Engineering',
       desc: 'Over a decade of combined technical expertise serving blast furnaces, sponge iron DRI kilns, cement precalciners, and thermal boilers.',
@@ -43,67 +43,58 @@ export default function WhyChooseUs({ onOpenQuoteModal }) {
   ];
 
   return (
-    <section id="why-us" className="relative section overflow-hidden bg-slate-900 text-white">
+    <section id="why-us" className="why-section">
       {/* Background Panoramic Mountain & Mining Image */}
-      <div className="absolute inset-0 z-0">
-        <img
-          src="/assets/mountain_mining_panorama.jpg"
-          alt="Panoramic mountain mineral mine with processing facilities and haul roads"
-          className="w-full h-full object-cover object-center filter brightness-50"
-          loading="lazy"
-        />
-        {/* Sky Blue & Navy Gradient Layer */}
-        <div 
-          className="absolute inset-0"
-          style={{
-            background: 'linear-gradient(180deg, rgba(11, 25, 44, 0.92) 0%, rgba(15, 23, 42, 0.88) 50%, rgba(7, 14, 27, 0.95) 100%)'
-          }}
-        />
-      </div>
+      <img
+        src="/assets/mountain_mining_panorama.jpg"
+        alt="Panoramic mountain mineral mine with processing facilities and haul roads"
+        className="why-bg-img"
+        loading="lazy"
+      />
 
-      <div className="container relative z-10">
+      {/* Sky Blue & Dark Navy Gradient Mask */}
+      <div className="why-overlay" />
+
+      <div className="container why-content">
         {/* Section Header */}
         <div className="section-header">
           <div className="section-badge dark-mode">
             End-To-End Sourcing & Supply Chain Support
           </div>
-          <h2 className="text-white text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight mb-4">
+          <h2 className="section-title" style={{ color: '#ffffff' }}>
             Why Choose Vicious Stone
           </h2>
-          <p className="text-slate-300 text-lg max-w-2xl mx-auto">
+          <p className="section-desc" style={{ color: 'var(--navy-300)' }}>
             From pithead to plant gate, we eliminate procurement uncertainties, volatile price surprises, and specification mismatches.
           </p>
         </div>
 
         {/* 4 Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="cards-grid-4">
           {pillars.map((pillar, idx) => (
-            <div
-              key={idx}
-              className="card-glass-dark p-6 sm:p-7 flex flex-col justify-between hover:border-sky-400/60 transition-all duration-300 group hover:-translate-y-1"
-            >
+            <div key={idx} className="why-card">
               <div>
                 {/* Icon box */}
-                <div className="w-14 h-14 rounded-xl bg-sky-950/80 border border-sky-400/30 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
+                <div className="why-icon-wrap">
                   {pillar.icon}
                 </div>
 
-                <div className="text-xs font-mono font-semibold text-sky-400 tracking-wider uppercase">
+                <div className="why-card-sub">
                   {pillar.subtitle}
                 </div>
-                <h3 className="text-xl font-bold text-white mt-1 mb-3 font-display">
+                <h3 className="why-card-title">
                   {pillar.title}
                 </h3>
-                <p className="text-slate-300 text-xs sm:text-sm leading-relaxed mb-6">
+                <p className="why-card-desc">
                   {pillar.desc}
                 </p>
               </div>
 
               {/* Bullet checklist */}
-              <div className="pt-4 border-t border-slate-700/60 flex flex-col gap-2">
+              <div className="why-card-points">
                 {pillar.points.map((pt, pIdx) => (
-                  <div key={pIdx} className="flex items-center gap-2 text-xs text-slate-200">
-                    <CheckCircle size={14} className="text-sky-400 shrink-0" />
+                  <div key={pIdx} className="why-card-point">
+                    <CheckCircle size={14} style={{ color: 'var(--sky-400)', flexShrink: 0 }} />
                     <span>{pt}</span>
                   </div>
                 ))}
@@ -113,20 +104,52 @@ export default function WhyChooseUs({ onOpenQuoteModal }) {
         </div>
 
         {/* Bottom Banner Strip */}
-        <div className="mt-12 p-6 sm:p-8 rounded-2xl bg-gradient-to-r from-sky-900/60 via-slate-900/80 to-sky-950/70 border border-sky-400/30 backdrop-blur-md flex flex-col sm:flex-row items-center justify-between gap-6">
-          <div className="flex items-center gap-4">
-            <div className="w-12 h-12 rounded-full bg-sky-500/20 border border-sky-400/40 flex items-center justify-center text-sky-300 shrink-0">
+        <div 
+          style={{
+            marginTop: '3rem',
+            padding: '1.75rem 2rem',
+            borderRadius: '1rem',
+            background: 'rgba(11, 25, 44, 0.85)',
+            border: '1px solid rgba(56, 189, 248, 0.3)',
+            display: 'flex',
+            flexWrap: 'wrap',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            gap: '1.5rem',
+            backdropFilter: 'blur(10px)'
+          }}
+        >
+          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+            <div 
+              style={{
+                width: '46px',
+                height: '46px',
+                borderRadius: '50%',
+                backgroundColor: 'rgba(56, 189, 248, 0.15)',
+                border: '1px solid rgba(56, 189, 248, 0.3)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                color: 'var(--sky-300)',
+                flexShrink: 0
+              }}
+            >
               <FileCheck2 size={24} />
             </div>
             <div>
-              <h4 className="text-lg font-bold text-white">Need Guaranteed Spec Testing For Your Next Cargo?</h4>
-              <p className="text-xs sm:text-sm text-slate-300">We provide pre-dispatch sampling reports from accredited NABL / SGS labs.</p>
+              <div style={{ fontWeight: 700, color: '#ffffff', fontSize: '1.05rem', fontFamily: 'var(--font-display)' }}>
+                Need Guaranteed Spec Testing For Your Next Cargo?
+              </div>
+              <div style={{ fontSize: '0.82rem', color: 'var(--navy-300)', marginTop: '0.2rem' }}>
+                We provide pre-dispatch sampling reports from accredited NABL / SGS laboratories.
+              </div>
             </div>
           </div>
 
           <button
             onClick={() => onOpenQuoteModal()}
-            className="btn btn-primary whitespace-nowrap px-6 py-3"
+            className="btn btn-primary"
+            style={{ padding: '0.75rem 1.75rem' }}
           >
             <span>Request Spec Analysis Sample</span>
             <ArrowRight size={16} />

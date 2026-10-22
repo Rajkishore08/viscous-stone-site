@@ -40,79 +40,89 @@ export default function PlantAdvisor({ onOpenQuoteModal }) {
         </div>
 
         {/* Plant Facility Selector Bar */}
-        <div className="flex flex-wrap items-center justify-center gap-2.5 mb-10">
+        <div className="facility-row">
           {PLANT_ADVISOR_OPTIONS.map((plant) => (
             <button
               key={plant.id}
               onClick={() => setSelectedPlantId(plant.id)}
-              className={`px-4 py-2.5 rounded-xl font-display text-xs sm:text-sm font-semibold transition-all border flex items-center gap-2 ${
-                selectedPlantId === plant.id
-                  ? 'bg-sky-600 text-white border-sky-600 shadow-md transform -translate-y-0.5'
-                  : 'bg-white text-slate-700 border-slate-200 hover:border-sky-300 hover:bg-sky-50/50'
-              }`}
+              className={`facility-btn ${selectedPlantId === plant.id ? 'active' : ''}`}
             >
-              <Factory size={15} className={selectedPlantId === plant.id ? 'text-sky-200' : 'text-slate-400'} />
+              <Factory size={15} style={{ color: selectedPlantId === plant.id ? '#ffffff' : 'var(--sky-600)' }} />
               <span>{plant.name}</span>
             </button>
           ))}
         </div>
 
         {/* Selected Plant Advisor Card */}
-        <div className="card-clean border border-slate-200 bg-slate-50/50 p-6 sm:p-10 rounded-2xl">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        <div className="advisor-card-wrap">
+          <div className="advisor-grid">
             {/* Left Column: Grade Match & Engineering Rationale */}
-            <div className="lg:col-span-7 flex flex-col justify-between">
+            <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
               <div>
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sky-100 text-sky-800 text-xs font-mono font-semibold uppercase tracking-wider mb-3">
-                  <Flame size={13} className="text-sky-600" />
+                <div 
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '0.4rem',
+                    padding: '0.3rem 0.75rem',
+                    borderRadius: '9999px',
+                    backgroundColor: 'var(--sky-100)',
+                    color: 'var(--sky-800)',
+                    fontSize: '0.75rem',
+                    fontFamily: 'var(--font-mono)',
+                    fontWeight: 700,
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.08em',
+                    marginBottom: '1rem'
+                  }}
+                >
+                  <Flame size={13} style={{ color: 'var(--sky-600)' }} />
                   {currentOption.badge} Specification
                 </div>
 
-                <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-900 font-display mb-3">
+                <h3 style={{ fontSize: '1.75rem', fontWeight: 800, color: 'var(--navy-950)', marginBottom: '1rem' }}>
                   Recommended Feedstock:
                 </h3>
 
-                <div className="p-4 rounded-xl bg-white border border-sky-200 shadow-sm mb-5">
-                  <div className="text-xs font-mono uppercase tracking-wider text-sky-600 font-bold">
+                <div className="advisor-feedstock-box">
+                  <div style={{ fontSize: '0.72rem', fontFamily: 'var(--font-mono)', textTransform: 'uppercase', letterSpacing: '0.08em', color: 'var(--sky-600)', fontWeight: 700 }}>
                     Primary Fuel Specification
                   </div>
-                  <div className="text-lg sm:text-xl font-bold text-slate-900 font-display mt-0.5">
+                  <div style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--navy-900)', marginTop: '0.25rem', lineHeight: 1.3 }}>
                     {currentOption.recommendedCoal}
                   </div>
                   {currentOption.recommendedIron !== "N/A" && currentOption.recommendedIron !== "N/A (Energy Feedstock)" && (
-                    <div className="mt-3 pt-3 border-t border-slate-100">
-                      <div className="text-xs font-mono uppercase tracking-wider text-amber-600 font-bold">
+                    <div style={{ marginTop: '0.85rem', paddingTop: '0.85rem', borderTop: '1px solid var(--navy-100)' }}>
+                      <div style={{ fontSize: '0.72rem', fontFamily: 'var(--font-mono)', textTransform: 'uppercase', letterSpacing: '0.08em', color: '#d97706', fontWeight: 700 }}>
                         Paired Ore / Flux Feedstock
                       </div>
-                      <div className="text-sm font-semibold text-slate-800">
+                      <div style={{ fontSize: '0.95rem', fontWeight: 600, color: 'var(--navy-800)', marginTop: '0.2rem' }}>
                         {currentOption.recommendedIron}
                       </div>
                     </div>
                   )}
                 </div>
 
-                <p className="text-slate-600 text-sm sm:text-base leading-relaxed mb-6">
+                <p style={{ color: 'var(--navy-600)', fontSize: '0.92rem', lineHeight: 1.65, marginBottom: '1.5rem' }}>
                   {currentOption.desc}
                 </p>
 
                 {/* Technical Rationale */}
-                <div className="p-4 rounded-xl bg-sky-50/80 border border-sky-100 mb-6">
-                  <div className="flex items-start gap-3">
-                    <CheckCircle2 size={18} className="text-sky-600 shrink-0 mt-0.5" />
-                    <div>
-                      <h4 className="text-xs font-bold uppercase tracking-wider text-sky-900">
-                        Combustion & Operational Rationale
-                      </h4>
-                      <p className="text-xs sm:text-sm text-slate-700 mt-1 leading-relaxed">
-                        {currentOption.rationale}
-                      </p>
-                    </div>
+                <div className="advisor-rationale-box">
+                  <CheckCircle2 size={20} style={{ color: 'var(--sky-600)', flexShrink: 0, marginTop: '2px' }} />
+                  <div>
+                    <h4 style={{ fontSize: '0.78rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', color: 'var(--sky-900)', marginBottom: '0.25rem' }}>
+                      Combustion & Operational Rationale
+                    </h4>
+                    <p style={{ fontSize: '0.85rem', color: 'var(--navy-700)', lineHeight: 1.6 }}>
+                      {currentOption.rationale}
+                    </p>
                   </div>
                 </div>
               </div>
 
               {/* Action Buttons */}
-              <div className="flex flex-wrap items-center gap-4">
+              <div style={{ marginTop: '0.5rem' }}>
                 <button
                   onClick={() => onOpenQuoteModal({ name: currentOption.recommendedCoal })}
                   className="btn btn-primary"
@@ -124,18 +134,22 @@ export default function PlantAdvisor({ onOpenQuoteModal }) {
             </div>
 
             {/* Right Column: Spec Parameters & Rake Estimator */}
-            <div className="lg:col-span-5 flex flex-col gap-6">
+            <div>
               {/* Technical Limits Matrix */}
-              <div className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
-                <h4 className="text-xs font-mono uppercase tracking-wider text-slate-500 font-bold mb-3 flex items-center justify-between">
-                  <span>Parameter Tolerance Matrix</span>
-                  <span className="text-sky-600">NABL / SGS Verified</span>
-                </h4>
-                <div className="divide-y divide-slate-100">
+              <div className="tolerance-matrix-card">
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.85rem', paddingBottom: '0.5rem', borderBottom: '1px solid var(--navy-100)' }}>
+                  <span style={{ fontSize: '0.72rem', fontFamily: 'var(--font-mono)', textTransform: 'uppercase', letterSpacing: '0.08em', color: 'var(--navy-500)', fontWeight: 700 }}>
+                    Parameter Tolerance Matrix
+                  </span>
+                  <span style={{ fontSize: '0.72rem', color: 'var(--sky-600)', fontWeight: 700, fontFamily: 'var(--font-mono)' }}>
+                    NABL / SGS Verified
+                  </span>
+                </div>
+                <div>
                   {Object.entries(currentOption.specs).map(([param, val], idx) => (
-                    <div key={idx} className="py-2.5 flex items-center justify-between text-xs sm:text-sm">
-                      <span className="text-slate-600 font-medium">{param}</span>
-                      <span className="font-mono font-bold text-slate-900 bg-slate-50 px-2 py-0.5 rounded border border-slate-200">
+                    <div key={idx} className="tolerance-row">
+                      <span style={{ color: 'var(--navy-700)', fontWeight: 600 }}>{param}</span>
+                      <span style={{ fontFamily: 'var(--font-mono)', fontWeight: 700, color: 'var(--navy-950)', backgroundColor: 'var(--sky-50)', padding: '0.2rem 0.5rem', borderRadius: '0.3rem', border: '1px solid var(--sky-100)' }}>
                         {val}
                       </span>
                     </div>
@@ -144,18 +158,18 @@ export default function PlantAdvisor({ onOpenQuoteModal }) {
               </div>
 
               {/* Rake Logistics Estimator Tool */}
-              <div className="bg-gradient-to-br from-slate-900 to-slate-950 text-white p-5 rounded-xl border border-slate-800 shadow-lg">
-                <div className="flex items-center justify-between mb-3">
-                  <span className="text-xs font-mono uppercase tracking-wider text-sky-400 font-bold flex items-center gap-1.5">
-                    <Train size={14} />
+              <div className="rake-estimator-card">
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1rem' }}>
+                  <span style={{ fontSize: '0.75rem', fontFamily: 'var(--font-mono)', textTransform: 'uppercase', letterSpacing: '0.08em', color: 'var(--sky-300)', fontWeight: 700, display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                    <Train size={15} />
                     Rake Logistics Estimator
                   </span>
-                  <span className="text-[11px] text-slate-400">BOXN Rakes</span>
+                  <span style={{ fontSize: '0.72rem', color: 'var(--navy-400)', fontFamily: 'var(--font-mono)' }}>BOXN Rakes</span>
                 </div>
 
-                <div className="mb-4">
-                  <label className="text-xs text-slate-300 block mb-1">
-                    Monthly Requirement: <strong className="text-sky-300 font-mono">{targetTonnage.toLocaleString()} MT</strong>
+                <div style={{ marginBottom: '1.25rem' }}>
+                  <label style={{ display: 'block', fontSize: '0.82rem', color: 'var(--navy-300)', marginBottom: '0.4rem' }}>
+                    Monthly Requirement: <strong style={{ color: 'var(--sky-300)', fontFamily: 'var(--font-mono)' }}>{targetTonnage.toLocaleString()} MT</strong>
                   </label>
                   <input
                     type="range"
@@ -164,25 +178,35 @@ export default function PlantAdvisor({ onOpenQuoteModal }) {
                     step="1000"
                     value={targetTonnage}
                     onChange={(e) => setTargetTonnage(Number(e.target.value))}
-                    className="w-full accent-sky-400 cursor-pointer"
+                    style={{ width: '100%', accentColor: 'var(--sky-400)', cursor: 'pointer' }}
                   />
-                  <div className="flex justify-between text-[10px] text-slate-400 mt-1 font-mono">
+                  <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.7rem', color: 'var(--navy-400)', marginTop: '0.35rem', fontFamily: 'var(--font-mono)' }}>
                     <span>1,000 MT</span>
                     <span>25,000 MT</span>
                     <span>50,000 MT</span>
                   </div>
                 </div>
 
-                <div className="p-3 rounded-lg bg-white/5 border border-white/10 flex items-center justify-between text-xs">
+                <div 
+                  style={{
+                    padding: '0.85rem 1rem',
+                    borderRadius: '0.65rem',
+                    backgroundColor: 'rgba(255, 255, 255, 0.05)',
+                    border: '1px solid rgba(255, 255, 255, 0.1)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'space-between'
+                  }}
+                >
                   <div>
-                    <div className="text-slate-400 text-[11px]">Calculated Allocation:</div>
-                    <div className="text-base font-bold text-sky-300 font-mono">
+                    <div style={{ color: 'var(--navy-400)', fontSize: '0.72rem' }}>Calculated Allocation:</div>
+                    <div style={{ fontSize: '1.1rem', fontWeight: 700, color: 'var(--sky-300)', fontFamily: 'var(--font-mono)', marginTop: '0.1rem' }}>
                       ≈ {estimatedRakes} Railway Rakes / Month
                     </div>
                   </div>
-                  <div className="text-right">
-                    <div className="text-slate-400 text-[11px]">Buffer Siding:</div>
-                    <div className="text-xs font-semibold text-white">East/West Coast</div>
+                  <div style={{ textAlign: 'right' }}>
+                    <div style={{ color: 'var(--navy-400)', fontSize: '0.72rem' }}>Buffer Siding:</div>
+                    <div style={{ fontSize: '0.82rem', fontWeight: 600, color: '#ffffff', marginTop: '0.1rem' }}>East/West Coast</div>
                   </div>
                 </div>
               </div>

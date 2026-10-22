@@ -1,0 +1,104 @@
+/* ==========================================================================
+   SOURCING ROUTES MODULE STYLES (src/styles/sourcing-routes.css)
+   Vibrant Sky-Blue Base & Clean Elevation
+   ========================================================================== */
+
+.routes-section {
+  background: linear-gradient(180deg, #edf7fe 0%, #e2effc 50%, #edf7fe 100%);
+  border-bottom: 1px solid rgba(56, 189, 248, 0.3);
+  padding: 5.5rem 0;
+  position: relative;
+}
+
+.routes-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.75rem;
+}
+
+@media (max-width: 980px) {
+  .routes-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+}
+
+.route-card {
+  background-color: #ffffff;
+  border: 1.5px solid rgba(56, 189, 248, 0.35);
+  border-radius: 1rem;
+  padding: 2rem 1.75rem;
+  display: flex;
+  flex-direction: column;
+  transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+  box-shadow: 0 4px 18px rgba(2, 132, 199, 0.08);
+}
+
+.route-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--sky-500);
+  box-shadow: 0 12px 30px -5px rgba(2, 132, 199, 0.22);
+}
+
+.route-card-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.route-icon-box {
+  width: 48px;
+  height: 48px;
+  border-radius: 0.65rem;
+  background-color: var(--sky-50);
+  border: 1px solid rgba(2, 132, 199, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.route-card-title {
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--navy-950);
+  font-family: var(--font-display);
+}
+
+.route-card-desc {
+  font-size: 0.85rem;
+  color: var(--navy-600);
+  line-height: 1.55;
+  margin-bottom: 1.5rem;
+}
+
+.route-specs-table {
+  border: 1px solid var(--border-color);
+  border-radius: 0.5rem;
+  overflow: hidden;
+  margin-top: auto;
+  background-color: #fafdff;
+}
+
+.route-spec-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 0.85rem;
+  font-size: 0.78rem;
+  font-family: var(--font-mono);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.route-spec-row:last-child {
+  border-bottom: none;
+}
+
+.route-spec-key {
+  color: var(--navy-500);
+}
+
+.route-spec-val {
+  font-weight: 700;
+  color: var(--navy-900);
+}

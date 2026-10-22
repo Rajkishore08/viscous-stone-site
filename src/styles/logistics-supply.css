@@ -1,0 +1,90 @@
+/* ==========================================================================
+   LOGISTICS & SUPPLY CHAIN MODULE STYLES (src/styles/logistics-supply.css)
+   Multi-Modal Freight, Siding & Interactive Port Explorer
+   ========================================================================== */
+
+.logistics-section {
+  background: linear-gradient(180deg, #edf7fe 0%, #e2effc 50%, #edf7fe 100%);
+  border-bottom: 1px solid rgba(56, 189, 248, 0.3);
+  padding: 5.5rem 0;
+}
+
+.logistics-modes-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 3.5rem;
+}
+
+@media (max-width: 992px) {
+  .logistics-modes-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 560px) {
+  .logistics-modes-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.logistics-mode-card {
+  background: rgba(255, 255, 255, 0.95);
+  border: 1.5px solid rgba(56, 189, 248, 0.35);
+  border-radius: 1rem;
+  padding: 2rem 1.5rem;
+  box-shadow: 0 4px 18px rgba(2, 132, 199, 0.08);
+  transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+}
+
+.logistics-mode-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--sky-500);
+  box-shadow: 0 12px 30px -5px rgba(2, 132, 199, 0.22);
+}
+
+.port-explorer-card {
+  background: #ffffff;
+  border: 1.5px solid rgba(56, 189, 248, 0.35);
+  border-radius: 1.25rem;
+  overflow: hidden;
+  box-shadow: 0 10px 30px -5px rgba(2, 132, 199, 0.12);
+}
+
+.port-terminal-grid {
+  display: grid;
+  grid-template-columns: 6fr 6fr;
+}
+
+@media (max-width: 900px) {
+  .port-terminal-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.port-photo-wrap {
+  position: relative;
+  min-height: 440px;
+  background-color: var(--navy-950);
+}
+
+.port-photo-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.port-details-pane {
+  padding: 2.25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: linear-gradient(180deg, #ffffff 0%, #f0f9ff 100%);
+}
+
+@media (max-width: 600px) {
+  .port-details-pane {
+    padding: 1.5rem;
+  }
+}

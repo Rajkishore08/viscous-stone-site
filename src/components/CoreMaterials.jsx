@@ -1,6 +1,7 @@
 import React from 'react';
-import { ArrowUpRight, ArrowRight, Shield, Zap, Sparkles } from 'lucide-react';
+import { ArrowUpRight, ArrowRight, Sparkles } from 'lucide-react';
 import { CORE_MATERIALS } from '../data/materialsData';
+import '../styles/core-materials.css';
 
 export default function CoreMaterials({ onSelectCategory, onOpenQuoteModal }) {
   const handleCardClick = (e, catId) => {
@@ -10,29 +11,29 @@ export default function CoreMaterials({ onSelectCategory, onOpenQuoteModal }) {
       target.scrollIntoView({ behavior: 'smooth' });
     }
     if (catId === 'coal' || catId === 'coke') {
-      onSelectCategory('Coal & Coke');
+      onSelectCategory?.('Coal & Coke');
     } else if (catId === 'iron-ore') {
-      onSelectCategory('Iron & Steel');
+      onSelectCategory?.('Iron & Steel');
     } else {
-      onSelectCategory('Industrial Minerals');
+      onSelectCategory?.('Industrial Minerals');
     }
   };
 
   return (
-    <section id="core-materials" className="section bg-slate-50/70 border-b border-slate-200">
+    <section id="core-materials" className="core-materials-section">
       <div className="container">
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
+        <div className="core-materials-header">
           <div>
             <div className="section-badge">
-              <Sparkles size={13} className="text-sky-600" />
+              <Sparkles size={13} style={{ color: 'var(--sky-600)' }} />
               Primary Supply Portfolios
             </div>
-            <h2 className="section-title text-slate-900 text-3xl sm:text-4xl font-extrabold tracking-tight">
+            <h2 className="section-title">
               Our Core Materials
             </h2>
-            <p className="text-slate-600 text-lg max-w-2xl mt-2">
-              Supplying key raw materials for power, steel, cement, foundries and manufacturing sectors across India.
+            <p className="section-desc" style={{ maxWidth: '640px', marginTop: '0.5rem' }}>
+              Supplying key raw materials for power, steel, cement and industrial sectors.
             </p>
           </div>
 
@@ -42,58 +43,60 @@ export default function CoreMaterials({ onSelectCategory, onOpenQuoteModal }) {
               e.preventDefault();
               document.querySelector('#materials')?.scrollIntoView({ behavior: 'smooth' });
             }}
-            className="inline-flex items-center gap-2 font-display font-bold text-sky-600 hover:text-sky-700 text-sm tracking-wide group"
+            style={{ 
+              display: 'inline-flex', 
+              alignItems: 'center', 
+              gap: '0.5rem', 
+              fontFamily: 'var(--font-display)', 
+              fontWeight: 700, 
+              color: 'var(--sky-600)', 
+              fontSize: '0.9rem' 
+            }}
           >
             <span>View All Materials</span>
-            <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+            <ArrowRight size={16} />
           </a>
         </div>
 
         {/* 4 Cards Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="cards-grid-4">
           {CORE_MATERIALS.map((mat) => (
             <div
               key={mat.id}
               onClick={(e) => handleCardClick(e, mat.id)}
-              className="card-clean group cursor-pointer flex flex-col bg-white border border-slate-200 hover:border-sky-400 hover:shadow-lg transition-all duration-300"
+              className="material-card"
             >
               {/* Image Frame */}
-              <div className="relative h-48 sm:h-52 overflow-hidden bg-slate-100">
+              <div className="material-card-img-wrap">
                 <img
                   src={mat.image}
                   alt={mat.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  className="material-card-img"
                   loading="lazy"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity" />
-                
-                {/* Arrow Icon Badge */}
-                <div className="absolute bottom-3 right-3 w-9 h-9 rounded-full bg-white/90 group-hover:bg-sky-500 text-slate-700 group-hover:text-white flex items-center justify-center transition-colors shadow-sm">
+                <div className="material-card-arrow">
                   <ArrowUpRight size={18} />
                 </div>
               </div>
 
               {/* Card Body */}
-              <div className="p-5 flex-1 flex flex-col justify-between">
+              <div className="material-card-body">
                 <div>
-                  <h3 className="font-display font-bold text-xl text-slate-900 group-hover:text-sky-600 transition-colors">
+                  <h3 className="material-card-title">
                     {mat.title}
                   </h3>
-                  <div className="text-xs font-semibold text-sky-600 font-mono tracking-wide mt-1">
+                  <div className="material-card-tagline">
                     {mat.tagline}
                   </div>
-                  <p className="text-slate-600 text-xs mt-3 leading-relaxed line-clamp-3">
+                  <p className="material-card-desc">
                     {mat.desc}
                   </p>
                 </div>
 
                 {/* Key Spec Badges */}
-                <div className="mt-5 pt-4 border-t border-slate-100 flex flex-wrap gap-1.5">
+                <div className="material-card-specs">
                   {mat.specs.map((s, idx) => (
-                    <span
-                      key={idx}
-                      className="text-[11px] font-mono bg-sky-50 text-sky-800 px-2 py-0.5 rounded border border-sky-100"
-                    >
+                    <span key={idx} className="spec-chip">
                       {s}
                     </span>
                   ))}

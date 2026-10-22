@@ -1,0 +1,199 @@
+/* ==========================================================================
+   CORPORATE PROFILE & ABOUT US MODULE STYLES (src/styles/about-us.css)
+   Immersive Sky-Blue Gradient & Frosted Cards
+   ========================================================================== */
+
+.about-section {
+  background: linear-gradient(180deg, #edf7fe 0%, #e2effc 50%, #edf7fe 100%);
+  border-bottom: 1px solid rgba(56, 189, 248, 0.3);
+  padding: 5.5rem 0;
+  position: relative;
+}
+
+.about-top-grid {
+  display: grid;
+  grid-template-columns: 7fr 5fr;
+  gap: 3rem;
+  align-items: center;
+  margin-bottom: 3.5rem;
+}
+
+@media (max-width: 992px) {
+  .about-top-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+}
+
+.stats-grid-4 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+}
+
+@media (max-width: 480px) {
+  .stats-grid-4 {
+    grid-template-columns: 1fr;
+  }
+}
+
+.stat-box {
+  background: rgba(255, 255, 255, 0.95);
+  border: 1.5px solid rgba(56, 189, 248, 0.35);
+  border-radius: 0.85rem;
+  padding: 1.35rem 1.15rem;
+  box-shadow: 0 4px 16px rgba(2, 132, 199, 0.08);
+  transition: transform 150ms ease, border-color 150ms ease;
+}
+
+.stat-box:hover {
+  transform: translateY(-2px);
+  border-color: var(--sky-500);
+}
+
+.stat-box-val {
+  font-size: 2.1rem;
+  font-weight: 800;
+  font-family: var(--font-display);
+  color: var(--sky-600);
+  line-height: 1;
+  margin-bottom: 0.4rem;
+}
+
+.stat-box-label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--navy-900);
+  margin-bottom: 0.25rem;
+}
+
+.stat-box-desc {
+  font-size: 0.75rem;
+  color: var(--navy-500);
+  line-height: 1.4;
+}
+
+.about-compliance-strip {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(56, 189, 248, 0.3);
+}
+
+.about-image-card {
+  background-color: var(--navy-950);
+  border: 1.5px solid rgba(56, 189, 248, 0.4);
+  border-radius: 1.25rem;
+  overflow: hidden;
+  box-shadow: 0 15px 35px -5px rgba(2, 132, 199, 0.2);
+}
+
+.about-image-wrap {
+  width: 100%;
+  height: 340px;
+  background-color: var(--navy-900);
+  overflow: hidden;
+}
+
+.about-image-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.about-image-caption {
+  padding: 1.35rem 1.5rem;
+  background-color: #ffffff;
+  border-top: 1px solid var(--border-color);
+}
+
+.about-image-tag {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--sky-700);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 0.25rem;
+}
+
+.about-image-title {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--navy-950);
+  margin-bottom: 0.25rem;
+}
+
+.about-image-desc {
+  font-size: 0.82rem;
+  color: var(--navy-600);
+  line-height: 1.45;
+}
+
+.about-corporate-box {
+  background: linear-gradient(145deg, #070e1b 0%, #0c4a6e 65%, #0284c7 100%);
+  color: #ffffff;
+  border-radius: 1.25rem;
+  padding: 2.5rem;
+  border: 1px solid rgba(56, 189, 248, 0.35);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width: 600px) {
+  .about-corporate-box {
+    padding: 1.75rem 1.25rem;
+  }
+}
+
+.about-corporate-header {
+  max-width: 800px;
+}
+
+.about-facts-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 1.25rem;
+  padding-top: 1.75rem;
+  margin-top: 1.75rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+@media (max-width: 1024px) {
+  .about-facts-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .about-facts-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+}
+
+.about-fact-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.about-fact-label {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: var(--sky-300);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.about-fact-val {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.35;
+}
