@@ -11,6 +11,7 @@ import {
   Boxes
 } from 'lucide-react';
 import { COMPANY_INFO } from '../data/materialsData';
+import Logo from './Logo';
 
 export default function AboutUs({ onOpenQuoteModal }) {
   return (
@@ -86,6 +87,11 @@ export default function AboutUs({ onOpenQuoteModal }) {
 
               {/* Gradient Overlay */}
               <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent opacity-80" />
+
+              {/* Brand Hallmark: 3D Faceted Square Logo */}
+              <div className="absolute top-4 right-4 z-20">
+                <Logo type="square" size="md" className="drop-shadow-2xl hover:scale-105 transition-transform" />
+              </div>
 
               {/* Floating Stat Card over Image */}
               <div className="absolute bottom-6 left-6 right-6 p-5 rounded-xl bg-white/95 backdrop-blur-md shadow-lg border border-white/60">

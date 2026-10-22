@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { X, Send, MessageSquare, CheckCircle2, ShieldCheck } from 'lucide-react';
 import { COMPANY_INFO } from '../data/materialsData';
+import Logo from './Logo';
 
 export default function QuoteModal({ isOpen, onClose, initialData }) {
   const [formData, setFormData] = useState({
@@ -60,15 +61,20 @@ export default function QuoteModal({ isOpen, onClose, initialData }) {
             <X size={20} />
           </button>
           
-          <div className="text-xs font-mono uppercase tracking-wider text-sky-400 font-semibold mb-1 flex items-center gap-1.5">
-            <ShieldCheck size={14} /> Official RFQ Portal
+          <div className="flex items-center gap-3.5">
+            <Logo type="square" size="md" />
+            <div>
+              <div className="text-xs font-mono uppercase tracking-wider text-sky-400 font-semibold mb-1 flex items-center gap-1.5">
+                <ShieldCheck size={14} /> Official RFQ Portal
+              </div>
+              <h3 className="text-xl sm:text-2xl font-bold font-display text-white">
+                Request a Plant Supply Quotation
+              </h3>
+              <p className="text-xs text-slate-300 mt-0.5">
+                Receive landed price and delivery rake schedules within 2 hours.
+              </p>
+            </div>
           </div>
-          <h3 className="text-2xl font-bold font-display text-white">
-            Request a Plant Supply Quotation
-          </h3>
-          <p className="text-xs text-slate-300 mt-1">
-            Receive landed price and delivery rake schedules within 2 hours.
-          </p>
         </div>
 
         {/* Content */}
