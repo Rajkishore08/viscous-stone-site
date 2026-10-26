@@ -14,6 +14,13 @@ export default function CoreMaterials({ onSelectCategory, onOpenQuoteModal }) {
       onSelectCategory?.('Coal & Coke');
     } else if (catId === 'iron-ore') {
       onSelectCategory?.('Iron & Steel');
+    } else if (catId === 'natural-stone') {
+      onSelectCategory?.('Marble & Granite');
+      const stoneSection = document.querySelector('#marble-granite');
+      if (stoneSection) {
+        stoneSection.scrollIntoView({ behavior: 'smooth' });
+        return;
+      }
     } else {
       onSelectCategory?.('Industrial Minerals');
     }

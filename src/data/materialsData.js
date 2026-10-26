@@ -1040,8 +1040,345 @@ export const RFQ_PRODUCTS_LIST = [
   "Silica sand",
   "Bentonite",
   "Gypsum",
-  "Other mineral"
+  "Other mineral",
+  "White marble slabs (Makrana / Statuario)",
+  "Green marble slabs (Rajasthan Serpentine)",
+  "Beige & cream marble slabs",
+  "Black & decorative marble",
+  "Absolute black granite slabs & tiles",
+  "Red granite (Jhansi / Imperial Red)",
+  "White & grey granite (Kashmir White)",
+  "Brown, gold & exotic granite (Tan Brown)",
+  "Raw marble & granite blocks (Rough quarry blocks)",
+  "Cut-to-size natural stone tiles & pavers"
 ];
+
+// Complete Marble & Granite Export Product Range
+export const MARBLE_GRANITE_PRODUCTS = [
+  // Marble Products
+  {
+    id: "marble-white",
+    category: "MARBLE & GRANITE",
+    subCategory: "MARBLE",
+    hsCode: "HS 2515 · STATUARIO & MAKRANA",
+    statusBadge: "EXPORT READY",
+    originBadge: "RAJASTHAN · MAKRANA",
+    name: "WHITE MARBLE (SLABS & TILES)",
+    desc: "Elegant white marble with natural grey and charcoal veining, suitable for luxury flooring, wall cladding, countertops, five-star hotels, and premium architectural interiors.",
+    image: "/assets/marble_white_slabs.jpg",
+    specs: [
+      { key: "Origin", val: "Makrana / Rajsamand, India" },
+      { key: "Thickness", val: "16mm · 18mm · 20mm · 30mm" },
+      { key: "Slab Dimensions", val: "Gang-saw: 280 x 160 cm+" },
+      { key: "Surface Finish", val: "Mirror Polished / Honed" }
+    ],
+    fullSpecs: {
+      "Stone Type": "Natural Calcite Marble",
+      "Quarry Origin": "Makrana / Rajsamand, Rajasthan, India",
+      "Standard Thickness": "16 mm, 18 mm, 20 mm, 30 mm (±1 mm calibration)",
+      "Available Formats": "Gang-saw Slabs, Cutter Slabs, Cut-to-Size Tiles, Customized Countertops",
+      "Available Finishes": "High Gloss Polished (>85 GU), Honed, Brushed, Leathered",
+      "Compressive Strength": "145 MPa",
+      "Water Absorption": "< 0.15% by weight",
+      "Bulk Density": "2.71 g/cm³",
+      "Export Packing": "Fumigated seaworthy wooden bundles / reinforced A-frames with plastic film & foam interleaving",
+      "Container Capacity": "Approx. 400–450 sq. meters per 20ft container (18mm thickness)",
+      "Target Export Markets": "UAE, Saudi Arabia, Qatar, Oman, UK, Germany, USA, Southeast Asia"
+    }
+  },
+  {
+    id: "marble-green",
+    category: "MARBLE & GRANITE",
+    subCategory: "MARBLE",
+    hsCode: "HS 2515 · SERPENTINE",
+    statusBadge: "EXPORT READY",
+    originBadge: "RAJASTHAN · UDAIPUR",
+    name: "GREEN MARBLE (FOREST & EMERALD)",
+    desc: "Distinctive deep green natural serpentine stone with intricate dark green and pale white crystalline mineral veining for decorative walls, flooring, feature panels, and architectural applications.",
+    image: "/assets/marble_green_slabs.jpg",
+    specs: [
+      { key: "Origin", val: "Udaipur / Kesaria, India" },
+      { key: "Thickness", val: "18mm · 20mm · 30mm" },
+      { key: "Slab Dimensions", val: "Gang-saw: 260 x 150 cm+" },
+      { key: "Surface Finish", val: "Polished / Honed / Leather" }
+    ],
+    fullSpecs: {
+      "Stone Type": "Serpentine Green Marble",
+      "Quarry Origin": "Udaipur & Rishabhdeo, Rajasthan, India",
+      "Standard Thickness": "18 mm, 20 mm, 30 mm",
+      "Available Formats": "Random Slabs, Calibrated Tiles (600x600, 600x300, 800x800 mm)",
+      "Available Finishes": "High-Gloss Polished, Antique Leathered, Honed",
+      "Compressive Strength": "135 MPa",
+      "Water Absorption": "< 0.20%",
+      "Bulk Density": "2.68 g/cm³",
+      "Export Packing": "Seaworthy ISPM-15 heat-treated wooden crates",
+      "Target Export Markets": "Europe, Middle East, USA, Southeast Asia"
+    }
+  },
+  {
+    id: "marble-beige",
+    category: "MARBLE & GRANITE",
+    subCategory: "MARBLE",
+    hsCode: "HS 2515 · BEIGE CALCITE",
+    statusBadge: "CORE",
+    originBadge: "RAJASTHAN · JALORE",
+    name: "BEIGE & CREAM MARBLE",
+    desc: "Warm, neutral earthy tones and understated crystalline depth ideal for luxury residential projects, hotels, corporate headquarters, lobbies, and large commercial spaces.",
+    image: "/assets/marble_white_slabs.jpg",
+    specs: [
+      { key: "Origin", val: "Rajasthan, India" },
+      { key: "Thickness", val: "18mm · 20mm" },
+      { key: "Formats", val: "Slabs & Cut-to-Size Tiles" },
+      { key: "Finish Options", val: "Polished / Honed / Brushed" }
+    ],
+    fullSpecs: {
+      "Stone Type": "Beige Sedimentary / Calcite Marble",
+      "Quarry Origin": "Rajasthan Quarry Belts, India",
+      "Standard Thickness": "18 mm, 20 mm, 30 mm",
+      "Slab Sizes": "240 x 140 cm up to 300 x 180 cm",
+      "Water Absorption": "0.18%",
+      "Bulk Density": "2.65 g/cm³",
+      "Applications": "Indoor flooring, bathroom vanities, hotel corridors, staircases"
+    }
+  },
+  {
+    id: "marble-black",
+    category: "MARBLE & GRANITE",
+    subCategory: "MARBLE",
+    hsCode: "HS 2515 · BLACK MARQUINA",
+    statusBadge: "EXPORT READY",
+    originBadge: "RAJASTHAN · BHILWARA",
+    name: "BLACK & DECORATIVE MARBLE",
+    desc: "Bold patterns, jet-black depth, and contrasting white quartz veins designed for luxury statement walls, high-end interiors, bespoke countertops, and focal architectural elements.",
+    image: "/assets/granite_black_slabs.jpg",
+    specs: [
+      { key: "Origin", val: "Bhilwara / Banswara, India" },
+      { key: "Thickness", val: "18mm · 20mm · 30mm" },
+      { key: "Veining", val: "Striking White Calcite Veins" },
+      { key: "Surface Finish", val: "High Polish / Satin Honed" }
+    ],
+    fullSpecs: {
+      "Stone Type": "Carbonaceous Black Marble",
+      "Quarry Origin": "Rajasthan Mining Belt, India",
+      "Thickness Options": "18 mm, 20 mm, 30 mm",
+      "Available Finishes": "High Gloss Mirror Polish, Leathered Antique",
+      "Applications": "Feature fireplace surrounds, luxury vanity tops, statement wall panels"
+    }
+  },
+
+  // Granite Products
+  {
+    id: "granite-black",
+    category: "MARBLE & GRANITE",
+    subCategory: "GRANITE",
+    hsCode: "HS 2516 · ABSOLUTE BLACK",
+    statusBadge: "EXPORT READY",
+    originBadge: "ANDHRA · TELANGANA",
+    name: "ABSOLUTE BLACK GRANITE",
+    desc: "Ultra-durable, fine-grained deep black natural igneous stone with exceptional compressive strength. Ideal for heavy-traffic flooring, kitchen countertops, monuments, commercial facades, and exterior plazas.",
+    image: "/assets/granite_black_slabs.jpg",
+    specs: [
+      { key: "Origin", val: "Warangal / Khammam, South India" },
+      { key: "Thickness", val: "18mm · 20mm · 30mm · 40mm" },
+      { key: "Slab Dimensions", val: "Jumbo Gang-saw: 300 x 180 cm+" },
+      { key: "Surface Finish", val: "Polished / Flamed / Leathered" }
+    ],
+    fullSpecs: {
+      "Stone Type": "Plutonic Igneous Absolute Black Granite",
+      "Quarry Origin": "Andhra Pradesh & Telangana Mining Belts, India",
+      "Standard Thickness": "18 mm, 20 mm, 30 mm, 40 mm (Calibrated)",
+      "Available Formats": "Jumbo Gang-saw Slabs, Cutter Slabs, Cut-to-Size Tiles, Monument Blocks",
+      "Available Finishes": "High Gloss Polished (>90 GU), Flamed, Honed, Leathered, Bush-Hammered",
+      "Compressive Strength": "240 MPa",
+      "Flexural Strength": "18.5 MPa",
+      "Water Absorption": "< 0.05% by weight (Extremely low porosity)",
+      "Bulk Density": "3.05 g/cm³",
+      "Export Packing": "Heavy-duty ISPM-15 certified wooden A-frames & closed sea crates with steel band strapping",
+      "Target Export Markets": "USA, Germany, UK, Poland, UAE, Saudi Arabia, Singapore, Australia"
+    }
+  },
+  {
+    id: "granite-red",
+    category: "MARBLE & GRANITE",
+    subCategory: "GRANITE",
+    hsCode: "HS 2516 · IMPERIAL RED",
+    statusBadge: "CORE",
+    originBadge: "MADHYA PRADESH · JHANSI",
+    name: "IMPERIAL RED GRANITE",
+    desc: "Rich red crystalline tones with blue and black quartz crystals for bold architectural facades, monuments, decorative exterior installations, and commercial construction.",
+    image: "/assets/granite_exotic_slabs.jpg",
+    specs: [
+      { key: "Origin", val: "Jhansi / Chhatarpur, India" },
+      { key: "Thickness", val: "18mm · 20mm · 30mm" },
+      { key: "Formats", val: "Gang-saw Slabs & Tiles" },
+      { key: "Finish Options", val: "Polished / Flamed / Honed" }
+    ],
+    fullSpecs: {
+      "Stone Type": "Potash Feldspar Rich Red Granite",
+      "Quarry Origin": "Central India Quarry Belt",
+      "Standard Thickness": "18 mm, 20 mm, 30 mm",
+      "Compressive Strength": "210 MPa",
+      "Water Absorption": "0.12%",
+      "Bulk Density": "2.68 g/cm³",
+      "Applications": "Airport terminals, railway station flooring, external wall cladding, civic monuments"
+    }
+  },
+  {
+    id: "granite-white",
+    category: "MARBLE & GRANITE",
+    subCategory: "GRANITE",
+    hsCode: "HS 2516 · WHITE & GREY",
+    statusBadge: "CORE",
+    originBadge: "TAMIL NADU · ANDHRA",
+    name: "WHITE & GREY GRANITE (KASHMIR / PLATINUM)",
+    desc: "Versatile, light-toned stone with silver-grey and garnet speckles for modern interior design, kitchen worktops, building facades, and public infrastructure spaces.",
+    image: "/assets/marble_white_slabs.jpg",
+    specs: [
+      { key: "Origin", val: "Madurai / Ongole, South India" },
+      { key: "Thickness", val: "18mm · 20mm · 30mm" },
+      { key: "Dimensions", val: "Gang-saw: 280 x 160 cm+" },
+      { key: "Finishes", val: "Polished / Flamed / Brushed" }
+    ],
+    fullSpecs: {
+      "Stone Type": "Biotite-Granite with Quartz & Feldspar",
+      "Quarry Origin": "South Indian Granite Reserves",
+      "Standard Thickness": "18 mm, 20 mm, 30 mm",
+      "Water Absorption": "0.18%",
+      "Bulk Density": "2.65 g/cm³",
+      "Applications": "Countertops, hotel lobby floors, hospital corridors, external pavers"
+    }
+  },
+  {
+    id: "granite-exotic",
+    category: "MARBLE & GRANITE",
+    subCategory: "GRANITE",
+    hsCode: "HS 2516 · TAN BROWN & GOLD",
+    statusBadge: "EXPORT READY",
+    originBadge: "TELANGANA · KARIMNAGAR",
+    name: "BROWN, GOLD & EXOTIC GRANITE",
+    desc: "Distinctive warm brown, burnt amber and golden mineral crystallization for luxury hospitality developments, commercial towers, and bespoke architectural designs.",
+    image: "/assets/granite_exotic_slabs.jpg",
+    specs: [
+      { key: "Origin", val: "Karimnagar / Warangal, India" },
+      { key: "Thickness", val: "18mm · 20mm · 30mm" },
+      { key: "Pattern", val: "Rich Brown & Gold Crystals" },
+      { key: "Finishes", val: "Polished / Flamed / Leather" }
+    ],
+    fullSpecs: {
+      "Stone Type": "Charnockite Exotic Granite",
+      "Quarry Origin": "Telangana, India",
+      "Standard Thickness": "18 mm, 20 mm, 30 mm",
+      "Compressive Strength": "225 MPa",
+      "Water Absorption": "< 0.08%",
+      "Bulk Density": "2.85 g/cm³",
+      "Export Packing": "Reinforced wooden bundles ready for 20ft container shipping"
+    }
+  },
+
+  // Export Formats & Raw Blocks
+  {
+    id: "stone-blocks",
+    category: "MARBLE & GRANITE",
+    subCategory: "BLOCKS",
+    hsCode: "HS 2515 / 2516 · ROUGH BLOCKS",
+    statusBadge: "EXPORT READY",
+    originBadge: "INDIA · DIRECT QUARRY",
+    name: "RAW STONE BLOCKS (QUARRIED)",
+    desc: "Direct quarried rectangular rough gang-saw blocks for stone processing factories, cutting units, and bulk natural-stone importers across the Middle East, Europe, and Asia.",
+    image: "/assets/stone_blocks_export.jpg",
+    specs: [
+      { key: "Block Weights", val: "15 to 28 Metric Tons / Block" },
+      { key: "Dimensions", val: "Gang-saw: 3.0m x 1.8m x 1.5m+" },
+      { key: "Stone Types", val: "Granite & Marble Rough Blocks" },
+      { key: "Inspection", val: "Quarry Dry-Lay & Dimension Audit" }
+    ],
+    fullSpecs: {
+      "Product Format": "Rough Rectangular Quarried Blocks (Dressed on 4 or 6 faces)",
+      "Block Sizes": "Length 2.8m–3.4m, Height 1.5m–2.0m, Width 1.4m–1.8m",
+      "Loading Capacity": "Single or double blocks per 20ft heavy-duty container (up to 27 MT/container)",
+      "Loading Ports": "Mundra Port, Nhava Sheva (JNPT), Chennai Port, Tuticorin Port",
+      "Terms": "FOB Indian Port or CIF Destination Port",
+      "Target Buyers": "Stone processing plants in Italy, UAE, China, Saudi Arabia, Turkey"
+    }
+  }
+];
+
+// Complete Section Copy Pack for Marble & Granite Export
+export const MARBLE_GRANITE_SECTION_DATA = {
+  banner: {
+    badge: "EXPORT & NATURAL STONE SUPPLY",
+    headline: "Premium Natural Stone. Global Supply.",
+    subhead: "Discover premium-quality marble and granite sourced from trusted quarries and stone processors across India. We supply natural stone blocks, slabs, tiles, and customized cut-to-size products for residential, commercial, architectural, and infrastructure projects worldwide.",
+    tagline: "From Indian Quarries to Global Destinations.",
+    primaryCta: "Explore Stone Varieties",
+    secondaryCta: "Request an Export Quote"
+  },
+  formats: [
+    {
+      title: "Raw Stone Blocks",
+      desc: "Quarried blocks for processing factories, stone manufacturers, and bulk natural-stone buyers worldwide.",
+      icon: "Box",
+      features: ["15–28 MT block weights", "Dressed on 4 or 6 faces", "Heavy container shipping"]
+    },
+    {
+      title: "Polished & Unpolished Slabs",
+      desc: "Large-format gang-saw and cutter slabs available in a range of colours, finishes, and thicknesses.",
+      icon: "Layers",
+      features: ["Gang-saw size (280x160 cm+)", "16, 18, 20 & 30mm thickness", "Bookmatched pairs available"]
+    },
+    {
+      title: "Cut-to-Size Tiles",
+      desc: "Custom dimensions for flooring, walls, stairs, external paving, and architectural installations.",
+      icon: "Grid",
+      features: ["600x600, 600x300, 800x800 mm", "Chamfered & calibrated edges", "Ready for direct installation"]
+    },
+    {
+      title: "Specialty Finishes",
+      desc: "Finishing options including polished, honed, flamed, leathered, bush-hammered, and antique finishes.",
+      icon: "Sparkles",
+      features: ["Mirror gloss polish (>85 GU)", "Anti-slip flamed for outdoors", "Tactile leathered & brushed"]
+    }
+  ],
+  exportCapabilities: [
+    {
+      title: "Direct Quarry Linkage",
+      desc: "Long-term extraction partnerships with verified quarries in Rajasthan, Andhra Pradesh, Telangana, and Karnataka."
+    },
+    {
+      title: "Custom Cut & Processing",
+      desc: "Advanced multi-wire gang-saws and line polishing machines calibrated to international dimensional tolerances."
+    },
+    {
+      title: "Strict Quality Inspection",
+      desc: "Detailed slab-by-slab inspection for shade uniformity, micro-cracks, thickness calibration, and surface gloss."
+    },
+    {
+      title: "Seaworthy Export Packing",
+      desc: "ISPM-15 heat-treated, fumigated wooden bundles with plastic wrapping, thermocol padding, and steel banding."
+    },
+    {
+      title: "Full Export Documentation",
+      desc: "Comprehensive documentation including Bill of Lading, Certificate of Origin, Packing List, and Phytosanitary Certificate."
+    },
+    {
+      title: "Global Destination Ports",
+      desc: "Regular container shipments to Jebel Ali (UAE), Dammam (KSA), Hamad (Qatar), Felixstowe (UK), Rotterdam, and Hamburg."
+    }
+  ],
+  targetMarkets: [
+    { region: "Middle East (GCC)", ports: "Jebel Ali (UAE) · Dammam & Jeddah (Saudi Arabia) · Hamad (Qatar) · Sohar (Oman)" },
+    { region: "Europe & UK", ports: "Felixstowe & London Gateway (UK) · Rotterdam & Antwerp · Hamburg · Genoa (Italy)" },
+    { region: "Southeast Asia & Global", ports: "Singapore · Port Klang (Malaysia) · Cat Lai (Vietnam) · US East & West Coast" }
+  ],
+  buyerChecklist: [
+    { step: "01", title: "Stone Selection", desc: "Confirm stone type (Marble or Granite), colour, pattern, and quarry origin." },
+    { step: "02", title: "Dimensions & Thickness", desc: "Specify block, slab, or tile dimensions (16mm, 18mm, 20mm, 30mm) with allowed tolerances." },
+    { step: "03", title: "Surface Finish", desc: "Select high-gloss polished, satin honed, flamed anti-skid, or tactile leathered." },
+    { step: "04", title: "Quantity & Packing", desc: "Total square meters / metric tons with sea-worthy wooden bundles or pallet requirements." },
+    { step: "05", title: "Inspection & Samples", desc: "High-resolution dry-lay photographs, physical samples, or third-party SGS inspection." },
+    { step: "06", title: "Shipping & Trade Terms", desc: "Agreed Incoterms (FOB Indian Port, CFR, or CIF destination port) and target schedule." }
+  ]
+};
 
 // Backward-Compatibility Exports
 export const CORE_MATERIALS = [
@@ -1076,12 +1413,21 @@ export const CORE_MATERIALS = [
     desc: "Smelter-grade alumina, bauxite, Ferro Manganese, Silico Manganese, and SMS flux limestone (CaO 52%+) with high purity.",
     image: "/assets/core_minerals_bauxite.jpg",
     specs: ["FeMn / SiMn / FeCr", "SMS Limestone", "Bauxite Al2O3 > 44%"]
+  },
+  {
+    id: "natural-stone",
+    title: "Marble, Granite & Natural Stone",
+    tagline: "Indian Quarries to Global Destinations",
+    desc: "Export-grade Makrana white marble, Rajasthan green serpentine, Absolute black granite, and raw quarried blocks for overseas buyers.",
+    image: "/assets/marble_white_slabs.jpg",
+    specs: ["Gang-saw Slabs 16-30mm", "Blocks & Cut-to-Size", "Middle East & Europe Export"]
   }
 ];
 
 export const CATALOG_PRODUCTS = [
   ...COAL_CATALOGUE_DATA,
-  ...METALS_MINERALS_DATA
+  ...METALS_MINERALS_DATA,
+  ...MARBLE_GRANITE_PRODUCTS
 ];
 
 export const PLANT_ADVISOR_OPTIONS = GRADE_FINDER_INDUSTRIES;

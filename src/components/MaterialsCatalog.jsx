@@ -16,7 +16,8 @@ export default function MaterialsCatalog({ selectedCategory = 'All', onSelectCat
     'Coal & Coke',
     'Iron & Steel',
     'Aluminium & Ferro Alloys',
-    'Industrial Minerals'
+    'Industrial Minerals',
+    'Marble & Granite'
   ];
 
   // Map high-level tabs to product categories
@@ -34,6 +35,9 @@ export default function MaterialsCatalog({ selectedCategory = 'All', onSelectCat
     }
     if (selected === 'Industrial Minerals') {
       return cat.includes('MINERAL') || cat.includes('LIMESTONE') || cat.includes('DOLOMITE') || cat.includes('SILICA') || cat.includes('BENTONITE');
+    }
+    if (selected === 'Marble & Granite') {
+      return cat.includes('MARBLE') || cat.includes('GRANITE') || cat.includes('STONE');
     }
     return cat === selected.toUpperCase();
   };

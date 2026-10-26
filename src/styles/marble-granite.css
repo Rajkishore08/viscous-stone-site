@@ -1,0 +1,540 @@
+/* ==========================================================================
+   MARBLE & GRANITE EXPORT MODULE STYLES (src/styles/marble-granite.css)
+   Clean, Industrial-Premium Sky-Blue Architecture with Immersive Stone Elevation
+   ========================================================================== */
+
+.stone-export-section {
+  background: linear-gradient(180deg, #edf7fe 0%, #f4faff 50%, #edf7fe 100%);
+  border-bottom: 1.5px solid rgba(56, 189, 248, 0.3);
+  padding: 5.5rem 0;
+  position: relative;
+}
+
+/* Header Banner Card */
+.stone-hero-banner {
+  background: linear-gradient(135deg, rgba(7, 14, 27, 0.95) 0%, rgba(12, 74, 110, 0.88) 100%);
+  border: 1.5px solid rgba(56, 189, 248, 0.4);
+  border-radius: 1.25rem;
+  padding: 3rem 2.5rem;
+  color: #ffffff;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 12px 35px rgba(2, 132, 199, 0.2);
+  margin-bottom: 3.5rem;
+}
+
+@media (max-width: 768px) {
+  .stone-hero-banner {
+    padding: 2rem 1.25rem;
+    margin-bottom: 2.5rem;
+  }
+}
+
+.stone-banner-watermark {
+  position: absolute;
+  right: -2rem;
+  bottom: -2rem;
+  font-size: 11rem;
+  font-family: var(--font-display);
+  font-weight: 900;
+  color: rgba(255, 255, 255, 0.03);
+  pointer-events: none;
+  line-height: 1;
+  user-select: none;
+}
+
+.stone-banner-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.95rem;
+  border-radius: 9999px;
+  background: rgba(56, 189, 248, 0.18);
+  border: 1px solid rgba(56, 189, 248, 0.4);
+  color: var(--sky-300);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 1.25rem;
+}
+
+.stone-banner-title {
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  font-family: var(--font-display);
+  margin-bottom: 1rem;
+}
+
+.stone-banner-subhead {
+  font-size: clamp(0.98rem, 1.8vw, 1.15rem);
+  color: #e2e8f0;
+  line-height: 1.65;
+  max-width: 820px;
+  margin-bottom: 1.25rem;
+}
+
+.stone-banner-tagline {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--sky-300);
+  margin-bottom: 2rem;
+}
+
+.stone-banner-ctas {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 600px) {
+  .stone-banner-ctas {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .stone-banner-ctas .btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* Category Filter Tabs */
+.stone-tab-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  justify-content: center;
+  margin-bottom: 3rem;
+}
+
+.stone-tab-btn {
+  padding: 0.7rem 1.4rem;
+  border-radius: 0.6rem;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+  border: 1.5px solid rgba(56, 189, 248, 0.35);
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--navy-800);
+  transition: all 180ms ease;
+  box-shadow: 0 2px 6px rgba(2, 132, 199, 0.06);
+}
+
+.stone-tab-btn:hover {
+  border-color: var(--sky-500);
+  color: var(--sky-700);
+  background-color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.stone-tab-btn.active {
+  background: linear-gradient(135deg, var(--navy-900) 0%, var(--navy-950) 100%);
+  color: #ffffff;
+  border-color: var(--navy-900);
+  box-shadow: 0 4px 14px rgba(7, 14, 27, 0.25);
+}
+
+/* Stone Products Grid (4 columns desktop, 2 tablet, 1 mobile) */
+.stone-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 3.5rem;
+}
+
+@media (max-width: 1180px) {
+  .stone-cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 620px) {
+  .stone-cards-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+}
+
+.stone-product-card {
+  background: #ffffff;
+  border: 1.5px solid rgba(56, 189, 248, 0.35);
+  border-radius: 1rem;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 18px rgba(2, 132, 199, 0.08);
+  transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+}
+
+.stone-product-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--sky-500);
+  box-shadow: 0 14px 32px -4px rgba(2, 132, 199, 0.22);
+}
+
+.stone-card-img-wrap {
+  position: relative;
+  height: 200px;
+  background-color: var(--navy-950);
+  overflow: hidden;
+}
+
+.stone-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 300ms ease;
+}
+
+.stone-product-card:hover .stone-card-img {
+  transform: scale(1.05);
+}
+
+.stone-card-badges {
+  position: absolute;
+  top: 0.75rem;
+  left: 0.75rem;
+  right: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.stone-hs-badge {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  background-color: rgba(7, 14, 27, 0.9);
+  color: #ffffff;
+  padding: 0.25rem 0.55rem;
+  border-radius: 0.35rem;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(4px);
+}
+
+.stone-status-badge {
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  font-weight: 800;
+  padding: 0.25rem 0.55rem;
+  border-radius: 0.35rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  background: linear-gradient(135deg, var(--sky-600) 0%, var(--sky-700) 100%);
+  color: #ffffff;
+}
+
+.stone-card-body {
+  padding: 1.4rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.stone-card-title {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--navy-950);
+  font-family: var(--font-display);
+  margin-bottom: 0.4rem;
+  line-height: 1.25;
+}
+
+.stone-card-desc {
+  font-size: 0.82rem;
+  color: var(--navy-600);
+  line-height: 1.55;
+  margin-bottom: 1.25rem;
+  min-height: 3.2rem;
+}
+
+.stone-specs-table {
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  border-radius: 0.6rem;
+  overflow: hidden;
+  margin-bottom: 1.25rem;
+  background-color: #fafdff;
+}
+
+.stone-spec-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.45rem 0.75rem;
+  font-size: 0.78rem;
+  font-family: var(--font-mono);
+  border-bottom: 1px solid rgba(56, 189, 248, 0.2);
+}
+
+.stone-spec-row:last-child {
+  border-bottom: none;
+}
+
+.stone-spec-key {
+  color: var(--navy-600);
+  font-weight: 500;
+}
+
+.stone-spec-val {
+  font-weight: 700;
+  color: var(--navy-950);
+  text-align: right;
+}
+
+.stone-card-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: auto;
+}
+
+/* Export Formats & Specialty Finishes (Section 4) */
+.stone-formats-container {
+  margin-top: 4.5rem;
+  padding-top: 3.5rem;
+  border-top: 1.5px solid rgba(56, 189, 248, 0.3);
+  margin-bottom: 4rem;
+}
+
+.stone-formats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+
+@media (max-width: 1040px) {
+  .stone-formats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 580px) {
+  .stone-formats-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.stone-format-card {
+  background: #ffffff;
+  border: 1.5px solid rgba(56, 189, 248, 0.35);
+  border-radius: 1rem;
+  padding: 1.75rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 16px rgba(2, 132, 199, 0.08);
+  transition: transform 180ms ease, border-color 180ms ease;
+}
+
+.stone-format-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--sky-500);
+  box-shadow: 0 10px 24px rgba(2, 132, 199, 0.18);
+}
+
+.stone-format-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 0.65rem;
+  background-color: var(--sky-50);
+  border: 1px solid rgba(56, 189, 248, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.25rem;
+  color: var(--sky-700);
+}
+
+.stone-format-title {
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--navy-950);
+  font-family: var(--font-display);
+  margin-bottom: 0.45rem;
+}
+
+.stone-format-desc {
+  font-size: 0.82rem;
+  color: var(--navy-600);
+  line-height: 1.55;
+  margin-bottom: 1.25rem;
+}
+
+.stone-format-features {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-top: auto;
+  border-top: 1px solid rgba(56, 189, 248, 0.2);
+  padding-top: 0.85rem;
+}
+
+.stone-format-chip {
+  font-size: 0.75rem;
+  font-family: var(--font-mono);
+  color: var(--sky-800);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-weight: 600;
+}
+
+/* International Export & Buyer Support (Sections 5 & 6) */
+.stone-export-map-card {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(240, 249, 255, 0.92) 100%);
+  border: 1.5px solid rgba(56, 189, 248, 0.4);
+  border-radius: 1.25rem;
+  padding: 3rem 2.5rem;
+  box-shadow: 0 8px 30px rgba(2, 132, 199, 0.1);
+  margin-bottom: 3.5rem;
+}
+
+@media (max-width: 768px) {
+  .stone-export-map-card {
+    padding: 2rem 1.25rem;
+  }
+}
+
+.stone-markets-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  margin-bottom: 2.5rem;
+}
+
+@media (max-width: 900px) {
+  .stone-markets-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.stone-market-item {
+  background: #ffffff;
+  border: 1.5px solid rgba(56, 189, 248, 0.3);
+  border-radius: 0.75rem;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.stone-market-region {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--navy-950);
+  font-family: var(--font-display);
+  margin-bottom: 0.35rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.stone-market-ports {
+  font-size: 0.8rem;
+  color: var(--sky-800);
+  font-family: var(--font-mono);
+  line-height: 1.5;
+}
+
+/* 6-Point Buyer Support Checklist */
+.stone-checklist-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+
+@media (max-width: 980px) {
+  .stone-checklist-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .stone-checklist-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.stone-checklist-card {
+  background: #ffffff;
+  border: 1px solid rgba(56, 189, 248, 0.25);
+  border-radius: 0.75rem;
+  padding: 1.25rem;
+  display: flex;
+  gap: 0.85rem;
+  align-items: flex-start;
+}
+
+.stone-step-number {
+  font-family: var(--font-mono);
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--sky-600);
+  background: var(--sky-50);
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  width: 36px;
+  height: 36px;
+  border-radius: 0.45rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.stone-checklist-title {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--navy-950);
+  font-family: var(--font-display);
+  margin-bottom: 0.25rem;
+}
+
+.stone-checklist-desc {
+  font-size: 0.78rem;
+  color: var(--navy-600);
+  line-height: 1.45;
+}
+
+/* Bottom Fast-Action Enquiry Box (Section 7) */
+.stone-cta-banner {
+  background: linear-gradient(135deg, var(--navy-950) 0%, var(--navy-900) 100%);
+  border: 2px solid var(--sky-500);
+  border-radius: 1.25rem;
+  padding: 2.75rem 2.25rem;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
+  box-shadow: 0 10px 30px rgba(2, 132, 199, 0.25);
+}
+
+.stone-cta-text h3 {
+  font-size: 1.65rem;
+  font-weight: 800;
+  color: #ffffff;
+  font-family: var(--font-display);
+  margin-bottom: 0.4rem;
+}
+
+.stone-cta-text p {
+  font-size: 0.9rem;
+  color: var(--sky-200);
+  max-width: 650px;
+  line-height: 1.5;
+}
+
+.stone-cta-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
