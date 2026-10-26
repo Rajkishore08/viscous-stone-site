@@ -108,11 +108,21 @@
 .nav-links-desktop {
   display: flex;
   align-items: center;
-  gap: 1.25rem;
+  gap: 1.1rem;
   height: 100%;
 }
 
-@media (max-width: 1040px) {
+@media (max-width: 1240px) {
+  .nav-links-desktop {
+    gap: 0.75rem;
+  }
+  .nav-link-item {
+    font-size: 0.86rem !important;
+    padding: 0 0.35rem !important;
+  }
+}
+
+@media (max-width: 1080px) {
   .nav-links-desktop {
     display: none;
   }
@@ -160,7 +170,7 @@
   gap: 1rem;
 }
 
-@media (max-width: 1040px) {
+@media (max-width: 1080px) {
   .nav-actions-desktop {
     display: none;
   }
@@ -195,7 +205,7 @@
   border-radius: 0.5rem;
 }
 
-@media (max-width: 1040px) {
+@media (max-width: 1080px) {
   .mobile-menu-btn {
     display: flex;
     align-items: center;

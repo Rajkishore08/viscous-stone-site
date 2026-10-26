@@ -4,7 +4,7 @@ import { MessageSquare, ArrowUp } from 'lucide-react';
 import '../styles/footer.css';
 import Logo from './Logo';
 
-export default function Footer({ onOpenQuoteModal }) {
+export default function Footer({ onOpenQuoteModal, onOpenProfileModal }) {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -33,11 +33,18 @@ export default function Footer({ onOpenQuoteModal }) {
               Vicious Stone Private Limited
             </div>
             <p className="text-xs sm:text-sm text-slate-300 mt-1">
-              Sourcing, trading and bulk supply of coal, coke, iron ore and industrial minerals. Powering industrial growth.
+              Sourcing, trading and bulk supply of coal, coke, iron ore and natural stone products worldwide. Powering industrial growth.
             </p>
           </div>
 
           <div className="flex items-center gap-3">
+            <button
+              onClick={() => onOpenProfileModal ? onOpenProfileModal() : onOpenQuoteModal()}
+              className="btn btn-secondary btn-sm"
+              title="Download 14-page Corporate Deck"
+            >
+              COMPANY PROFILE (PDF)
+            </button>
             <button
               onClick={() => onOpenQuoteModal()}
               className="btn btn-primary btn-sm"
@@ -66,7 +73,7 @@ export default function Footer({ onOpenQuoteModal }) {
               <Logo type="rect" variant="dark" size="md" />
             </div>
             <p className="text-xs text-slate-400 leading-relaxed mb-4">
-              Headquartered in Bengaluru. Sourcing, trading and supply of coal, coke, iron ore, aluminium and industrial minerals to heavy manufacturing units across India.
+              Headquartered in Bengaluru with regional desks in Dubai. Sourcing, trading and export of coal, coke, iron ore, aluminium and Indian marble & granite to global project buyers.
             </p>
             <div className="text-xs font-mono text-sky-400">
               GSTIN: {COMPANY_INFO.gstin}
@@ -85,6 +92,11 @@ export default function Footer({ onOpenQuoteModal }) {
               <li>
                 <a href="#materials" onClick={(e) => handleNavClick(e, '#materials')}>
                   All Materials Catalog
+                </a>
+              </li>
+              <li>
+                <a href="#marble-granite" onClick={(e) => handleNavClick(e, '#marble-granite')} className="text-sky-400 font-semibold">
+                  Marble & Granite Export ★
                 </a>
               </li>
               <li>
@@ -151,6 +163,14 @@ export default function Footer({ onOpenQuoteModal }) {
                 </a>
               </li>
               <li>
+                <button 
+                  onClick={onOpenProfileModal} 
+                  style={{ background: 'none', border: 'none', padding: 0, color: 'var(--sky-400)', cursor: 'pointer', fontSize: 'inherit', textAlign: 'left' }}
+                >
+                  Download Company Profile (PDF)
+                </button>
+              </li>
+              <li>
                 <a href="#contact" onClick={(e) => handleNavClick(e, '#contact')}>
                   RFQ Enquiry Desk
                 </a>
@@ -178,7 +198,7 @@ export default function Footer({ onOpenQuoteModal }) {
       <div className="footer-bottom-bar">
         <div className="container flex flex-col sm:flex-row items-center justify-between gap-4">
           <div>
-            Vicious Stone Private Limited · GSTIN 29AAKCV5319E1Z3 · CIN U14299KA2023PTC176548 · © 2026 All Rights Reserved
+            Vicious Stone Private Limited · GSTIN {COMPANY_INFO.gstin} · CIN {COMPANY_INFO.cin} · © 2026 All Rights Reserved
           </div>
           <button
             onClick={scrollToTop}

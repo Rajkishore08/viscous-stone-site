@@ -20,6 +20,7 @@ export default function Navbar({ onOpenQuoteModal }) {
   const navItems = [
     { label: 'Home', href: '#home', id: 'home' },
     { label: 'Our Materials', href: '#materials', id: 'materials' },
+    { label: 'Marble & Granite', href: '#marble-granite', id: 'marble-granite' },
     { label: 'Sourcing & Procurement', href: '#sourcing', id: 'sourcing' },
     { label: 'Suppliers', href: '#suppliers', id: 'suppliers' },
     { label: 'Logistics', href: '#logistics', id: 'logistics' },

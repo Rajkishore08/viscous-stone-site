@@ -5,6 +5,7 @@ import CoreMaterials from './components/CoreMaterials';
 import WhyChooseUs from './components/WhyChooseUs';
 import AboutUs from './components/AboutUs';
 import MaterialsCatalog from './components/MaterialsCatalog';
+import MarbleGraniteExport from './components/MarbleGraniteExport';
 import SourcingProcurement from './components/SourcingProcurement';
 import LogisticsSupply from './components/LogisticsSupply';
 import SourcingRoutes from './components/SourcingRoutes';
@@ -16,6 +17,7 @@ import FaqSection from './components/FaqSection';
 import Footer from './components/Footer';
 import QuoteModal from './components/QuoteModal';
 import SpecModal from './components/SpecModal';
+import ProfileDownloadModal from './components/ProfileDownloadModal';
 import { MessageSquare } from 'lucide-react';
 import { COMPANY_INFO } from './data/materialsData';
 
@@ -24,6 +26,15 @@ export default function App() {
   const [activeSpecProduct, setActiveSpecProduct] = useState(null);
   const [quoteModalOpen, setQuoteModalOpen] = useState(false);
   const [quoteModalData, setQuoteModalData] = useState(null);
+  const [profileModalOpen, setProfileModalOpen] = useState(false);
+
+  const handleOpenProfileModal = () => {
+    setProfileModalOpen(true);
+  };
+
+  const handleCloseProfileModal = () => {
+    setProfileModalOpen(false);
+  };
 
   const handleOpenQuoteModal = (productOrData = null) => {
     setQuoteModalData(productOrData);
@@ -71,8 +82,11 @@ export default function App() {
         {/* 4. Why Choose Us: Immersive Mountain Panorama & 4 Frosted Cards */}
         <WhyChooseUs onOpenQuoteModal={handleOpenQuoteModal} />
 
-        {/* 5. About Us: Narrative, Excavator Photo, 4 Key Metrics (10+, 500+, 1M+, 100+) & Our Story */}
-        <AboutUs onOpenQuoteModal={handleOpenQuoteModal} />
+        {/* 5. About Us: Narrative, Excavator Photo, 4 Key Metrics (10+, 500+, 1M+, 100+) & Company Profile PDF */}
+        <AboutUs 
+          onOpenQuoteModal={handleOpenQuoteModal}
+          onOpenProfileModal={handleOpenProfileModal} 
+        />
 
         {/* 6. Our Materials: Interactive Catalog with Tabs, Live Search & Certified Chemical Specs */}
         <MaterialsCatalog 
@@ -80,6 +94,12 @@ export default function App() {
           onSelectCategory={setSelectedCategory}
           onOpenSpecModal={handleOpenSpecModal}
           onOpenQuoteModal={handleOpenQuoteModal}
+        />
+
+        {/* 6B. Marble & Granite Export: 12-Section Natural Stone & Global Supply Suite */}
+        <MarbleGraniteExport 
+          onOpenQuoteModal={handleOpenQuoteModal}
+          onOpenSpecModal={handleOpenSpecModal}
         />
 
         {/* 7. Sourcing & Procurement: 4 Process Steps, Stockyard Photo & Submit Requirement */}
@@ -111,7 +131,10 @@ export default function App() {
       </main>
 
       {/* 15. Structured Industrial Footer */}
-      <Footer onOpenQuoteModal={handleOpenQuoteModal} />
+      <Footer 
+        onOpenQuoteModal={handleOpenQuoteModal}
+        onOpenProfileModal={handleOpenProfileModal}
+      />
 
       {/* Floating Direct WhatsApp Button */}
       <button
@@ -135,6 +158,11 @@ export default function App() {
         product={activeSpecProduct}
         onClose={handleCloseSpecModal}
         onOpenQuoteModal={handleOpenQuoteModal}
+      />
+
+      <ProfileDownloadModal
+        isOpen={profileModalOpen}
+        onClose={handleCloseProfileModal}
       />
     </div>
   );

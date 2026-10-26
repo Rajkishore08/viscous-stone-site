@@ -1,9 +1,9 @@
 import React from 'react';
 import { COMPANY_INFO } from '../data/materialsData';
-import { ArrowRight, MapPin, CheckCircle2 } from 'lucide-react';
+import { ArrowRight, MapPin, CheckCircle2, FileText, Download, ShieldCheck, Lock, FileDown } from 'lucide-react';
 import '../styles/about-us.css';
 
-export default function AboutUs({ onOpenQuoteModal }) {
+export default function AboutUs({ onOpenQuoteModal, onOpenProfileModal }) {
   const storyStats = [
     { value: '10+', label: 'Countries Sourced From', desc: 'Direct pithead and global export terminal networks' },
     { value: '500+', label: 'Verified Suppliers', desc: 'Mines, coal washeries and international producers' },
@@ -60,13 +60,23 @@ export default function AboutUs({ onOpenQuoteModal }) {
                 </span>
               </div>
 
-              <button
-                onClick={() => onOpenQuoteModal({ context: 'Our Story' })}
-                className="btn btn-primary btn-sm"
-              >
-                <span>Our Story</span>
-                <ArrowRight size={14} />
-              </button>
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={onOpenProfileModal}
+                  className="btn btn-secondary btn-sm"
+                  title="Download Official 14-Page Company Profile PDF"
+                >
+                  <FileDown size={14} />
+                  <span>Company Profile (PDF)</span>
+                </button>
+                <button
+                  onClick={() => onOpenQuoteModal({ context: 'Our Story' })}
+                  className="btn btn-primary btn-sm"
+                >
+                  <span>Our Story</span>
+                  <ArrowRight size={14} />
+                </button>
+              </div>
             </div>
           </div>
 
@@ -138,6 +148,60 @@ export default function AboutUs({ onOpenQuoteModal }) {
             <div className="about-fact-item">
               <span className="about-fact-label">BUYERS IN</span>
               <strong className="about-fact-val">India · UAE</strong>
+            </div>
+          </div>
+
+          {/* Official Company Profile PDF Attachment & Gated Download */}
+          <div className="profile-attachment-card">
+            <div className="profile-attachment-left">
+              <div className="profile-attachment-icon-wrap">
+                <FileText size={28} />
+                <span className="profile-attachment-ext">PDF</span>
+              </div>
+              <div className="profile-attachment-meta">
+                <div className="profile-attachment-badge">
+                  <ShieldCheck size={13} />
+                  <span>OFFICIAL CORPORATE DOSSIER · CONFIDENTIAL</span>
+                </div>
+                <h4 className="profile-attachment-title">
+                  Vicious Stone Private Limited — Corporate Profile & Sourcing Capabilities
+                </h4>
+                <p className="profile-attachment-desc">
+                  Official 14-page executive deck covering coal & mineral sourcing corridors, marble & granite export yards, verified port stockyards, and corporate credentials.
+                </p>
+                <div className="profile-attachment-chips">
+                  <span className="profile-attachment-chip">
+                    <strong>CIN:</strong> {COMPANY_INFO.cin || 'U09900KA2024PTC194607'}
+                  </span>
+                  <span className="profile-attachment-chip">
+                    <strong>GSTIN:</strong> {COMPANY_INFO.gstin}
+                  </span>
+                  <span className="profile-attachment-chip">
+                    <strong>Incorporated:</strong> 06 Nov 2024
+                  </span>
+                  <span className="profile-attachment-chip">
+                    <strong>Offices:</strong> Bengaluru & Dubai
+                  </span>
+                  <span className="profile-attachment-chip">
+                    14 Pages · High Res (3.9 MB)
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <div className="profile-attachment-right">
+              <button
+                onClick={onOpenProfileModal}
+                className="btn btn-primary"
+                style={{ padding: '0.75rem 1.35rem', fontSize: '0.9rem' }}
+              >
+                <Download size={16} />
+                <span>Download Company Profile (PDF)</span>
+              </button>
+              <div className="profile-attachment-note">
+                <Lock size={12} style={{ color: 'var(--sky-400)' }} />
+                <span>Instant access upon verification</span>
+              </div>
             </div>
           </div>
         </div>
