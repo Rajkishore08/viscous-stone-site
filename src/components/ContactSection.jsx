@@ -77,13 +77,13 @@ export default function ContactSection({ preselectedMaterial }) {
               </div>
 
               <div className="contact-channel-list">
-                {/* WhatsApp */}
+                {/* India WhatsApp */}
                 <div className="contact-channel-item">
                   <div className="contact-channel-icon whatsapp">
                     <MessageSquare size={18} />
                   </div>
                   <div>
-                    <div className="contact-channel-label">WHATSAPP</div>
+                    <div className="contact-channel-label">WHATSAPP — INDIA</div>
                     <a
                       href={`https://wa.me/${COMPANY_INFO.whatsappNumber}?text=${encodeURIComponent('Hello Vicious Stone, I have a coal enquiry.')}`}
                       target="_blank"
@@ -95,18 +95,53 @@ export default function ContactSection({ preselectedMaterial }) {
                   </div>
                 </div>
 
+                {/* Dubai WhatsApp */}
+                <div className="contact-channel-item">
+                  <div className="contact-channel-icon whatsapp">
+                    <MessageSquare size={18} />
+                  </div>
+                  <div>
+                    <div className="contact-channel-label">WHATSAPP — DUBAI (MIDDLE EAST)</div>
+                    <a
+                      href={`https://wa.me/${COMPANY_INFO.dubaiContact.whatsapp}?text=${encodeURIComponent('Hello Vicious Stone Middle East, I have an enquiry.')}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="contact-channel-val text-emerald-600 hover:underline"
+                    >
+                      {COMPANY_INFO.dubaiContact.phone}
+                    </a>
+                    <div className="text-xs text-slate-500 mt-0.5">{COMPANY_INFO.dubaiContact.name} · {COMPANY_INFO.dubaiContact.role}</div>
+                  </div>
+                </div>
+
                 {/* Email */}
                 <div className="contact-channel-item">
                   <div className="contact-channel-icon email">
                     <Mail size={18} />
                   </div>
                   <div>
-                    <div className="contact-channel-label">EMAIL</div>
+                    <div className="contact-channel-label">EMAIL — INDIA</div>
                     <a
                       href={`mailto:${COMPANY_INFO.email}`}
                       className="contact-channel-val text-sky-700 hover:underline"
                     >
                       {COMPANY_INFO.email}
+                    </a>
+                  </div>
+                </div>
+
+                {/* Dubai Email */}
+                <div className="contact-channel-item">
+                  <div className="contact-channel-icon email">
+                    <Mail size={18} />
+                  </div>
+                  <div>
+                    <div className="contact-channel-label">EMAIL — DUBAI (MIDDLE EAST)</div>
+                    <a
+                      href={`mailto:${COMPANY_INFO.dubaiContact.email}`}
+                      className="contact-channel-val text-sky-700 hover:underline"
+                    >
+                      {COMPANY_INFO.dubaiContact.email}
                     </a>
                   </div>
                 </div>
@@ -117,7 +152,7 @@ export default function ContactSection({ preselectedMaterial }) {
                     <MapPin size={18} />
                   </div>
                   <div>
-                    <div className="contact-channel-label">OFFICE</div>
+                    <div className="contact-channel-label">REGISTERED OFFICE</div>
                     <p className="text-xs text-slate-700 font-medium leading-relaxed mb-1">
                       {COMPANY_INFO.address}
                     </p>
@@ -134,16 +169,26 @@ export default function ContactSection({ preselectedMaterial }) {
                 </div>
               </div>
 
-              <div className="mt-6 pt-4 border-t border-slate-200">
+              <div className="mt-6 pt-4 border-t border-slate-200" style={{ display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
                 <a
                   href={`https://wa.me/${COMPANY_INFO.whatsappNumber}?text=${encodeURIComponent('Hello Vicious Stone, I have a coal enquiry.')}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn btn-whatsapp w-full"
+                  className="btn btn-whatsapp"
                   style={{ width: '100%', justifyContent: 'center' }}
                 >
                   <MessageSquare size={16} />
-                  <span>CHAT ON WHATSAPP</span>
+                  <span>WHATSAPP — INDIA (+91 99863 72383)</span>
+                </a>
+                <a
+                  href={`https://wa.me/${COMPANY_INFO.dubaiContact.whatsapp}?text=${encodeURIComponent('Hello Vicious Stone Middle East, I have an enquiry.')}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-whatsapp"
+                  style={{ width: '100%', justifyContent: 'center', background: 'linear-gradient(135deg, #059669 0%, #047857 100%)' }}
+                >
+                  <MessageSquare size={16} />
+                  <span>WHATSAPP — DUBAI (+971 58 121 7454)</span>
                 </a>
               </div>
             </div>

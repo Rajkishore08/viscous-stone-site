@@ -47,8 +47,8 @@ export default function MarbleGraniteExport({ onOpenQuoteModal, onOpenSpecModal 
   };
 
   const handleWhatsAppExport = () => {
-    const msg = "Hello Vicious Stone Export Team, I am looking to import Marble / Granite slabs and blocks from India.";
-    window.open(`https://wa.me/${COMPANY_INFO.whatsappNumber}?text=${encodeURIComponent(msg)}`, '_blank', 'noopener,noreferrer');
+    const msg = "Hello Vicious Stone Export Team (Dubai), I am looking to import Marble / Granite slabs and blocks from India. Please share pricing and availability.";
+    window.open(`https://wa.me/${COMPANY_INFO.dubaiContact.whatsapp}?text=${encodeURIComponent(msg)}`, '_blank', 'noopener,noreferrer');
   };
 
   return (
