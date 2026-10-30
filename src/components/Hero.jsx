@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { COMPANY_INFO, LIVE_TICKER_ITEMS } from '../data/materialsData';
 import { 
   ArrowRight, 
@@ -94,13 +95,12 @@ export default function Hero({ onOpenQuoteModal }) {
                 <ArrowRight size={18} />
               </button>
 
-              <a
-                href="#core-materials"
-                onClick={handleScrollToMaterials}
+              <Link
+                to="/materials"
                 className="btn btn-glass-outline btn-lg"
               >
                 <span>Explore Our Materials</span>
-              </a>
+              </Link>
             </div>
 
             {/* Trust Pill Strip */}

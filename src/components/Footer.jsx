@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { COMPANY_INFO } from '../data/materialsData';
 import { MessageSquare, ArrowUp } from 'lucide-react';
 import '../styles/footer.css';
@@ -7,20 +8,6 @@ import Logo from './Logo';
 export default function Footer({ onOpenQuoteModal, onOpenProfileModal }) {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
-  const handleNavClick = (e, href) => {
-    e.preventDefault();
-    const target = document.querySelector(href);
-    if (target) {
-      const headerOffset = 78;
-      const elementPosition = target.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
-    }
   };
 
   return (
@@ -70,10 +57,12 @@ export default function Footer({ onOpenQuoteModal, onOpenProfileModal }) {
           {/* Column 1: Brand & Tagline */}
           <div>
             <div className="mb-4">
-              <Logo type="rect" variant="dark" size="md" />
+              <Link to="/">
+                <Logo type="rect" variant="dark" size="md" />
+              </Link>
             </div>
             <p className="text-xs text-slate-400 leading-relaxed mb-4">
-              Headquartered in Bengaluru with regional desks in Dubai. Sourcing, trading and export of coal, coke, iron ore, aluminium and Indian marble & granite to global project buyers.
+              Headquartered in Bengaluru with regional desks in Dubai. Sourcing, trading and export of coal, coke, iron ore, aluminium and Indian marble &amp; granite to global project buyers.
             </p>
             <div className="text-xs font-mono text-sky-400">
               GSTIN: {COMPANY_INFO.gstin}
@@ -85,106 +74,48 @@ export default function Footer({ onOpenQuoteModal, onOpenProfileModal }) {
 
           {/* Column 2: MATERIALS */}
           <div>
-            <h4 className="footer-col-title">
-              OUR MATERIALS
-            </h4>
+            <h4 className="footer-col-title">OUR MATERIALS</h4>
             <ul className="footer-links-list">
+              <li><Link to="/materials">All Materials Catalog</Link></li>
               <li>
-                <a href="#materials" onClick={(e) => handleNavClick(e, '#materials')}>
-                  All Materials Catalog
-                </a>
+                <Link to="/marble-granite" className="text-sky-400 font-semibold">
+                  Marble &amp; Granite Export ★
+                </Link>
               </li>
-              <li>
-                <a href="#marble-granite" onClick={(e) => handleNavClick(e, '#marble-granite')} className="text-sky-400 font-semibold">
-                  Marble & Granite Export ★
-                </a>
-              </li>
-              <li>
-                <a href="#core-materials" onClick={(e) => handleNavClick(e, '#core-materials')}>
-                  Core Materials Portfolio
-                </a>
-              </li>
-              <li>
-                <a href="#materials" onClick={(e) => handleNavClick(e, '#materials')}>
-                  Thermal & Steam Coal
-                </a>
-              </li>
-              <li>
-                <a href="#materials" onClick={(e) => handleNavClick(e, '#materials')}>
-                  Metallurgical Coke & PCI
-                </a>
-              </li>
-              <li>
-                <a href="#materials" onClick={(e) => handleNavClick(e, '#materials')}>
-                  Iron Ore & Minerals
-                </a>
-              </li>
+              <li><Link to="/materials">Core Materials Portfolio</Link></li>
+              <li><Link to="/materials?category=Coal%20%26%20Coke">Thermal &amp; Steam Coal</Link></li>
+              <li><Link to="/materials?category=Coal%20%26%20Coke">Metallurgical Coke &amp; PCI</Link></li>
+              <li><Link to="/materials?category=Iron%20%26%20Steel">Iron Ore &amp; Minerals</Link></li>
             </ul>
           </div>
 
           {/* Column 3: SOURCING & LOGISTICS */}
           <div>
-            <h4 className="footer-col-title">
-              SOURCING & LOGISTICS
-            </h4>
+            <h4 className="footer-col-title">SOURCING &amp; LOGISTICS</h4>
             <ul className="footer-links-list">
-              <li>
-                <a href="#sourcing" onClick={(e) => handleNavClick(e, '#sourcing')}>
-                  Sourcing & Procurement
-                </a>
-              </li>
-              <li>
-                <a href="#suppliers" onClick={(e) => handleNavClick(e, '#suppliers')}>
-                  Global Suppliers & Routes
-                </a>
-              </li>
-              <li>
-                <a href="#logistics" onClick={(e) => handleNavClick(e, '#logistics')}>
-                  Logistics & Port Terminals
-                </a>
-              </li>
-              <li>
-                <a href="#why-us" onClick={(e) => handleNavClick(e, '#why-us')}>
-                  Why Choose Us
-                </a>
-              </li>
+              <li><Link to="/sourcing">Sourcing &amp; Procurement</Link></li>
+              <li><Link to="/sourcing">Global Suppliers &amp; Routes</Link></li>
+              <li><Link to="/sourcing">Logistics &amp; Port Terminals</Link></li>
+              <li><Link to="/">Why Choose Us</Link></li>
             </ul>
           </div>
 
           {/* Column 4: CONTACT & CORPORATE */}
           <div>
-            <h4 className="footer-col-title">
-              CONTACT & CORPORATE
-            </h4>
+            <h4 className="footer-col-title">CONTACT &amp; CORPORATE</h4>
             <ul className="footer-links-list">
+              <li><Link to="/about">About Us / Corporate Profile</Link></li>
               <li>
-                <a href="#about" onClick={(e) => handleNavClick(e, '#about')}>
-                  About Us / Corporate Profile
-                </a>
-              </li>
-              <li>
-                <button 
-                  onClick={onOpenProfileModal} 
+                <button
+                  onClick={onOpenProfileModal}
                   style={{ background: 'none', border: 'none', padding: 0, color: 'var(--sky-400)', cursor: 'pointer', fontSize: 'inherit', textAlign: 'left' }}
                 >
                   Download Company Profile (PDF)
                 </button>
               </li>
-              <li>
-                <a href="#contact" onClick={(e) => handleNavClick(e, '#contact')}>
-                  RFQ Enquiry Desk
-                </a>
-              </li>
-              <li>
-                <a href="#documents" onClick={(e) => handleNavClick(e, '#documents')}>
-                  Registration Documents
-                </a>
-              </li>
-              <li>
-                <a href="#faq" onClick={(e) => handleNavClick(e, '#faq')}>
-                  Commercial FAQ
-                </a>
-              </li>
+              <li><Link to="/contact">RFQ Enquiry Desk</Link></li>
+              <li><Link to="/about">Registration Documents</Link></li>
+              <li><Link to="/contact">Commercial FAQ</Link></li>
             </ul>
             <div className="mt-4 pt-3 border-t border-slate-800 text-xs text-slate-400">
               <div>Koramangala, Bengaluru 560034</div>

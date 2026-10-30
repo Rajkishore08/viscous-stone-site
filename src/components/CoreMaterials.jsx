@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { ArrowUpRight, ArrowRight, Sparkles } from 'lucide-react';
 import { CORE_MATERIALS } from '../data/materialsData';
 import '../styles/core-materials.css';
@@ -6,21 +7,12 @@ import '../styles/core-materials.css';
 export default function CoreMaterials({ onSelectCategory, onOpenQuoteModal }) {
   const handleCardClick = (e, catId) => {
     e.preventDefault();
-    const target = document.querySelector('#materials');
-    if (target) {
-      target.scrollIntoView({ behavior: 'smooth' });
-    }
     if (catId === 'coal' || catId === 'coke') {
       onSelectCategory?.('Coal & Coke');
     } else if (catId === 'iron-ore') {
       onSelectCategory?.('Iron & Steel');
     } else if (catId === 'natural-stone') {
       onSelectCategory?.('Marble & Granite');
-      const stoneSection = document.querySelector('#marble-granite');
-      if (stoneSection) {
-        stoneSection.scrollIntoView({ behavior: 'smooth' });
-        return;
-      }
     } else {
       onSelectCategory?.('Industrial Minerals');
     }
@@ -44,12 +36,8 @@ export default function CoreMaterials({ onSelectCategory, onOpenQuoteModal }) {
             </p>
           </div>
 
-          <a
-            href="#materials"
-            onClick={(e) => {
-              e.preventDefault();
-              document.querySelector('#materials')?.scrollIntoView({ behavior: 'smooth' });
-            }}
+          <Link
+            to="/materials"
             style={{ 
               display: 'inline-flex', 
               alignItems: 'center', 
@@ -62,7 +50,7 @@ export default function CoreMaterials({ onSelectCategory, onOpenQuoteModal }) {
           >
             <span>View All Materials</span>
             <ArrowRight size={16} />
-          </a>
+          </Link>
         </div>
 
         {/* 4 Cards Grid */}

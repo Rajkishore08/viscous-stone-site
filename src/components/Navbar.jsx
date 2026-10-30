@@ -1,71 +1,36 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { COMPANY_INFO } from '../data/materialsData';
 import '../styles/navbar.css';
-import { 
-  Phone, 
-  Mail, 
-  MapPin, 
-  Menu, 
-  X, 
-  ShieldCheck, 
+import {
+  Phone,
+  Mail,
+  MapPin,
+  Menu,
+  X,
+  ShieldCheck,
   ArrowRight,
-  MessageSquare 
+  MessageSquare
 } from 'lucide-react';
 import Logo from './Logo';
 
 export default function Navbar({ onOpenQuoteModal }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState('home');
+  const { pathname } = useLocation();
+  const navigate = useNavigate();
 
   const navItems = [
-    { label: 'Home', href: '#home', id: 'home' },
-    { label: 'Our Materials', href: '#materials', id: 'materials' },
-    { label: 'Marble & Granite', href: '#marble-granite', id: 'marble-granite' },
-    { label: 'Sourcing & Procurement', href: '#sourcing', id: 'sourcing' },
-    { label: 'Suppliers', href: '#suppliers', id: 'suppliers' },
-    { label: 'Logistics', href: '#logistics', id: 'logistics' },
-    { label: 'About Us', href: '#about', id: 'about' },
-    { label: 'Contact', href: '#contact', id: 'contact' },
+    { label: 'Home',                 to: '/',                id: 'home' },
+    { label: 'Our Materials',        to: '/materials',       id: 'materials' },
+    { label: 'Marble & Granite',     to: '/marble-granite',  id: 'marble-granite' },
+    { label: 'Sourcing',             to: '/sourcing',        id: 'sourcing' },
+    { label: 'About Us',             to: '/about',           id: 'about' },
+    { label: 'Contact',              to: '/contact',         id: 'contact' },
   ];
 
-  // Observe active section on scroll
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollPos = window.scrollY + 120;
-      for (let i = navItems.length - 1; i >= 0; i--) {
-        const item = navItems[i];
-        const el = document.getElementById(item.id);
-        if (el && el.offsetTop <= scrollPos) {
-          setActiveSection(item.id);
-          break;
-        }
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  const handleNavClick = (e, href, id) => {
-    e.preventDefault();
-    setActiveSection(id);
-    setMobileMenuOpen(false);
-
-    if (id === 'home') {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-      return;
-    }
-
-    const target = document.querySelector(href);
-    if (target) {
-      const headerOffset = 78;
-      const elementPosition = target.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
-    }
+  const isActive = (to) => {
+    if (to === '/') return pathname === '/';
+    return pathname.startsWith(to);
   };
 
   return (
@@ -86,13 +51,13 @@ export default function Navbar({ onOpenQuoteModal }) {
               </span>
               <span className="top-bar-sep">·</span>
               <span className="top-bar-item">
-                <span>Global Pithead Linkages & Port Discharge</span>
+                <span>Global Pithead Linkages &amp; Port Discharge</span>
               </span>
             </div>
 
             <div className="top-bar-right">
-              <a 
-                href={`tel:${COMPANY_INFO.phone}`} 
+              <a
+                href={`tel:${COMPANY_INFO.phone}`}
                 className="top-bar-item"
                 style={{ color: '#ffffff' }}
               >
@@ -100,8 +65,8 @@ export default function Navbar({ onOpenQuoteModal }) {
                 <span>{COMPANY_INFO.phone}</span>
               </a>
               <span className="top-bar-sep">|</span>
-              <a 
-                href={`mailto:${COMPANY_INFO.email}`} 
+              <a
+                href={`mailto:${COMPANY_INFO.email}`}
                 className="top-bar-item"
                 style={{ color: '#ffffff' }}
               >
@@ -117,35 +82,26 @@ export default function Navbar({ onOpenQuoteModal }) {
       <header className="site-header">
         <div className="container">
           <div className="nav-container">
-            {/* Logo */}
-            <a 
-              href="#home" 
-              onClick={(e) => handleNavClick(e, '#home', 'home')}
-              className="nav-logo-link"
-              aria-label="Vicious Stone Home"
-            >
+            {/* Logo → Home */}
+            <Link to="/" className="nav-logo-link" aria-label="Vicious Stone Home">
               <Logo type="rect" size="md" />
-            </a>
+            </Link>
 
-            {/* Desktop Navigation Links matching Image 2 */}
+            {/* Desktop Navigation */}
             <nav className="nav-links-desktop">
-              {navItems.map((item) => {
-                const isActive = activeSection === item.id;
-                return (
-                  <a
-                    key={item.id}
-                    href={item.href}
-                    onClick={(e) => handleNavClick(e, item.href, item.id)}
-                    className={`nav-link-item ${isActive ? 'active' : ''}`}
-                  >
-                    <span>{item.label}</span>
-                    {isActive && <span className="nav-active-indicator" />}
-                  </a>
-                );
-              })}
+              {navItems.map((item) => (
+                <Link
+                  key={item.id}
+                  to={item.to}
+                  className={`nav-link-item ${isActive(item.to) ? 'active' : ''}`}
+                >
+                  <span>{item.label}</span>
+                  {isActive(item.to) && <span className="nav-active-indicator" />}
+                </Link>
+              ))}
             </nav>
 
-            {/* Right Action: Request a Quote (pill blue button) */}
+            {/* Request a Quote */}
             <div className="nav-actions-desktop">
               <button
                 onClick={() => onOpenQuoteModal()}
@@ -156,7 +112,7 @@ export default function Navbar({ onOpenQuoteModal }) {
               </button>
             </div>
 
-            {/* Mobile Hamburger Toggle Button */}
+            {/* Mobile Hamburger */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="mobile-menu-btn"
@@ -173,15 +129,15 @@ export default function Navbar({ onOpenQuoteModal }) {
           <div className="mobile-drawer">
             <div className="mobile-drawer-body">
               {navItems.map((item) => (
-                <a
+                <Link
                   key={item.id}
-                  href={item.href}
-                  onClick={(e) => handleNavClick(e, item.href, item.id)}
-                  className={`mobile-nav-link ${activeSection === item.id ? 'active' : ''}`}
+                  to={item.to}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className={`mobile-nav-link ${isActive(item.to) ? 'active' : ''}`}
                 >
                   <span>{item.label}</span>
                   <ArrowRight size={16} />
-                </a>
+                </Link>
               ))}
 
               <div className="mobile-drawer-footer">
@@ -196,9 +152,9 @@ export default function Navbar({ onOpenQuoteModal }) {
                   <ArrowRight size={16} />
                 </button>
 
-                <a 
-                  href={`https://wa.me/${COMPANY_INFO.whatsappNumber}`} 
-                  target="_blank" 
+                <a
+                  href={`https://wa.me/${COMPANY_INFO.whatsappNumber}`}
+                  target="_blank"
                   rel="noreferrer"
                   className="btn btn-whatsapp w-full"
                   style={{ marginTop: '0.75rem' }}
