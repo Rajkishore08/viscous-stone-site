@@ -188,7 +188,7 @@ export default function ContactSection({ preselectedMaterial }) {
                   style={{ width: '100%', justifyContent: 'center', background: 'linear-gradient(135deg, #059669 0%, #047857 100%)' }}
                 >
                   <MessageSquare size={16} />
-                  <span>WHATSAPP — DUBAI (+971 58 121 7454)</span>
+                  <span>WHATSAPP — DUBAI (+971 50 461 6428)</span>
                 </a>
               </div>
             </div>

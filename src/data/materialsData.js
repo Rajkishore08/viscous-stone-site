@@ -22,14 +22,14 @@ export const COMPANY_INFO = {
     { name: "Nikhil Shukla", role: "Director", phone: "+91 79858 69878" },
     { name: "Bidyashree", role: "Managing CEO", phone: "+91 70770 96109" },
     { name: "Naresh Shetty", role: "Partnership Head", phone: "+91 63636 27881" },
-    { name: "Tahrem Hussien", role: "Regional Head (Middle East - Dubai)", phone: "+971 58 121 7454", email: "tahremh@viciousstone.com" }
+    { name: "Tahrem Hussien", role: "Regional Head (Middle East - Dubai)", phone: "+971 50 461 6428", email: "tahremh@viciousstone.com" }
   ],
   dubaiOffice: "Dubai, United Arab Emirates",
   dubaiContact: {
     name: "Tahrem Hussien",
     role: "Regional Head — Middle East",
-    phone: "+971 58 121 7454",
-    whatsapp: "971581217454",
+    phone: "+971 50 461 6428",
+    whatsapp: "971504616428",
     email: "tahremh@viciousstone.com"
   },
   phone: "+91 99863 72383",
